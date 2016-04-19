@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="CategoryTableViewCell" customModule="wwdc16" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="325" height="150"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="325" height="149.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gL4-Bb-qGH">
+                        <rect key="frame" x="0.0" y="8" width="325" height="134"/>
+                        <color key="backgroundColor" red="0.99215686270000003" green="0.3921568627" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="gL4-Bb-qGH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="LWQ-Zt-O9G"/>
+                    <constraint firstAttribute="trailing" secondItem="gL4-Bb-qGH" secondAttribute="trailing" id="W1K-gI-Iu4"/>
+                    <constraint firstItem="gL4-Bb-qGH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="aj8-3g-IXR"/>
+                    <constraint firstAttribute="bottom" secondItem="gL4-Bb-qGH" secondAttribute="bottom" constant="8" id="urI-Rp-O5U"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="bgView" destination="gL4-Bb-qGH" id="MYc-Ws-Pxf"/>
+            </connections>
+            <point key="canvasLocation" x="301.5" y="283"/>
+        </tableViewCell>
+    </objects>
+</document>

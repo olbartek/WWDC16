@@ -33,8 +33,41 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>my-apps-shortcut</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>My Apps</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.olbart.wwdc16.my-apps</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>about-me-shortcut</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>About me</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.olbart.wwdc16.about-me</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>interests-shortcut</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Interests</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.olbart.wwdc16.interests</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>skills-shortcut</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Skills</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.olbart.wwdc16.skills</string>
+		</dict>
 	</array>
 </dict>
 </plist>

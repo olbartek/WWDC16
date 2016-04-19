@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E4E35011CC646F10007BDBD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35001CC646F10007BDBD /* Constants.swift */; };
 		4E7DAF611CC6278E00D48EB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7DAF601CC6278E00D48EB9 /* AppDelegate.swift */; };
 		4E7DAF661CC6278E00D48EB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E7DAF641CC6278E00D48EB9 /* Main.storyboard */; };
 		4E7DAF681CC6278E00D48EB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E7DAF671CC6278E00D48EB9 /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E4E35001CC646F10007BDBD /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "Supporting Files/Constants.swift"; sourceTree = "<group>"; };
 		4E7DAF5D1CC6278E00D48EB9 /* wwdc16.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wwdc16.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E7DAF601CC6278E00D48EB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E7DAF651CC6278E00D48EB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 		4E7DAFA11CC6356600D48EB9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4E4E35001CC646F10007BDBD /* Constants.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				4E7DAF8F1CC62D4800D48EB9 /* UIColor+ThemeColor.swift in Sources */,
 				4E7DAF611CC6278E00D48EB9 /* AppDelegate.swift in Sources */,
 				4E7DAF931CC62DCB00D48EB9 /* MainViewController.swift in Sources */,
+				4E4E35011CC646F10007BDBD /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +464,7 @@
 				4E7DAF7C1CC6278E00D48EB9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4E7DAF7D1CC6278E00D48EB9 /* Build configuration list for PBXNativeTarget "wwdc16Tests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +473,7 @@
 				4E7DAF7F1CC6278E00D48EB9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

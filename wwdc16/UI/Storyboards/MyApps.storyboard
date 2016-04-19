@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Bna-0V-TTy">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--My Apps View Controller-->
+        <scene sceneID="56K-jG-BTd">
+            <objects>
+                <viewController storyboardIdentifier="MyApps" id="Bna-0V-TTy" customClass="MyAppsViewController" customModule="wwdc16" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Nmq-jG-rCn"/>
+                        <viewControllerLayoutGuide type="bottom" id="eRz-gt-w4R"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Yz3-zE-5na">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My apps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3u-IX-aCL">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="S3u-IX-aCL" firstAttribute="centerX" secondItem="Yz3-zE-5na" secondAttribute="centerX" id="CQo-PS-usf"/>
+                            <constraint firstItem="S3u-IX-aCL" firstAttribute="centerY" secondItem="Yz3-zE-5na" secondAttribute="centerY" id="ulU-pu-0xf"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="S3u-IX-aCL"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="CQo-PS-usf"/>
+                                <exclude reference="ulU-pu-0xf"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="S3u-IX-aCL"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="CQo-PS-usf"/>
+                                <include reference="ulU-pu-0xf"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yh7-hd-Pul" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="695" y="362"/>
+        </scene>
+    </scenes>
+</document>

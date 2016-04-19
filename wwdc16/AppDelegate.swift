@@ -90,18 +90,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func handleMyAppsShortcut() {
         print("3D Touch: My Apps pressed.")
+        self.window?.rootViewController?.presentViewController(VC.MyApps, animated: false, completion: nil)
     }
     
     func handleAboutMeShortcut() {
         print("3D Touch: About me pressed.")
+        self.window?.rootViewController?.presentViewController(VC.AboutMe, animated: false, completion: nil)
     }
     
     func handleInterestsShortcut() {
         print("3D Touch: Interests pressed.")
+        self.window?.rootViewController?.presentViewController(VC.Interests, animated: false, completion: nil)
     }
     
     func handleSkillsShortcut() {
         print("3D Touch: Skills pressed.")
+        self.window?.rootViewController?.presentViewController(VC.Skills, animated: false, completion: nil)
     }
 
 

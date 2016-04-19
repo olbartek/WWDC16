@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gdd-2U-ocf">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Skills View Controller-->
+        <scene sceneID="xEN-fK-3pC">
+            <objects>
+                <viewController storyboardIdentifier="Skills" id="gdd-2U-ocf" customClass="SkillsViewController" customModule="wwdc16" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mBS-mI-jOx"/>
+                        <viewControllerLayoutGuide type="bottom" id="6XI-Oi-Mlm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Jnz-Pa-RRw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skills" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ew4-JA-LTy">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ew4-JA-LTy" firstAttribute="centerX" secondItem="Jnz-Pa-RRw" secondAttribute="centerX" id="47w-31-VOh"/>
+                            <constraint firstItem="Ew4-JA-LTy" firstAttribute="centerY" secondItem="Jnz-Pa-RRw" secondAttribute="centerY" id="ioi-5N-qWs"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Ew4-JA-LTy"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="47w-31-VOh"/>
+                                <exclude reference="ioi-5N-qWs"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Ew4-JA-LTy"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="47w-31-VOh"/>
+                                <include reference="ioi-5N-qWs"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kfF-CF-2s5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="657" y="367"/>
+        </scene>
+    </scenes>
+</document>

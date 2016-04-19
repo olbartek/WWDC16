@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 
 struct ShortcutItem {
     static let MyApps = "com.olbart.wwdc16.my-apps"
@@ -16,4 +16,16 @@ struct ShortcutItem {
     static let Skills = "com.olbart.wwdc16.skills"
 }
 
+private struct Storyboard {
+    static let AboutMe = UIStoryboard(name: "AboutMe", bundle: nil)
+    static let MyApps = UIStoryboard(name: "MyApps", bundle: nil)
+    static let Skills = UIStoryboard(name: "Skills", bundle: nil)
+    static let Interests = UIStoryboard(name: "Interests", bundle: nil)
+}
 
+struct VC {
+    static let AboutMe = Storyboard.AboutMe.instantiateInitialViewController() as! AboutMeViewController
+    static let MyApps = Storyboard.MyApps.instantiateInitialViewController() as! MyAppsViewController
+    static let Skills = Storyboard.Skills.instantiateInitialViewController() as! SkillsViewController
+    static let Interests = Storyboard.Interests.instantiateInitialViewController() as! InterestsViewController
+}

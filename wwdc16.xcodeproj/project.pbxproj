@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		4E4E35011CC646F10007BDBD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35001CC646F10007BDBD /* Constants.swift */; };
+		4E4E35031CC6546C0007BDBD /* AboutMe.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E4E35021CC6546C0007BDBD /* AboutMe.storyboard */; };
+		4E4E35051CC654810007BDBD /* MyApps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E4E35041CC654810007BDBD /* MyApps.storyboard */; };
+		4E4E35071CC654A10007BDBD /* Skills.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E4E35061CC654A10007BDBD /* Skills.storyboard */; };
+		4E4E35091CC654BB0007BDBD /* Interests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E4E35081CC654BB0007BDBD /* Interests.storyboard */; };
+		4E4E350F1CC655800007BDBD /* AboutMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E350E1CC655800007BDBD /* AboutMeViewController.swift */; };
+		4E4E35111CC6559D0007BDBD /* MyAppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35101CC6559D0007BDBD /* MyAppsViewController.swift */; };
+		4E4E35131CC655B50007BDBD /* SkillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35121CC655B50007BDBD /* SkillsViewController.swift */; };
+		4E4E35151CC655D10007BDBD /* InterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35141CC655D10007BDBD /* InterestsViewController.swift */; };
 		4E7DAF611CC6278E00D48EB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7DAF601CC6278E00D48EB9 /* AppDelegate.swift */; };
 		4E7DAF661CC6278E00D48EB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E7DAF641CC6278E00D48EB9 /* Main.storyboard */; };
 		4E7DAF681CC6278E00D48EB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E7DAF671CC6278E00D48EB9 /* Assets.xcassets */; };
@@ -32,6 +40,14 @@
 
 /* Begin PBXFileReference section */
 		4E4E35001CC646F10007BDBD /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "Supporting Files/Constants.swift"; sourceTree = "<group>"; };
+		4E4E35021CC6546C0007BDBD /* AboutMe.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AboutMe.storyboard; path = UI/Storyboards/AboutMe.storyboard; sourceTree = "<group>"; };
+		4E4E35041CC654810007BDBD /* MyApps.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MyApps.storyboard; path = UI/Storyboards/MyApps.storyboard; sourceTree = "<group>"; };
+		4E4E35061CC654A10007BDBD /* Skills.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Skills.storyboard; path = UI/Storyboards/Skills.storyboard; sourceTree = "<group>"; };
+		4E4E35081CC654BB0007BDBD /* Interests.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Interests.storyboard; path = UI/Storyboards/Interests.storyboard; sourceTree = "<group>"; };
+		4E4E350E1CC655800007BDBD /* AboutMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutMeViewController.swift; path = UI/AboutMe/AboutMeViewController.swift; sourceTree = "<group>"; };
+		4E4E35101CC6559D0007BDBD /* MyAppsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyAppsViewController.swift; path = UI/MyApps/MyAppsViewController.swift; sourceTree = "<group>"; };
+		4E4E35121CC655B50007BDBD /* SkillsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SkillsViewController.swift; path = UI/Skills/SkillsViewController.swift; sourceTree = "<group>"; };
+		4E4E35141CC655D10007BDBD /* InterestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InterestsViewController.swift; path = UI/Interests/InterestsViewController.swift; sourceTree = "<group>"; };
 		4E7DAF5D1CC6278E00D48EB9 /* wwdc16.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wwdc16.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E7DAF601CC6278E00D48EB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E7DAF651CC6278E00D48EB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -66,6 +82,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E4E350A1CC6553E0007BDBD /* AboutMe */ = {
+			isa = PBXGroup;
+			children = (
+				4E4E350E1CC655800007BDBD /* AboutMeViewController.swift */,
+			);
+			name = AboutMe;
+			sourceTree = "<group>";
+		};
+		4E4E350B1CC655450007BDBD /* MyApps */ = {
+			isa = PBXGroup;
+			children = (
+				4E4E35101CC6559D0007BDBD /* MyAppsViewController.swift */,
+			);
+			name = MyApps;
+			sourceTree = "<group>";
+		};
+		4E4E350C1CC6554E0007BDBD /* Skills */ = {
+			isa = PBXGroup;
+			children = (
+				4E4E35121CC655B50007BDBD /* SkillsViewController.swift */,
+			);
+			name = Skills;
+			sourceTree = "<group>";
+		};
+		4E4E350D1CC655540007BDBD /* Interests */ = {
+			isa = PBXGroup;
+			children = (
+				4E4E35141CC655D10007BDBD /* InterestsViewController.swift */,
+			);
+			name = Interests;
+			sourceTree = "<group>";
+		};
 		4E7DAF541CC6278E00D48EB9 = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +159,10 @@
 			isa = PBXGroup;
 			children = (
 				4E7DAF821CC62B5600D48EB9 /* Main View */,
+				4E4E350A1CC6553E0007BDBD /* AboutMe */,
+				4E4E350B1CC655450007BDBD /* MyApps */,
+				4E4E350C1CC6554E0007BDBD /* Skills */,
+				4E4E350D1CC655540007BDBD /* Interests */,
 				4E7DAFA01CC6353500D48EB9 /* Storyboards */,
 			);
 			name = UI;
@@ -148,6 +200,10 @@
 			children = (
 				4E7DAF641CC6278E00D48EB9 /* Main.storyboard */,
 				4E7DAF691CC6278E00D48EB9 /* LaunchScreen.storyboard */,
+				4E4E35021CC6546C0007BDBD /* AboutMe.storyboard */,
+				4E4E35041CC654810007BDBD /* MyApps.storyboard */,
+				4E4E35061CC654A10007BDBD /* Skills.storyboard */,
+				4E4E35081CC654BB0007BDBD /* Interests.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -250,7 +306,11 @@
 			files = (
 				4E7DAF6B1CC6278E00D48EB9 /* LaunchScreen.storyboard in Resources */,
 				4E7DAF681CC6278E00D48EB9 /* Assets.xcassets in Resources */,
+				4E4E35051CC654810007BDBD /* MyApps.storyboard in Resources */,
+				4E4E35031CC6546C0007BDBD /* AboutMe.storyboard in Resources */,
+				4E4E35091CC654BB0007BDBD /* Interests.storyboard in Resources */,
 				4E7DAF661CC6278E00D48EB9 /* Main.storyboard in Resources */,
+				4E4E35071CC654A10007BDBD /* Skills.storyboard in Resources */,
 				4E7DAF9F1CC62EF500D48EB9 /* CategoryTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -271,9 +331,13 @@
 			files = (
 				4E7DAF9E1CC62EF500D48EB9 /* CategoryTableViewCell.swift in Sources */,
 				4E7DAF911CC62D8600D48EB9 /* UITableViewCell+Identifier.swift in Sources */,
+				4E4E350F1CC655800007BDBD /* AboutMeViewController.swift in Sources */,
 				4E7DAF8F1CC62D4800D48EB9 /* UIColor+ThemeColor.swift in Sources */,
+				4E4E35151CC655D10007BDBD /* InterestsViewController.swift in Sources */,
+				4E4E35131CC655B50007BDBD /* SkillsViewController.swift in Sources */,
 				4E7DAF611CC6278E00D48EB9 /* AppDelegate.swift in Sources */,
 				4E7DAF931CC62DCB00D48EB9 /* MainViewController.swift in Sources */,
+				4E4E35111CC6559D0007BDBD /* MyAppsViewController.swift in Sources */,
 				4E4E35011CC646F10007BDBD /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

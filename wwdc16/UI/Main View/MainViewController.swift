@@ -8,12 +8,6 @@
 
 import UIKit
 
-let kTableViewMaxHeight: CGFloat = 600.0
-let kTableViewMinHeight: CGFloat = 0.0
-let kTableViewCellMaxHeight: CGFloat = 250.0
-let kShowCategoriesAnimationDuration = 1.0
-let kHideCategoriesAnimationDuration = 0.5
-
 class MainViewController: UIViewController {
     
     // MARK: Properties
@@ -21,12 +15,16 @@ class MainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var surnameLabel: UILabel!
+    @IBOutlet weak var leftMarginView: UIView!
+    @IBOutlet weak var rightMarginView: UIView!
+    
     
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     
-    let cellColors: [UIColor] = [.themeOrangeColor(), .themePurpleColor(), .themePlumColor(), .themeBlueColor(), .themeRedColor()]
-    var pinchGestureRecognizer: UIPinchGestureRecognizer?
-    var lastScale: CGFloat = 0.0
+    let cellColors: [UIColor]           = [.themeOrangeColor(), .themePurpleColor(), .themePlumColor(), .themeBlueColor(), .themeRedColor()]
+    var showCategoriesTapGesture        : UITapGestureRecognizer?
+    var hideCategoriesTapGestureLeft    : UITapGestureRecognizer?
+    var hideCategoriesTapGestureRight   : UITapGestureRecognizer?
     
     // MARK: VC's Lifecycle
     
@@ -35,7 +33,7 @@ class MainViewController: UIViewController {
         registerNibs()
         configureTableView()
         showNameLabels(true, withAnimation: false)
-        addPinchGestureRecognizer()
+        addGestureRecognizers()
     }
     
     // MARK: Appearance
@@ -50,58 +48,78 @@ class MainViewController: UIViewController {
     
     // MARK: Gesture recognizers
     
-    func addPinchGestureRecognizer() {
-        pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(didRecognizedPinch(_:)))
-        view.addGestureRecognizer(pinchGestureRecognizer!)
+    func addGestureRecognizers() {
+        addShowCategoriesTapGesture()
     }
     
-    func removePinchGestureRecognizer() {
-        if let pinchGestureRecognizer = pinchGestureRecognizer {
-            view.removeGestureRecognizer(pinchGestureRecognizer)
-            self.pinchGestureRecognizer = nil
+    func addShowCategoriesTapGesture() {
+        showCategoriesTapGesture = UITapGestureRecognizer(target: self, action: #selector(didRecognizedShowCategoriesTapGesture(_:)))
+        view.addGestureRecognizer(showCategoriesTapGesture!)
+    }
+    
+    func addHideCategoriesTapGesture() {
+        hideCategoriesTapGestureLeft = UITapGestureRecognizer(target: self, action: #selector(didRecognizedHideCategoriesTapGesture(_:)))
+        leftMarginView.addGestureRecognizer(hideCategoriesTapGestureLeft!)
+        hideCategoriesTapGestureRight = UITapGestureRecognizer(target: self, action: #selector(didRecognizedHideCategoriesTapGesture(_:)))
+        rightMarginView.addGestureRecognizer(hideCategoriesTapGestureRight!)
+    }
+    
+    func didRecognizedShowCategoriesTapGesture(gesture: UITapGestureRecognizer) {
+        removeShowCategoriesTapGesture()
+        doAnimation()
+    }
+    
+    func didRecognizedHideCategoriesTapGesture(gesture: UITapGestureRecognizer) {
+        removeHideCategoriesTapGesture()
+        undoAnimation()
+    }
+    
+    func removeShowCategoriesTapGesture() {
+        if let showCategoriesTapGesture = showCategoriesTapGesture {
+            view.removeGestureRecognizer(showCategoriesTapGesture)
+            self.showCategoriesTapGesture = nil
         }
     }
     
-    func didRecognizedPinch(gesture: UIPinchGestureRecognizer) {
-        if gesture.state == UIGestureRecognizerState.Changed {
-            var scale = 1.0 - (lastScale - gesture.scale)
-            let bounds = gesture.view!.bounds
-            scale = min(scale, kTableViewMaxHeight / CGRectGetHeight(bounds))
-            scale = max(scale, kTableViewMinHeight / CGRectGetHeight(bounds))
-            print(scale * kTableViewMaxHeight)
-            lastScale = scale
+    func removeHideCategoriesTapGesture() {
+        if let hideCategoriesTapGestureLeft = hideCategoriesTapGestureLeft {
+            leftMarginView.removeGestureRecognizer(hideCategoriesTapGestureLeft)
+            self.hideCategoriesTapGestureLeft = nil
+        }
+        if let hideCategoriesTapGestureRight = hideCategoriesTapGestureRight {
+            leftMarginView.removeGestureRecognizer(hideCategoriesTapGestureRight)
+            self.hideCategoriesTapGestureRight = nil
         }
     }
     
     // MARK: Animations
     
     func doAnimation() {
-        removePinchGestureRecognizer()
         showNameLabels(false)
-        tableViewHeightConstraint.constant = kTableViewMaxHeight
-        UIView.animateWithDuration(kShowCategoriesAnimationDuration,
-                                   delay: 0.3,
-                                   usingSpringWithDamping: 0.6,
-                                   initialSpringVelocity: 0.5,
+        tableViewHeightConstraint.constant = MainTableView.MaxHeight
+        UIView.animateWithDuration(Animation.ShowCategories.Duration,
+                                   delay: Animation.ShowCategories.Delay,
+                                   usingSpringWithDamping: Animation.ShowCategories.Damping,
+                                   initialSpringVelocity: Animation.ShowCategories.Velocity,
                                    options: .CurveEaseInOut,
                                    animations: {
                                     self.view.layoutIfNeeded()
             },
                                    completion: { [weak self] (finished) in
                                     guard let weakSelf = self else { return }
-                                    weakSelf.addPinchGestureRecognizer()
+                                    weakSelf.addHideCategoriesTapGesture()
             })
     }
     
     func undoAnimation() {
-        removePinchGestureRecognizer()
-        tableViewHeightConstraint.constant = 0
-        UIView.animateWithDuration(kHideCategoriesAnimationDuration, animations: {
+        
+        tableViewHeightConstraint.constant = MainTableView.MinHeight
+        UIView.animateWithDuration(Animation.HideCategories.Duration, animations: {
             self.view.layoutIfNeeded()
         }) { [weak self] (finished) in
             guard let weakSelf = self else { return }
             weakSelf.showNameLabels(true)
-            weakSelf.addPinchGestureRecognizer()
+            weakSelf.addShowCategoriesTapGesture()
         }
     }
     
@@ -109,7 +127,7 @@ class MainViewController: UIViewController {
         let alphaToSet:CGFloat = show ? 1.0 : 0.0
         
         if isAnimation {
-            UIView.animateWithDuration(0.3) {
+            UIView.animateWithDuration(Animation.ShowNameLabels.Duration) {
                 self.nameLabel.alpha = alphaToSet
                 self.surnameLabel.alpha = alphaToSet
             }
@@ -152,7 +170,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return kTableViewCellMaxHeight
+        return MainTableView.CellMaxHeight
     }
     
     

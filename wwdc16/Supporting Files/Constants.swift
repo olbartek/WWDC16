@@ -29,3 +29,25 @@ struct VC {
     static let Skills = Storyboard.Skills.instantiateInitialViewController() as! SkillsViewController
     static let Interests = Storyboard.Interests.instantiateInitialViewController() as! InterestsViewController
 }
+
+struct MainTableView {
+    static let MaxHeight: CGFloat = 600.0
+    static let MinHeight: CGFloat = 0.0
+    static let CellMaxHeight: CGFloat = 250.0
+    static let CellMinHeight: CGFloat = 0.0
+}
+
+struct Animation {
+    struct ShowCategories {
+        static let Duration = 1.0
+        static let Delay = 0.3
+        static let Damping: CGFloat = 0.6
+        static let Velocity: CGFloat = 0.5
+    }
+    struct HideCategories {
+        static let Duration = 0.5
+    }
+    struct ShowNameLabels {
+        static let Duration = 0.3
+    }
+}

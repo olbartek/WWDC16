@@ -16,6 +16,7 @@
 		4E4E35111CC6559D0007BDBD /* MyAppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35101CC6559D0007BDBD /* MyAppsViewController.swift */; };
 		4E4E35131CC655B50007BDBD /* SkillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35121CC655B50007BDBD /* SkillsViewController.swift */; };
 		4E4E35151CC655D10007BDBD /* InterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35141CC655D10007BDBD /* InterestsViewController.swift */; };
+		4E4E35511CC67C530007BDBD /* IntroViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35501CC67C530007BDBD /* IntroViewManager.swift */; };
 		4E7DAF611CC6278E00D48EB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7DAF601CC6278E00D48EB9 /* AppDelegate.swift */; };
 		4E7DAF661CC6278E00D48EB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E7DAF641CC6278E00D48EB9 /* Main.storyboard */; };
 		4E7DAF681CC6278E00D48EB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E7DAF671CC6278E00D48EB9 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		4E4E35101CC6559D0007BDBD /* MyAppsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyAppsViewController.swift; path = UI/MyApps/MyAppsViewController.swift; sourceTree = "<group>"; };
 		4E4E35121CC655B50007BDBD /* SkillsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SkillsViewController.swift; path = UI/Skills/SkillsViewController.swift; sourceTree = "<group>"; };
 		4E4E35141CC655D10007BDBD /* InterestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InterestsViewController.swift; path = UI/Interests/InterestsViewController.swift; sourceTree = "<group>"; };
+		4E4E35501CC67C530007BDBD /* IntroViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntroViewManager.swift; path = Utilities/IntroViewManager.swift; sourceTree = "<group>"; };
 		4E7DAF5D1CC6278E00D48EB9 /* wwdc16.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wwdc16.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E7DAF601CC6278E00D48EB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E7DAF651CC6278E00D48EB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 		4E7DAFA21CC6358000D48EB9 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				4E4E35501CC67C530007BDBD /* IntroViewManager.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E7DAF9E1CC62EF500D48EB9 /* CategoryTableViewCell.swift in Sources */,
+				4E4E35511CC67C530007BDBD /* IntroViewManager.swift in Sources */,
 				4E7DAF911CC62D8600D48EB9 /* UITableViewCell+Identifier.swift in Sources */,
 				4E4E350F1CC655800007BDBD /* AboutMeViewController.swift in Sources */,
 				4E7DAF8F1CC62D4800D48EB9 /* UIColor+ThemeColor.swift in Sources */,

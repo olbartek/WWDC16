@@ -17,14 +17,13 @@ class MainViewController: UIViewController {
     @IBOutlet weak var surnameLabel: UILabel!
     @IBOutlet weak var leftMarginView: UIView!
     @IBOutlet weak var rightMarginView: UIView!
-    
-    
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     
     let cellColors: [UIColor]           = [.themeOrangeColor(), .themePurpleColor(), .themePlumColor(), .themeBlueColor(), .themeRedColor()]
     var showCategoriesTapGesture        : UITapGestureRecognizer?
     var hideCategoriesTapGestureLeft    : UITapGestureRecognizer?
     var hideCategoriesTapGestureRight   : UITapGestureRecognizer?
+    var animatingImage                  : UIImageView?
     
     // MARK: VC's Lifecycle
     
@@ -34,6 +33,7 @@ class MainViewController: UIViewController {
         configureTableView()
         showNameLabels(true, withAnimation: false)
         addGestureRecognizers()
+        setupAnimatingImage()
     }
     
     // MARK: Appearance
@@ -96,19 +96,8 @@ class MainViewController: UIViewController {
     
     func doAnimation() {
         showNameLabels(false)
-        tableViewHeightConstraint.constant = MainTableView.MaxHeight
-        UIView.animateWithDuration(Animation.ShowCategories.Duration,
-                                   delay: Animation.ShowCategories.Delay,
-                                   usingSpringWithDamping: Animation.ShowCategories.Damping,
-                                   initialSpringVelocity: Animation.ShowCategories.Velocity,
-                                   options: .CurveEaseInOut,
-                                   animations: {
-                                    self.view.layoutIfNeeded()
-            },
-                                   completion: { [weak self] (finished) in
-                                    guard let weakSelf = self else { return }
-                                    weakSelf.addHideCategoriesTapGesture()
-            })
+        animateImage()
+        showCategories()
     }
     
     func undoAnimation() {
@@ -137,16 +126,52 @@ class MainViewController: UIViewController {
         }
     }
     
-    // MARK: Actions
-    
-    @IBAction func doAnimationButtonPressed(sender: UIButton) {
-        doAnimation()
+    func showCategories() {
+        tableViewHeightConstraint.constant = MainTableView.MaxHeight
+        UIView.animateWithDuration(Animation.ShowCategories.Duration,
+                                   delay: Animation.ShowCategories.Delay,
+                                   usingSpringWithDamping: Animation.ShowCategories.Damping,
+                                   initialSpringVelocity: Animation.ShowCategories.Velocity,
+                                   options: .CurveEaseInOut,
+                                   animations: {
+                                    self.view.layoutIfNeeded()
+            },
+                                   completion: { [weak self] (finished) in
+                                    guard let weakSelf = self else { return }
+                                    weakSelf.addHideCategoriesTapGesture()
+            })
     }
     
-    
-    @IBAction func undoAnimationButtonPressed(sender: UIButton) {
-        undoAnimation()
+    func animateImage() {
+        animatingImage?.startAnimating()
     }
+    
+    func setupAnimatingImage() {
+        let animatingImage = UIImageView(frame: CGRect(origin: CGPointZero, size: CGSize(width: AnimatingImage.Width, height: AnimatingImage.Height)))
+        animatingImage.center = view.center
+        animatingImage.animationImages       = generateAnimationImages()
+        animatingImage.animationDuration     = Animation.Bubbles.Duration
+        animatingImage.animationRepeatCount  = 0
+        self.animatingImage = animatingImage
+        view.addSubview(animatingImage)
+    }
+    
+    func generateAnimationImages() -> [UIImage] {
+        var imgs: [UIImage] = []
+        var imgName = ""
+        for i in 0...55 {
+            if i < 10 {
+                imgName = "Comp 1_0000\(i)"
+            } else if i == 34 { continue }
+            else {
+                imgName = "Comp 1_000\(i)"
+            }
+            
+            imgs.append(UIImage(named: imgName)!)
+        }
+        return imgs
+    }
+    
     
 }
 

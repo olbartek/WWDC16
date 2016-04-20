@@ -37,10 +37,15 @@ struct MainTableView {
     static let CellMinHeight: CGFloat = 0.0
 }
 
+struct AnimatingImage {
+    static let Height: CGFloat = 375.0
+    static let Width: CGFloat = 375.0
+}
+
 struct Animation {
     struct ShowCategories {
         static let Duration = 1.0
-        static let Delay = 0.3
+        static let Delay = 4.0
         static let Damping: CGFloat = 0.6
         static let Velocity: CGFloat = 0.5
     }
@@ -48,6 +53,9 @@ struct Animation {
         static let Duration = 0.5
     }
     struct ShowNameLabels {
-        static let Duration = 0.3
+        static let Duration = 2.0
+    }
+    struct Bubbles {
+        static let Duration: NSTimeInterval = 4.0
     }
 }

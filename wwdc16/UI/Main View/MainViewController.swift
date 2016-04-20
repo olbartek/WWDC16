@@ -149,7 +149,7 @@ class MainViewController: UIViewController {
     func setupAnimatingImage() {
         let animatingImage = UIImageView(frame: CGRect(origin: CGPointZero, size: CGSize(width: AnimatingImage.Width, height: AnimatingImage.Height)))
         animatingImage.center = view.center
-        animatingImage.animationImages       = generateAnimationImages()
+        animatingImage.animationImages       = [UIImage(named: "bubbles.gif")!]
         animatingImage.animationDuration     = Animation.Bubbles.Duration
         animatingImage.animationRepeatCount  = 0
         self.animatingImage = animatingImage

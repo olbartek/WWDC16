@@ -57,5 +57,7 @@ struct Animation {
     }
     struct Bubbles {
         static let Duration: NSTimeInterval = 4.0
+        static let RotateOneHalfDuration: CFTimeInterval = 1.5
+        static let DelayBetweenRotations: CFTimeInterval = 0.25
     }
 }

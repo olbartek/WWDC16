@@ -17,6 +17,11 @@
 		4E4E35131CC655B50007BDBD /* SkillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35121CC655B50007BDBD /* SkillsViewController.swift */; };
 		4E4E35151CC655D10007BDBD /* InterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35141CC655D10007BDBD /* InterestsViewController.swift */; };
 		4E4E35511CC67C530007BDBD /* IntroViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35501CC67C530007BDBD /* IntroViewManager.swift */; };
+		4E4E35531CC7727C0007BDBD /* AnimateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35521CC7727C0007BDBD /* AnimateViewController.swift */; };
+		4E4E35551CC773760007BDBD /* MainViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35541CC773760007BDBD /* MainViewAnimator.swift */; };
+		4E4E35571CC780040007BDBD /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35561CC780040007BDBD /* UIView+Constraints.swift */; };
+		4E4E355A1CC7B0A60007BDBD /* AnimatedBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35591CC7B0A60007BDBD /* AnimatedBubble.swift */; };
+		4E4E355C1CC7BAAD0007BDBD /* bubbles.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4E4E355B1CC7BAAD0007BDBD /* bubbles.gif */; };
 		4E7DAF611CC6278E00D48EB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7DAF601CC6278E00D48EB9 /* AppDelegate.swift */; };
 		4E7DAF661CC6278E00D48EB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E7DAF641CC6278E00D48EB9 /* Main.storyboard */; };
 		4E7DAF681CC6278E00D48EB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E7DAF671CC6278E00D48EB9 /* Assets.xcassets */; };
@@ -50,6 +55,11 @@
 		4E4E35121CC655B50007BDBD /* SkillsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SkillsViewController.swift; path = UI/Skills/SkillsViewController.swift; sourceTree = "<group>"; };
 		4E4E35141CC655D10007BDBD /* InterestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InterestsViewController.swift; path = UI/Interests/InterestsViewController.swift; sourceTree = "<group>"; };
 		4E4E35501CC67C530007BDBD /* IntroViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntroViewManager.swift; path = Utilities/IntroViewManager.swift; sourceTree = "<group>"; };
+		4E4E35521CC7727C0007BDBD /* AnimateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnimateViewController.swift; path = "UI/Main View/AnimateViewController.swift"; sourceTree = "<group>"; };
+		4E4E35541CC773760007BDBD /* MainViewAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewAnimator.swift; path = Utilities/MainViewAnimator.swift; sourceTree = "<group>"; };
+		4E4E35561CC780040007BDBD /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Constraints.swift"; path = "Extensions/UIView+Constraints.swift"; sourceTree = "<group>"; };
+		4E4E35591CC7B0A60007BDBD /* AnimatedBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnimatedBubble.swift; path = "UI/Main View/Bubble/AnimatedBubble.swift"; sourceTree = "<group>"; };
+		4E4E355B1CC7BAAD0007BDBD /* bubbles.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bubbles.gif; sourceTree = "<group>"; };
 		4E7DAF5D1CC6278E00D48EB9 /* wwdc16.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wwdc16.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E7DAF601CC6278E00D48EB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E7DAF651CC6278E00D48EB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -116,6 +126,14 @@
 			name = Interests;
 			sourceTree = "<group>";
 		};
+		4E4E35581CC7B07A0007BDBD /* Bubble */ = {
+			isa = PBXGroup;
+			children = (
+				4E4E35591CC7B0A60007BDBD /* AnimatedBubble.swift */,
+			);
+			name = Bubble;
+			sourceTree = "<group>";
+		};
 		4E7DAF541CC6278E00D48EB9 = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +193,7 @@
 			children = (
 				4E7DAF8E1CC62D4800D48EB9 /* UIColor+ThemeColor.swift */,
 				4E7DAF901CC62D8600D48EB9 /* UITableViewCell+Identifier.swift */,
+				4E4E35561CC780040007BDBD /* UIView+Constraints.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -182,8 +201,10 @@
 		4E7DAF821CC62B5600D48EB9 /* Main View */ = {
 			isa = PBXGroup;
 			children = (
+				4E4E35581CC7B07A0007BDBD /* Bubble */,
 				4E7DAF831CC62B6D00D48EB9 /* Cells */,
 				4E7DAF921CC62DCB00D48EB9 /* MainViewController.swift */,
+				4E4E35521CC7727C0007BDBD /* AnimateViewController.swift */,
 			);
 			name = "Main View";
 			sourceTree = "<group>";
@@ -221,7 +242,9 @@
 		4E7DAFA21CC6358000D48EB9 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				4E4E355B1CC7BAAD0007BDBD /* bubbles.gif */,
 				4E4E35501CC67C530007BDBD /* IntroViewManager.swift */,
+				4E4E35541CC773760007BDBD /* MainViewAnimator.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -314,6 +337,7 @@
 				4E4E35091CC654BB0007BDBD /* Interests.storyboard in Resources */,
 				4E7DAF661CC6278E00D48EB9 /* Main.storyboard in Resources */,
 				4E4E35071CC654A10007BDBD /* Skills.storyboard in Resources */,
+				4E4E355C1CC7BAAD0007BDBD /* bubbles.gif in Resources */,
 				4E7DAF9F1CC62EF500D48EB9 /* CategoryTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,14 +356,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E4E35531CC7727C0007BDBD /* AnimateViewController.swift in Sources */,
 				4E7DAF9E1CC62EF500D48EB9 /* CategoryTableViewCell.swift in Sources */,
 				4E4E35511CC67C530007BDBD /* IntroViewManager.swift in Sources */,
+				4E4E35571CC780040007BDBD /* UIView+Constraints.swift in Sources */,
 				4E7DAF911CC62D8600D48EB9 /* UITableViewCell+Identifier.swift in Sources */,
 				4E4E350F1CC655800007BDBD /* AboutMeViewController.swift in Sources */,
 				4E7DAF8F1CC62D4800D48EB9 /* UIColor+ThemeColor.swift in Sources */,
 				4E4E35151CC655D10007BDBD /* InterestsViewController.swift in Sources */,
 				4E4E35131CC655B50007BDBD /* SkillsViewController.swift in Sources */,
 				4E7DAF611CC6278E00D48EB9 /* AppDelegate.swift in Sources */,
+				4E4E355A1CC7B0A60007BDBD /* AnimatedBubble.swift in Sources */,
+				4E4E35551CC773760007BDBD /* MainViewAnimator.swift in Sources */,
 				4E7DAF931CC62DCB00D48EB9 /* MainViewController.swift in Sources */,
 				4E4E35111CC6559D0007BDBD /* MyAppsViewController.swift in Sources */,
 				4E4E35011CC646F10007BDBD /* Constants.swift in Sources */,

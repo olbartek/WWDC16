@@ -22,6 +22,7 @@
 		4E4E35571CC780040007BDBD /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35561CC780040007BDBD /* UIView+Constraints.swift */; };
 		4E4E355A1CC7B0A60007BDBD /* AnimatedBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35591CC7B0A60007BDBD /* AnimatedBubble.swift */; };
 		4E4E355C1CC7BAAD0007BDBD /* bubbles.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4E4E355B1CC7BAAD0007BDBD /* bubbles.gif */; };
+		4E4E355F1CC817100007BDBD /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E355E1CC817100007BDBD /* Category.swift */; };
 		4E7DAF611CC6278E00D48EB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7DAF601CC6278E00D48EB9 /* AppDelegate.swift */; };
 		4E7DAF661CC6278E00D48EB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E7DAF641CC6278E00D48EB9 /* Main.storyboard */; };
 		4E7DAF681CC6278E00D48EB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E7DAF671CC6278E00D48EB9 /* Assets.xcassets */; };
@@ -60,6 +61,7 @@
 		4E4E35561CC780040007BDBD /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Constraints.swift"; path = "Extensions/UIView+Constraints.swift"; sourceTree = "<group>"; };
 		4E4E35591CC7B0A60007BDBD /* AnimatedBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnimatedBubble.swift; path = "UI/Main View/Bubble/AnimatedBubble.swift"; sourceTree = "<group>"; };
 		4E4E355B1CC7BAAD0007BDBD /* bubbles.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bubbles.gif; sourceTree = "<group>"; };
+		4E4E355E1CC817100007BDBD /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Category.swift; path = Model/Category.swift; sourceTree = "<group>"; };
 		4E7DAF5D1CC6278E00D48EB9 /* wwdc16.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wwdc16.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E7DAF601CC6278E00D48EB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E7DAF651CC6278E00D48EB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -126,12 +128,21 @@
 			name = Interests;
 			sourceTree = "<group>";
 		};
-		4E4E35581CC7B07A0007BDBD /* Bubble */ = {
+		4E4E35581CC7B07A0007BDBD /* Main View */ = {
 			isa = PBXGroup;
 			children = (
 				4E4E35591CC7B0A60007BDBD /* AnimatedBubble.swift */,
+				4E4E355E1CC817100007BDBD /* Category.swift */,
 			);
-			name = Bubble;
+			name = "Main View";
+			sourceTree = "<group>";
+		};
+		4E4E355D1CC816C20007BDBD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4E4E35581CC7B07A0007BDBD /* Main View */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		4E7DAF541CC6278E00D48EB9 = {
@@ -158,6 +169,7 @@
 				4E7DAF601CC6278E00D48EB9 /* AppDelegate.swift */,
 				4E7DAFA21CC6358000D48EB9 /* Utilities */,
 				4E7DAF811CC62AB200D48EB9 /* Extensions */,
+				4E4E355D1CC816C20007BDBD /* Model */,
 				4E7DAF801CC62AAC00D48EB9 /* UI */,
 				4E7DAFA11CC6356600D48EB9 /* Supporting Files */,
 				4E7DAF671CC6278E00D48EB9 /* Assets.xcassets */,
@@ -201,7 +213,6 @@
 		4E7DAF821CC62B5600D48EB9 /* Main View */ = {
 			isa = PBXGroup;
 			children = (
-				4E4E35581CC7B07A0007BDBD /* Bubble */,
 				4E7DAF831CC62B6D00D48EB9 /* Cells */,
 				4E7DAF921CC62DCB00D48EB9 /* MainViewController.swift */,
 				4E4E35521CC7727C0007BDBD /* AnimateViewController.swift */,
@@ -363,6 +374,7 @@
 				4E7DAF911CC62D8600D48EB9 /* UITableViewCell+Identifier.swift in Sources */,
 				4E4E350F1CC655800007BDBD /* AboutMeViewController.swift in Sources */,
 				4E7DAF8F1CC62D4800D48EB9 /* UIColor+ThemeColor.swift in Sources */,
+				4E4E355F1CC817100007BDBD /* Category.swift in Sources */,
 				4E4E35151CC655D10007BDBD /* InterestsViewController.swift in Sources */,
 				4E4E35131CC655B50007BDBD /* SkillsViewController.swift in Sources */,
 				4E7DAF611CC6278E00D48EB9 /* AppDelegate.swift in Sources */,

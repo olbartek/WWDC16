@@ -14,6 +14,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wjf-mc-bFP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3UT-Sb-yEA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dA-Rz-MmF">
@@ -22,17 +23,46 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uaY-8K-xuD">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="e4v-ec-Tqj"/>
+                                    <constraint firstAttribute="height" constant="50" id="uNL-40-oZ9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="X"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="e4v-ec-Tqj"/>
+                                        <exclude reference="uNL-40-oZ9"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="e4v-ec-Tqj"/>
+                                        <include reference="uNL-40-oZ9"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="didPressCloseButton" destination="tal-SO-XJV" eventType="touchUpInside" id="wVU-yw-Zui"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="uaY-8K-xuD" firstAttribute="top" secondItem="D21-eh-aNA" secondAttribute="bottom" constant="8" id="4Hz-ws-Bcg"/>
                             <constraint firstItem="5dA-Rz-MmF" firstAttribute="centerX" secondItem="3UT-Sb-yEA" secondAttribute="centerX" id="5J0-ha-2Ux"/>
+                            <constraint firstAttribute="trailing" secondItem="uaY-8K-xuD" secondAttribute="trailing" constant="20" id="l67-jX-Pxw"/>
                             <constraint firstItem="5dA-Rz-MmF" firstAttribute="centerY" secondItem="3UT-Sb-yEA" secondAttribute="centerY" id="lN3-I3-neP"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="5dA-Rz-MmF"/>
+                                <exclude reference="uaY-8K-xuD"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="4Hz-ws-Bcg"/>
+                                <exclude reference="l67-jX-Pxw"/>
                                 <exclude reference="5J0-ha-2Ux"/>
                                 <exclude reference="lN3-I3-neP"/>
                             </mask>
@@ -40,8 +70,11 @@
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="5dA-Rz-MmF"/>
+                                <include reference="uaY-8K-xuD"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="4Hz-ws-Bcg"/>
+                                <include reference="l67-jX-Pxw"/>
                                 <include reference="5J0-ha-2Ux"/>
                                 <include reference="lN3-I3-neP"/>
                             </mask>

@@ -8,15 +8,38 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="CategoryTableViewCell" customModule="wwdc16" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="325" height="150"/>
+            <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="325" height="149.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="250" height="249.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gL4-Bb-qGH">
-                        <rect key="frame" x="0.0" y="8" width="325" height="134"/>
+                        <rect key="frame" x="0.0" y="8" width="250" height="233.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0IW-3f-YRC">
+                                <rect key="frame" x="75" y="92" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="5Cz-ga-uR7"/>
+                                    <constraint firstAttribute="width" constant="100" id="UO3-lS-DZD"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnw-70-JpC">
+                                <rect key="frame" x="20" y="46.5" width="210" height="41"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="0.99215686270000003" green="0.3921568627" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="cnw-70-JpC" secondAttribute="trailing" constant="20" id="2zO-io-6uV"/>
+                            <constraint firstItem="cnw-70-JpC" firstAttribute="centerX" secondItem="gL4-Bb-qGH" secondAttribute="centerX" id="4K6-lY-zhx"/>
+                            <constraint firstItem="cnw-70-JpC" firstAttribute="centerY" secondItem="gL4-Bb-qGH" secondAttribute="centerY" constant="-50" id="FI3-V8-Pyq"/>
+                            <constraint firstItem="0IW-3f-YRC" firstAttribute="centerY" secondItem="gL4-Bb-qGH" secondAttribute="centerY" constant="25" id="QiY-Lb-ZOe"/>
+                            <constraint firstItem="0IW-3f-YRC" firstAttribute="centerX" secondItem="gL4-Bb-qGH" secondAttribute="centerX" id="lIu-nG-tzV"/>
+                            <constraint firstItem="cnw-70-JpC" firstAttribute="leading" secondItem="gL4-Bb-qGH" secondAttribute="leading" constant="20" id="pQ3-dM-9ho"/>
+                        </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                 <integer key="value" value="8"/>
@@ -34,8 +57,10 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="bgView" destination="gL4-Bb-qGH" id="MYc-Ws-Pxf"/>
+                <outlet property="iconImageView" destination="0IW-3f-YRC" id="LAc-Az-7VH"/>
+                <outlet property="titleLabel" destination="cnw-70-JpC" id="KKY-ji-UfK"/>
             </connections>
-            <point key="canvasLocation" x="301.5" y="283"/>
+            <point key="canvasLocation" x="301" y="283"/>
         </tableViewCell>
     </objects>
 </document>

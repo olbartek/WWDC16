@@ -23,17 +23,46 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhg-Wd-PS4">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="JqK-eJ-3li"/>
+                                    <constraint firstAttribute="width" constant="50" id="O4j-vt-tZ7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="X"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="O4j-vt-tZ7"/>
+                                        <exclude reference="JqK-eJ-3li"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="O4j-vt-tZ7"/>
+                                        <include reference="JqK-eJ-3li"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="didPressCloseButton" destination="Bna-0V-TTy" eventType="touchUpInside" id="16x-am-Z3f"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="S3u-IX-aCL" firstAttribute="centerX" secondItem="Yz3-zE-5na" secondAttribute="centerX" id="CQo-PS-usf"/>
+                            <constraint firstItem="nhg-Wd-PS4" firstAttribute="top" secondItem="Nmq-jG-rCn" secondAttribute="bottom" constant="8" id="D6A-aI-f2e"/>
+                            <constraint firstAttribute="trailing" secondItem="nhg-Wd-PS4" secondAttribute="trailing" constant="20" id="W4c-Mo-nbG"/>
                             <constraint firstItem="S3u-IX-aCL" firstAttribute="centerY" secondItem="Yz3-zE-5na" secondAttribute="centerY" id="ulU-pu-0xf"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="S3u-IX-aCL"/>
+                                <exclude reference="nhg-Wd-PS4"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="D6A-aI-f2e"/>
+                                <exclude reference="W4c-Mo-nbG"/>
                                 <exclude reference="CQo-PS-usf"/>
                                 <exclude reference="ulU-pu-0xf"/>
                             </mask>
@@ -41,8 +70,11 @@
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="S3u-IX-aCL"/>
+                                <include reference="nhg-Wd-PS4"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="D6A-aI-f2e"/>
+                                <include reference="W4c-Mo-nbG"/>
                                 <include reference="CQo-PS-usf"/>
                                 <include reference="ulU-pu-0xf"/>
                             </mask>

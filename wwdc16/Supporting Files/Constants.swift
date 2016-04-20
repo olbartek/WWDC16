@@ -44,20 +44,27 @@ struct AnimatingImage {
 
 struct Animation {
     struct ShowCategories {
-        static let Duration = 1.0
-        static let Delay = 4.0
+        static let Duration = 0.8
+        static let Delay = 0.5
         static let Damping: CGFloat = 0.6
         static let Velocity: CGFloat = 0.5
     }
     struct HideCategories {
-        static let Duration = 0.5
+        static let Duration = 0.3
     }
     struct ShowNameLabels {
-        static let Duration = 2.0
+        static let Duration = 0.5
     }
     struct Bubbles {
         static let Duration: NSTimeInterval = 4.0
         static let RotateOneHalfDuration: CFTimeInterval = 1.5
         static let DelayBetweenRotations: CFTimeInterval = 0.25
     }
+}
+
+struct CategoryModel {
+    static let NumOfCategories  = 5
+    static let IconNames        = ["about-me", "interests", "skills", "my-apps", "about-me"]
+    static let Titles           = ["About me", "Interests", "Skills", "My Apps", "Something"]
+    static let Colors           : [UIColor] = [.themeOrangeColor(), .themePurpleColor(), .themePlumColor(), .themeBlueColor(), .themeRedColor()]
 }

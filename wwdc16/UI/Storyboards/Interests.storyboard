@@ -23,17 +23,46 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T8W-uO-7h7">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="3ch-i4-2xb"/>
+                                    <constraint firstAttribute="height" constant="50" id="iTx-ya-f8o"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="X"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="3ch-i4-2xb"/>
+                                        <exclude reference="iTx-ya-f8o"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="3ch-i4-2xb"/>
+                                        <include reference="iTx-ya-f8o"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="didPressCloseButton" destination="Oo1-Jf-9It" eventType="touchUpInside" id="VVJ-Wv-xV8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="T8W-uO-7h7" firstAttribute="top" secondItem="Yka-Wt-nbu" secondAttribute="bottom" constant="8" id="l6T-gN-ldz"/>
                             <constraint firstItem="QLu-rf-OEE" firstAttribute="centerY" secondItem="ko9-r1-ne7" secondAttribute="centerY" id="lYC-Bh-bD8"/>
+                            <constraint firstAttribute="trailing" secondItem="T8W-uO-7h7" secondAttribute="trailing" constant="20" id="mgf-oo-zd5"/>
                             <constraint firstItem="QLu-rf-OEE" firstAttribute="centerX" secondItem="ko9-r1-ne7" secondAttribute="centerX" id="vNT-Ks-SGk"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="QLu-rf-OEE"/>
+                                <exclude reference="T8W-uO-7h7"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="l6T-gN-ldz"/>
+                                <exclude reference="mgf-oo-zd5"/>
                                 <exclude reference="lYC-Bh-bD8"/>
                                 <exclude reference="vNT-Ks-SGk"/>
                             </mask>
@@ -41,8 +70,11 @@
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="QLu-rf-OEE"/>
+                                <include reference="T8W-uO-7h7"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="l6T-gN-ldz"/>
+                                <include reference="mgf-oo-zd5"/>
                                 <include reference="lYC-Bh-bD8"/>
                                 <include reference="vNT-Ks-SGk"/>
                             </mask>

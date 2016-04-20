@@ -19,11 +19,22 @@ class MainViewController: UIViewController {
     @IBOutlet weak var rightMarginView: UIView!
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     
-    let cellColors: [UIColor]           = [.themeOrangeColor(), .themePurpleColor(), .themePlumColor(), .themeBlueColor(), .themeRedColor()]
     var showCategoriesTapGesture        : UITapGestureRecognizer?
     var hideCategoriesTapGestureLeft    : UITapGestureRecognizer?
     var hideCategoriesTapGestureRight   : UITapGestureRecognizer?
     var animatingImage                  : UIImageView?
+    
+    var categories: [Category] = {
+        var categories = [Category]()
+        for i in 0..<CategoryModel.NumOfCategories {
+            let categoryTitle = CategoryModel.Titles[i]
+            let categoryBgColor = CategoryModel.Colors[i]
+            let categoryIconName = CategoryModel.IconNames[i]
+            let newCategory = Category(title: categoryTitle, bgColor: categoryBgColor, iconName: categoryIconName, type: CategoryType(rawValue: i)!)
+            categories.append(newCategory)
+        }
+        return categories
+    }()
     
     // MARK: VC's Lifecycle
     
@@ -96,7 +107,7 @@ class MainViewController: UIViewController {
     
     func doAnimation() {
         showNameLabels(false)
-        animateImage()
+        //animateImage()
         showCategories()
     }
     
@@ -175,22 +186,27 @@ class MainViewController: UIViewController {
     
 }
 
+// MARK: TableView delegate & dataSource
+
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellColors.count
+        return categories.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(CategoryTableViewCell.identifier(), forIndexPath: indexPath) as! CategoryTableViewCell
-        let cellColor = cellColors[indexPath.row]
-        cell.selectionStyle = .None
-        cell.bgView.backgroundColor = cellColor
+        let cell        = tableView.dequeueReusableCellWithIdentifier(CategoryTableViewCell.identifier(), forIndexPath: indexPath) as! CategoryTableViewCell
+        cell.delegate   = self
+        let category    = categories[indexPath.row]
+        cell.configureWithCategory(category)
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CategoryTableViewCell
+        if cell.categoryType != .Something {
+            cell.performAnimation()
+        }
     }
     
     
@@ -199,4 +215,36 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     
+}
+
+// MARK: CategoryTableViewCell delegate
+
+extension MainViewController: CategoryTableViewCellDelegate {
+    
+    func animationDidStopForCategoryCell(categoryCell: CategoryTableViewCell) {
+        guard let categoryType = categoryCell.categoryType else { return }
+        dispatch_async(dispatch_get_main_queue()) { [weak self] in
+            guard let weakSelf = self else { return }
+            switch categoryType {
+            case .AboutMe:
+                weakSelf.presentViewController(VC.AboutMe, animated: false, completion: nil)
+            case .MyApps:
+                weakSelf.presentViewController(VC.MyApps, animated: false, completion: nil)
+            case .Interests:
+                weakSelf.presentViewController(VC.Interests, animated: false, completion: nil)
+            case .Skills:
+                weakSelf.presentViewController(VC.Skills, animated: false, completion: nil)
+            default:
+                break
+                
+            }
+        }
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.25 * Double(NSEC_PER_SEC)))
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+            if let categoryCellResizableView = categoryCell.resizableView {
+                categoryCellResizableView.removeFromSuperview()
+                categoryCell.resizableView = nil
+            }
+        }
+    }
 }

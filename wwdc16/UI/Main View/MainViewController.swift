@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol MainViewControllerDelegate {
+    func presentedViewControllerWillDismissToCenterPoint(centerPoint: CGPoint, withSnapShot snapshot: UIView)
+}
+
 class MainViewController: UIViewController {
     
     // MARK: Properties
@@ -23,6 +27,7 @@ class MainViewController: UIViewController {
     var hideCategoriesTapGestureLeft    : UITapGestureRecognizer?
     var hideCategoriesTapGestureRight   : UITapGestureRecognizer?
     var animatingImage                  : UIImageView?
+    var currentSnapshot                 : UIView?
     
     var categories: [Category] = {
         var categories = [Category]()
@@ -221,22 +226,28 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension MainViewController: CategoryTableViewCellDelegate {
     
-    func animationDidStopForCategoryCell(categoryCell: CategoryTableViewCell) {
+    func animationDidStopForCategoryCell(categoryCell: CategoryTableViewCell, withItsCenterInMainViewCoords center: CGPoint) {
         guard let categoryType = categoryCell.categoryType else { return }
+        var vc: UIViewController?
         dispatch_async(dispatch_get_main_queue()) { [weak self] in
             guard let weakSelf = self else { return }
             switch categoryType {
             case .AboutMe:
-                weakSelf.presentViewController(VC.AboutMe, animated: false, completion: nil)
+                vc = VC.AboutMe
             case .MyApps:
-                weakSelf.presentViewController(VC.MyApps, animated: false, completion: nil)
+                vc = VC.MyApps
             case .Interests:
-                weakSelf.presentViewController(VC.Interests, animated: false, completion: nil)
+                vc = VC.Interests
             case .Skills:
-                weakSelf.presentViewController(VC.Skills, animated: false, completion: nil)
+                vc = VC.Skills
             default:
                 break
                 
+            }
+            if let presentedVC = vc as? PresentedViewController {
+                presentedVC.delegate = self
+                presentedVC.categoryCellCenter = center
+                weakSelf.presentViewController(presentedVC, animated: false, completion: nil)
             }
         }
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.25 * Double(NSEC_PER_SEC)))
@@ -245,6 +256,18 @@ extension MainViewController: CategoryTableViewCellDelegate {
                 categoryCellResizableView.removeFromSuperview()
                 categoryCell.resizableView = nil
             }
+        }
+    }
+}
+
+extension MainViewController: MainViewControllerDelegate {
+    func presentedViewControllerWillDismissToCenterPoint(centerPoint: CGPoint, withSnapShot snapshot: UIView) {
+        currentSnapshot = snapshot
+        UIView.animateWithDuration(0.3, animations: {
+            self.currentSnapshot!.frame = CGRect(origin: centerPoint, size: CGSizeZero)
+            }) { (finished) in
+                self.currentSnapshot!.removeFromSuperview()
+                self.currentSnapshot = nil
         }
     }
 }

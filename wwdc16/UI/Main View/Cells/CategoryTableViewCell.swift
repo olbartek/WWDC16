@@ -9,8 +9,8 @@
 import UIKit
 
 @objc protocol CategoryTableViewCellDelegate {
-    optional func animationDidStartForCategoryCell(categoryCell: CategoryTableViewCell)
-    optional func animationDidStopForCategoryCell(categoryCell: CategoryTableViewCell)
+    optional func animationDidStartForCategoryCell(categoryCell: CategoryTableViewCell, withItsCenterInMainViewCoords center: CGPoint)
+    optional func animationDidStopForCategoryCell(categoryCell: CategoryTableViewCell, withItsCenterInMainViewCoords center: CGPoint)
 }
 
 class CategoryTableViewCell: UITableViewCell {
@@ -24,6 +24,7 @@ class CategoryTableViewCell: UITableViewCell {
     var categoryType                    : CategoryType?
     var resizableView                   : UIView?
     var delegate                        : CategoryTableViewCellDelegate?
+    var cellCenterInMainViewCoords      : CGPoint?
     
     // MARK: Configuration
     
@@ -42,15 +43,16 @@ class CategoryTableViewCell: UITableViewCell {
         let cellFrameInMainViewCoords   = convertRect(bounds, toView: nil)
         resizableView                   = UIView(frame: CGRectZero)
         resizableView!.backgroundColor  = bgView.backgroundColor
-        resizableView!.center           = CGPoint(x: CGRectGetMidX(cellFrameInMainViewCoords), y: CGRectGetMidY(cellFrameInMainViewCoords))
+        cellCenterInMainViewCoords      = CGPoint(x: CGRectGetMidX(cellFrameInMainViewCoords), y: CGRectGetMidY(cellFrameInMainViewCoords))
+        resizableView!.center           = cellCenterInMainViewCoords!
         mainView.addSubview(resizableView!)
-        delegate?.animationDidStartForCategoryCell?(self)
+        delegate?.animationDidStartForCategoryCell?(self, withItsCenterInMainViewCoords: cellCenterInMainViewCoords!)
         UIView.animateWithDuration(0.3, delay: 0.0, options: .CurveEaseInOut,
                                    animations: {
                                     self.resizableView!.frame = mainView.frame
             }, completion: { [weak self] finished in
                 guard let weakSelf = self else { return }
-                weakSelf.delegate?.animationDidStopForCategoryCell?(weakSelf)
+                weakSelf.delegate?.animationDidStopForCategoryCell?(weakSelf, withItsCenterInMainViewCoords: weakSelf.cellCenterInMainViewCoords!)
         })
     }
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyAppsViewController: UIViewController {
+class MyAppsViewController: PresentedViewController {
     
     // MARK: VC's Lifecycle
 
@@ -21,7 +21,7 @@ class MyAppsViewController: UIViewController {
     // MARK: Actions
     
     @IBAction func didPressCloseButton() {
-        dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerWithoutAnimation()
     }
 
 }

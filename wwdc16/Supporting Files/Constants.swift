@@ -68,3 +68,14 @@ struct CategoryModel {
     static let Titles           = ["About me", "Interests", "Skills", "My Apps", "Something"]
     static let Colors           : [UIColor] = [.themeOrangeColor(), .themePurpleColor(), .themePlumColor(), .themeBlueColor(), .themeRedColor()]
 }
+
+struct SkillCategoryModel {
+    static let Categories: [[String: AnyObject]] = [
+        ["name" : "Programming",
+        "skills" : [
+            ["skillName" : "Obj-C", "percentage" : 90],
+            ["skillName" : "Swift", "percentage" : 70],
+            ["skillName" : "PHP", "percentage" : 60]
+        ]],
+    ]
+}

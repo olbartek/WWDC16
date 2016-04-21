@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InterestsViewController: UIViewController {
+class InterestsViewController: PresentedViewController {
     
     // MARK: VC' Lifecycle
 
@@ -20,7 +20,7 @@ class InterestsViewController: UIViewController {
     // MARK: Actions
     
     @IBAction func didPressCloseButton() {
-        dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerWithoutAnimation()
     }
 
 }

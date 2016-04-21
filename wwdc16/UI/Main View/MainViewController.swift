@@ -209,9 +209,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! CategoryTableViewCell
-        if cell.categoryType != .Something {
-            cell.performAnimation()
-        }
+        cell.performAnimation()
     }
     
     
@@ -240,9 +238,8 @@ extension MainViewController: CategoryTableViewCellDelegate {
                 vc = VC.Interests
             case .Skills:
                 vc = VC.Skills
-            default:
-                break
-                
+            case .ContactMe:
+                vc = VC.ContactMe
             }
             if let presentedVC = vc as? PresentedViewController {
                 presentedVC.delegate = self

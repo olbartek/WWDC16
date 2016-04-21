@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -30,14 +31,14 @@
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="NyZ-to-iQX"/>
                                         <exclude reference="CGd-Cv-0L3"/>
+                                        <exclude reference="NyZ-to-iQX"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="NyZ-to-iQX"/>
                                         <include reference="CGd-Cv-0L3"/>
+                                        <include reference="NyZ-to-iQX"/>
                                     </mask>
                                 </variation>
                                 <connections>
@@ -103,14 +104,14 @@
                                 <exclude reference="QIF-bL-1jC"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="vQn-AA-FaP"/>
+                                <exclude reference="1q2-WF-eIL"/>
+                                <exclude reference="aHF-HG-IeC"/>
+                                <exclude reference="ast-O5-JyX"/>
                                 <exclude reference="78k-RA-kr3"/>
                                 <exclude reference="RAQ-ad-sJf"/>
                                 <exclude reference="N6n-dX-cnF"/>
                                 <exclude reference="Nef-1K-d78"/>
-                                <exclude reference="1q2-WF-eIL"/>
-                                <exclude reference="aHF-HG-IeC"/>
-                                <exclude reference="ast-O5-JyX"/>
-                                <exclude reference="vQn-AA-FaP"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -120,14 +121,14 @@
                                 <include reference="QIF-bL-1jC"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="vQn-AA-FaP"/>
+                                <include reference="1q2-WF-eIL"/>
+                                <include reference="aHF-HG-IeC"/>
+                                <include reference="ast-O5-JyX"/>
                                 <include reference="78k-RA-kr3"/>
                                 <include reference="RAQ-ad-sJf"/>
                                 <include reference="N6n-dX-cnF"/>
                                 <include reference="Nef-1K-d78"/>
-                                <include reference="1q2-WF-eIL"/>
-                                <include reference="aHF-HG-IeC"/>
-                                <include reference="ast-O5-JyX"/>
-                                <include reference="vQn-AA-FaP"/>
                             </mask>
                         </variation>
                     </view>

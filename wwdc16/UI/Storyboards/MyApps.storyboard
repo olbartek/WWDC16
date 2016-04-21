@@ -33,14 +33,14 @@
                                 <state key="normal" title="X"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="O4j-vt-tZ7"/>
                                         <exclude reference="JqK-eJ-3li"/>
+                                        <exclude reference="O4j-vt-tZ7"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="O4j-vt-tZ7"/>
                                         <include reference="JqK-eJ-3li"/>
+                                        <include reference="O4j-vt-tZ7"/>
                                     </mask>
                                 </variation>
                                 <connections>

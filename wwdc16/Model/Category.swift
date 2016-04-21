@@ -9,7 +9,7 @@
 import UIKit
 
 enum CategoryType: Int {
-    case AboutMe, Interests, Skills, MyApps, Something
+    case AboutMe, Interests, Skills, MyApps, ContactMe
 }
 
 class Category: NSObject {

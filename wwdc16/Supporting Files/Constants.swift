@@ -21,6 +21,7 @@ private struct Storyboard {
     static let MyApps = UIStoryboard(name: "MyApps", bundle: nil)
     static let Skills = UIStoryboard(name: "Skills", bundle: nil)
     static let Interests = UIStoryboard(name: "Interests", bundle: nil)
+    static let ContactMe = UIStoryboard(name: "ContactMe", bundle: nil)
 }
 
 struct VC {
@@ -28,6 +29,7 @@ struct VC {
     static let MyApps = Storyboard.MyApps.instantiateInitialViewController() as! MyAppsViewController
     static let Skills = Storyboard.Skills.instantiateInitialViewController() as! SkillsViewController
     static let Interests = Storyboard.Interests.instantiateInitialViewController() as! InterestsViewController
+    static let ContactMe = Storyboard.ContactMe.instantiateInitialViewController() as! ContactMeViewController
 }
 
 struct MainTableView {
@@ -65,7 +67,7 @@ struct Animation {
 struct CategoryModel {
     static let NumOfCategories  = 5
     static let IconNames        = ["about-me", "interests", "skills", "my-apps", "about-me"]
-    static let Titles           = ["About me", "Interests", "Skills", "My Apps", "Something"]
+    static let Titles           = ["About me", "Interests", "Skills", "My Apps", "Contact me"]
     static let Colors           : [UIColor] = [.themeOrangeColor(), .themePurpleColor(), .themePlumColor(), .themeBlueColor(), .themeRedColor()]
 }
 

@@ -21,6 +21,7 @@ class SkillsCategoryTableViewCell: UITableViewCell {
     }
     
     var skills = [Skill]()
+    var selectedIndexPath: NSIndexPath?
 
     // MARK: Configuration
    
@@ -31,6 +32,8 @@ class SkillsCategoryTableViewCell: UITableViewCell {
         tableView.delegate = self
         tableView.dataSource = self
         selectionStyle = .None
+        layer.cornerRadius = SkillCategoryModel.CellCornerRadius
+        layer.masksToBounds = true
     }
     
     func registerNibs() {
@@ -54,6 +57,10 @@ extension SkillsCategoryTableViewCell: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100.0
+        return UITableViewAutomaticDimension
+    }
+    
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
 }

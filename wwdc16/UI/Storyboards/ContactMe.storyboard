@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -34,14 +35,14 @@
                                 <state key="normal" title="X"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="cJA-Ph-vYa"/>
                                         <exclude reference="KO1-sA-9Lp"/>
+                                        <exclude reference="cJA-Ph-vYa"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="cJA-Ph-vYa"/>
                                         <include reference="KO1-sA-9Lp"/>
+                                        <include reference="cJA-Ph-vYa"/>
                                     </mask>
                                 </variation>
                                 <connections>
@@ -64,12 +65,12 @@
                                 <exclude reference="rlA-l2-XN7"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="8o4-UW-EY1"/>
+                                <exclude reference="GxU-sT-FAP"/>
                                 <exclude reference="Gor-aR-IfV"/>
                                 <exclude reference="QLR-lm-Wol"/>
                                 <exclude reference="YqA-D8-dbM"/>
                                 <exclude reference="gX3-6g-xph"/>
-                                <exclude reference="8o4-UW-EY1"/>
-                                <exclude reference="GxU-sT-FAP"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -78,12 +79,12 @@
                                 <include reference="rlA-l2-XN7"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="8o4-UW-EY1"/>
+                                <include reference="GxU-sT-FAP"/>
                                 <include reference="Gor-aR-IfV"/>
                                 <include reference="QLR-lm-Wol"/>
                                 <include reference="YqA-D8-dbM"/>
                                 <include reference="gX3-6g-xph"/>
-                                <include reference="8o4-UW-EY1"/>
-                                <include reference="GxU-sT-FAP"/>
                             </mask>
                         </variation>
                     </view>

@@ -35,8 +35,6 @@ struct VC {
 struct MainTableView {
     static let MaxHeight: CGFloat = 600.0
     static let MinHeight: CGFloat = 0.0
-    static let CellMaxHeight: CGFloat = 250.0
-    static let CellMinHeight: CGFloat = 0.0
 }
 
 struct AnimatingImage {
@@ -69,6 +67,7 @@ struct CategoryModel {
     static let IconNames        = ["about-me", "interests", "skills", "my-apps", "about-me"]
     static let Titles           = ["About me", "Interests", "Skills", "My Apps", "Contact me"]
     static let Colors           : [UIColor] = [.themeOrangeColor(), .themePurpleColor(), .themePlumColor(), .themeBlueColor(), .themeRedColor()]
+    static let TVCHeight: CGFloat = 250.0
 }
 
 struct SkillCategoryModel {
@@ -79,5 +78,23 @@ struct SkillCategoryModel {
             ["skillName" : "Swift", "percentage" : 70],
             ["skillName" : "PHP", "percentage" : 60]
         ]],
+        ["name" : "Electronics",
+            "skills" : [
+                ["skillName" : "ARM Cortex-M", "percentage" : 60],
+                ["skillName" : "AVR", "percentage" : 50],
+                ["skillName" : "RaspberryPI", "percentage" : 35]
+        ]],
+        ["name" : "Graphic Design",
+            "skills" : [
+                ["skillName" : "Adobe Photoshop", "percentage" : 60],
+                ["skillName" : "Adobe Illustrator", "percentage" : 40],
+                ["skillName" : "Gimp", "percentage" : 80]
+            ]],
     ]
+    static let TVCBasicHeight: CGFloat = 100.0
+    static let CellCornerRadius: CGFloat = 8.0
+}
+
+struct SkillModel {
+    static let TVCHeight: CGFloat = 80.0
 }

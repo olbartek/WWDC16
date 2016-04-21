@@ -27,7 +27,7 @@ class SkillsViewController: PresentedViewController {
         }
         return categories
     }()
-    
+    var selectedIndexPath: NSIndexPath?
     
     // MARK: VC's Lifecyle
 
@@ -35,6 +35,13 @@ class SkillsViewController: PresentedViewController {
         super.viewDidLoad()
 
         registerNibs()
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        if let selectedIndexPath = selectedIndexPath {
+            shrinkCellAtIndexPath(selectedIndexPath)
+        }
     }
     
     // MARK: Appearance
@@ -52,6 +59,7 @@ class SkillsViewController: PresentedViewController {
 }
 
 extension SkillsViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return skillCategories.count
     }
@@ -62,6 +70,44 @@ extension SkillsViewController: UITableViewDelegate, UITableViewDataSource {
         let skillCategory = skillCategories[indexPath.row]
         cell.configureWithSkillCategory(skillCategory)
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if let selectedIndexPath = selectedIndexPath where selectedIndexPath.row == indexPath.row {
+            shrinkCellAtIndexPath(indexPath)
+        } else {
+            enlargeCellAtIndexPath(indexPath)
+        }
+    }
+    
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        shrinkCellAtIndexPath(indexPath)
+    }
+    
+    func shrinkCellAtIndexPath(indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! SkillsCategoryTableViewCell
+        cell.skillsViewHeightConstraint.constant = 0
+        selectedIndexPath = nil
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+    
+    func enlargeCellAtIndexPath(indexPath: NSIndexPath) {
+        selectedIndexPath = indexPath
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! SkillsCategoryTableViewCell
+        let selectedSkillCategory = skillCategories[indexPath.row]
+        let cellHeight = SkillModel.TVCHeight * CGFloat(selectedSkillCategory.skills.count)
+        cell.skillsViewHeightConstraint.constant = cellHeight
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
 
 }

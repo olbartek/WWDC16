@@ -214,7 +214,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return MainTableView.CellMaxHeight
+        return CategoryModel.TVCHeight
     }
     
     

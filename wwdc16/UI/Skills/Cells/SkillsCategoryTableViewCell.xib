@@ -30,8 +30,14 @@
                                 <constraints>
                                     <constraint firstItem="nDz-Ov-MvZ" firstAttribute="centerY" secondItem="MYs-hE-vsx" secondAttribute="centerY" id="MuZ-yc-9HX"/>
                                     <constraint firstItem="nDz-Ov-MvZ" firstAttribute="centerX" secondItem="MYs-hE-vsx" secondAttribute="centerX" id="W4J-nQ-9XZ"/>
+                                    <constraint firstAttribute="height" constant="100" id="tYN-eW-A6W"/>
                                     <constraint firstAttribute="height" constant="100" id="zLi-4k-Crc"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="zLi-4k-Crc"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P1R-Yv-mo5">
                                 <rect key="frame" x="0.0" y="99.5" width="250" height="0.5"/>
@@ -40,6 +46,7 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="height" constant="100" id="5y5-9W-fnx"/>
+                            <constraint firstItem="MYs-hE-vsx" firstAttribute="height" secondItem="P1R-Yv-mo5" secondAttribute="height" id="CM8-DM-r0J"/>
                             <constraint firstItem="MYs-hE-vsx" firstAttribute="top" secondItem="P1R-Yv-mo5" secondAttribute="bottom" id="CPh-yH-ndO"/>
                             <constraint firstItem="P1R-Yv-mo5" firstAttribute="top" secondItem="MYs-hE-vsx" secondAttribute="bottom" id="LJl-wx-0oS"/>
                             <constraint firstItem="MYs-hE-vsx" firstAttribute="leading" secondItem="kaz-Ub-83R" secondAttribute="leading" id="NuN-pb-7nE"/>
@@ -51,6 +58,7 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="CM8-DM-r0J"/>
                                 <exclude reference="CPh-yH-ndO"/>
                             </mask>
                         </variation>

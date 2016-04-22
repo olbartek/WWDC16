@@ -90,6 +90,7 @@ extension SkillsViewController: UITableViewDelegate, UITableViewDataSource {
         selectedIndexPath = nil
         tableView.beginUpdates()
         tableView.endUpdates()
+        cell.restartSkillsAnimation()
     }
     
     func enlargeCellAtIndexPath(indexPath: NSIndexPath) {

@@ -48,6 +48,13 @@ class SkillsCategoryTableViewCell: UITableViewCell {
             cellToAnimate.startProgressAnimation()
         }
     }
+    
+    func restartSkillsAnimation() {
+        for row in 0..<skills.count {
+            let cellToAnimate = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: 0)) as! SkillTableViewCell
+            cellToAnimate.restartProgressAnimation()
+        }
+    }
 }
 
 extension SkillsCategoryTableViewCell: UITableViewDelegate, UITableViewDataSource {
@@ -64,10 +71,6 @@ extension SkillsCategoryTableViewCell: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
-    
-    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return SkillModel.TVCHeight
     }
 }

@@ -12,7 +12,7 @@ class ProgressView: UIView {
     
     // MARK: Properties
     
-    var progressFill = 0.5
+    var progressFill:CGFloat = 0.5
     var progressLayer: CAShapeLayer?
     
     // MARK: Drawing
@@ -42,17 +42,20 @@ class ProgressView: UIView {
     
     func startAnimation() {
         guard let progressLayer = progressLayer else { return }
-        let strokeAnimation = CABasicAnimation(keyPath: "strokeEnd")
-        strokeAnimation.duration = 0.5
-        strokeAnimation.removedOnCompletion = false
-        strokeAnimation.fromValue = 0
-        strokeAnimation.toValue = progressFill
-        
-        progressLayer.addAnimation(strokeAnimation, forKey: "progressAnimation")
-        
         layer.sublayers?.forEach({ (sublayer) in
             sublayer.removeFromSuperlayer()
         })
+        progressLayer.strokeEnd = progressFill
+        
+        let strokeAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        strokeAnimation.duration = 0.5
+        //strokeAnimation.removedOnCompletion = false
+        //strokeAnimation.fillMode = kCAFillModeRemoved
+        strokeAnimation.fromValue = 0
+        strokeAnimation.toValue = progressFill
+        strokeAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        
+        progressLayer.addAnimation(strokeAnimation, forKey: "progressAnimation")
         layer.addSublayer(progressLayer)
     }
     

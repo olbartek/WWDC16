@@ -17,7 +17,6 @@
 		4E3BB7A51CC8DD3700D5972C /* ContactMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3BB7A41CC8DD3700D5972C /* ContactMeViewController.swift */; };
 		4E3BB7A71CC8DD7300D5972C /* ContactMe.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3BB7A61CC8DD7300D5972C /* ContactMe.storyboard */; };
 		4E3BB7A91CC9204C00D5972C /* CGFloat+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3BB7A81CC9204C00D5972C /* CGFloat+Random.swift */; };
-		4E3BB7AB1CCAA2E800D5972C /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3BB7AA1CCAA2E800D5972C /* ProgressView.swift */; };
 		4E4E35011CC646F10007BDBD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35001CC646F10007BDBD /* Constants.swift */; };
 		4E4E35031CC6546C0007BDBD /* AboutMe.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E4E35021CC6546C0007BDBD /* AboutMe.storyboard */; };
 		4E4E35051CC654810007BDBD /* MyApps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E4E35041CC654810007BDBD /* MyApps.storyboard */; };
@@ -67,7 +66,6 @@
 		4E3BB7A41CC8DD3700D5972C /* ContactMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactMeViewController.swift; path = "UI/Contact Me/ContactMeViewController.swift"; sourceTree = "<group>"; };
 		4E3BB7A61CC8DD7300D5972C /* ContactMe.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ContactMe.storyboard; path = UI/Storyboards/ContactMe.storyboard; sourceTree = "<group>"; };
 		4E3BB7A81CC9204C00D5972C /* CGFloat+Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CGFloat+Random.swift"; path = "Extensions/CGFloat+Random.swift"; sourceTree = "<group>"; };
-		4E3BB7AA1CCAA2E800D5972C /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgressView.swift; path = UI/Skills/ProgressView.swift; sourceTree = "<group>"; };
 		4E4E35001CC646F10007BDBD /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "Supporting Files/Constants.swift"; sourceTree = "<group>"; };
 		4E4E35021CC6546C0007BDBD /* AboutMe.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AboutMe.storyboard; path = UI/Storyboards/AboutMe.storyboard; sourceTree = "<group>"; };
 		4E4E35041CC654810007BDBD /* MyApps.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MyApps.storyboard; path = UI/Storyboards/MyApps.storyboard; sourceTree = "<group>"; };
@@ -125,7 +123,6 @@
 				4E3BB7951CC83D0500D5972C /* SkillsCategoryTableViewCell.xib */,
 				4E3BB79D1CC8487B00D5972C /* SkillTableViewCell.swift */,
 				4E3BB79E1CC8487B00D5972C /* SkillTableViewCell.xib */,
-				4E3BB7AA1CCAA2E800D5972C /* ProgressView.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -432,7 +429,6 @@
 				4E3BB79F1CC8487B00D5972C /* SkillTableViewCell.swift in Sources */,
 				4E3BB7A21CC8CEA300D5972C /* PresentedViewController.swift in Sources */,
 				4E3BB79A1CC83EE600D5972C /* SkillsCategory.swift in Sources */,
-				4E3BB7AB1CCAA2E800D5972C /* ProgressView.swift in Sources */,
 				4E7DAF9E1CC62EF500D48EB9 /* CategoryTableViewCell.swift in Sources */,
 				4E4E35511CC67C530007BDBD /* IntroViewManager.swift in Sources */,
 				4E4E35571CC780040007BDBD /* UIView+Constraints.swift in Sources */,

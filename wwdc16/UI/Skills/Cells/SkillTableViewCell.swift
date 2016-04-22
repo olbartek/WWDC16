@@ -13,13 +13,17 @@ class SkillTableViewCell: UITableViewCell {
     // MARK: Properties
     
     @IBOutlet var nameLabel         : UILabel!
-    @IBOutlet weak var progressView : ProgressView!
+    @IBOutlet weak var progressView : UIView!
+    @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
+    
+    let progressViewWidth: CGFloat = 196.0
+    var progress                    : CGFloat = 1.0
     
     // MARK: Configuration
     
     func configureWithSkill(skill: Skill) {
         nameLabel.text = skill.name
-        progressView.progressFill = Double(skill.knowledgePercentage) / 100.0
+        progress = CGFloat(skill.knowledgePercentage) / 100.0
         selectionStyle = .None
         userInteractionEnabled = false
     }
@@ -27,6 +31,13 @@ class SkillTableViewCell: UITableViewCell {
     // MARK: Animations
     
     func startProgressAnimation() {
-        progressView.startAnimation()
+        progressWidthConstraint.constant = progressViewWidth * progress
+        UIView.animateWithDuration(0.8) {
+            self.layoutIfNeeded()
+        }
+    }
+    
+    func restartProgressAnimation() {
+        progressWidthConstraint.constant = 0.0
     }
 }

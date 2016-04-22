@@ -19,9 +19,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skill name" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vj1-IJ-qgV">
-                                <rect key="frame" x="8" y="24" width="100" height="30"/>
+                                <rect key="frame" x="8" y="17.5" width="100" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="2xQ-5p-ONN"/>
+                                    <constraint firstAttribute="height" constant="45" id="2xQ-5p-ONN"/>
                                     <constraint firstAttribute="height" constant="30" id="3pB-SM-1KH"/>
                                     <constraint firstAttribute="width" constant="100" id="sMv-fU-FKH"/>
                                 </constraints>
@@ -34,16 +34,25 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXV-1i-OpU" customClass="ProgressView" customModule="wwdc16" customModuleProvider="target">
-                                <rect key="frame" x="116" y="32" width="196" height="15"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXV-1i-OpU">
+                                <rect key="frame" x="116" y="32" width="0.0" height="15"/>
+                                <color key="backgroundColor" red="0.99215686270000003" green="0.3921568627" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" id="rZ5-Rb-aW6"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <real key="value" value="7.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="aXV-1i-OpU" firstAttribute="height" secondItem="vj1-IJ-qgV" secondAttribute="height" multiplier="1:2" id="6QO-tX-eUS"/>
                             <constraint firstItem="vj1-IJ-qgV" firstAttribute="centerX" secondItem="bVL-33-wMj" secondAttribute="centerX" id="DqU-0B-78m"/>
-                            <constraint firstItem="aXV-1i-OpU" firstAttribute="height" secondItem="vj1-IJ-qgV" secondAttribute="height" multiplier="1:2" id="L3C-hQ-6q8"/>
+                            <constraint firstItem="aXV-1i-OpU" firstAttribute="height" secondItem="vj1-IJ-qgV" secondAttribute="height" multiplier="1:3" id="L3C-hQ-6q8"/>
                             <constraint firstItem="aXV-1i-OpU" firstAttribute="leading" secondItem="vj1-IJ-qgV" secondAttribute="trailing" constant="8" id="Vmc-uR-zh2"/>
                             <constraint firstItem="vj1-IJ-qgV" firstAttribute="centerY" secondItem="bVL-33-wMj" secondAttribute="centerY" id="cwM-HP-h5M"/>
                             <constraint firstAttribute="height" constant="80" id="f0q-AL-61A"/>
@@ -55,6 +64,7 @@
                             <mask key="constraints">
                                 <exclude reference="DqU-0B-78m"/>
                                 <exclude reference="6QO-tX-eUS"/>
+                                <exclude reference="rHk-Fj-rie"/>
                             </mask>
                         </variation>
                     </view>
@@ -69,6 +79,7 @@
             <connections>
                 <outlet property="nameLabel" destination="vj1-IJ-qgV" id="aht-Dl-Y9Y"/>
                 <outlet property="progressView" destination="aXV-1i-OpU" id="5Nf-La-27b"/>
+                <outlet property="progressWidthConstraint" destination="rZ5-Rb-aW6" id="AQr-5w-7yh"/>
             </connections>
         </tableViewCell>
     </objects>

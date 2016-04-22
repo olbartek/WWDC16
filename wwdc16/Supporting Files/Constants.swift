@@ -82,7 +82,7 @@ struct SkillCategoryModel {
             "skills" : [
                 ["skillName" : "ARM Cortex-M", "percentage" : 60],
                 ["skillName" : "AVR", "percentage" : 50],
-                ["skillName" : "RaspberryPI", "percentage" : 35]
+                //["skillName" : "RaspberryPI", "percentage" : 35]
         ]],
         ["name" : "Graphic Design",
             "skills" : [

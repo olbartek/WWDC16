@@ -12,12 +12,12 @@ class AnimateViewController: UIViewController {
     
     @IBOutlet weak var animationView: UIView!
     
-    var mainViewAnimator: MainViewAnimator?
+    var mainViewAnimator: BubblesAnimator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mainViewAnimator = MainViewAnimator(referenceView: animationView)
+        mainViewAnimator = BubblesAnimator(referenceView: animationView)
     }
     
     override func viewDidAppear(animated: Bool) {

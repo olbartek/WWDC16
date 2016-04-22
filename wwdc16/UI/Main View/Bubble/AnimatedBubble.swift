@@ -15,6 +15,12 @@ enum AnimatedBubbleType : Int {
 class AnimatedBubble: UIView {
     
     // MARK: Properties
+    
+    private struct BubbleModel {
+        static let MinRadius: CGFloat = 3.0
+        static let MaxRadius: CGFloat = 10.0
+        static let Scale: CGFloat = 1.3
+    }
 
     private(set) var type           : AnimatedBubbleType
     private(set) var animationPath  : UIBezierPath!
@@ -31,21 +37,10 @@ class AnimatedBubble: UIView {
         self.referenceView          = referenceView
         self.duration               = duration
         self.startAngle             = startAngle
-        switch type {
-        case .Orange:
-            initialRadius = 7.5
-        case .Purple:
-            initialRadius = 6.5
-        case .Plum:
-            initialRadius = 6.0
-        case .Blue:
-            initialRadius = 5.5
-        case .Red:
-            initialRadius = 5.0
-        }
+        initialRadius               = CGFloat.random(BubbleModel.MinRadius, BubbleModel.MaxRadius)
         let frame = CGRect(x: 0, y: 0, width: initialRadius * 2, height: initialRadius * 2)
         super.init(frame: frame)
-        self.animationPath          = generatePathAccordingToTypeAndStartAngle()
+        self.animationPath          = generateBubbleBezierPath()
         self.layer.cornerRadius     = initialRadius
         self.layer.masksToBounds    = true
         
@@ -61,7 +56,7 @@ class AnimatedBubble: UIView {
         CATransaction.begin()
         CATransaction.setCompletionBlock {
             UIView.transitionWithView(self, duration: 0.1, options: .TransitionCrossDissolve, animations: {
-                self.transform = CGAffineTransformMakeScale(1.3, 1.3)
+                self.transform = CGAffineTransformMakeScale(BubbleModel.Scale, BubbleModel.Scale)
                 }, completion: { (finished) in
                     self.referenceView = nil
                     self.removeFromSuperview()
@@ -112,6 +107,44 @@ class AnimatedBubble: UIView {
         let center = CGPoint(x: referenceView!.bounds.size.width / 2, y: referenceView!.bounds.size.height / 2)
         path.addArcWithCenter(center, radius: pathRadius, startAngle: startAngle, endAngle: 0.0, clockwise: true)
         return path
+    }
+    
+    private func generateBubbleBezierPath() -> UIBezierPath {
+        let pathRadius: CGFloat
+        switch type {
+        case .Orange:
+            pathRadius = 106.0
+        case .Purple:
+            pathRadius = 86.0
+        case .Plum:
+            pathRadius = 64.0
+        case .Blue:
+            pathRadius = 46.0
+        case .Red:
+            pathRadius = 24.0
+        }
+        let bubblePath = UIBezierPath()
+        let center = CGPoint(x: referenceView!.bounds.size.width / 2, y: referenceView!.bounds.size.height / 2)
+        
+        let oX          = center.x + pathRadius
+        let oY          = center.y
+        let startPoint  = CGPoint(x: oX, y: oY)
+        self.center     = startPoint
+        let eX          = oX
+        let eY          = oY + CGFloat.random(50.0, 300.0)
+        let t: CGFloat  = CGFloat.random(20.0, 100.0)
+        let cp1         = CGPoint(x: oX - t, y: (oY + eY) / 2)
+        let cp2         = CGPoint(x: oX + t, y: cp1.y)
+        
+        bubblePath.moveToPoint(startPoint)
+        bubblePath.addCurveToPoint(CGPoint(x: eX, y: eY), controlPoint1: cp1, controlPoint2: cp2)
+        let bounds = CGPathGetBoundingBox(bubblePath.CGPath)
+        let pathCenter = CGPoint(x:CGRectGetMidX(bounds), y:CGRectGetMidY(bounds))
+        let toOrigin = CGAffineTransformMakeTranslation(-pathCenter.x, -pathCenter.y)
+        //bubblePath.applyTransform(toOrigin)
+        let rotationTransform = CGAffineTransformRotate(CGAffineTransformIdentity, 2*CGFloat(M_PI) - startAngle)
+        bubblePath.applyTransform(rotationTransform)
+        return bubblePath
     }
     
 }

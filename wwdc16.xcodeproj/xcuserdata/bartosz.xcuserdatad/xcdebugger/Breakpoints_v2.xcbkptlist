@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "wwdc16/Utilities/MainViewAnimator.swift"
-            timestampString = "482858333.080883"
+            timestampString = "482946707.464394"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "setupAnimation()"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "wwdc16/UI/Main View/Bubble/AnimatedBubble.swift"
-            timestampString = "482858333.080883"
+            timestampString = "482947789.532903"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "generatePathAccordingToTypeAndStartAngle()"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,61 +90,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "wwdc16/UI/Main View/Bubble/AnimatedBubble.swift"
-            timestampString = "482858333.080883"
+            timestampString = "482947789.532903"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "generatePathAccordingToTypeAndStartAngle()"
             landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "wwdc16/Utilities/MainViewAnimator.swift"
-            timestampString = "482864262.441233"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "animationDidStart(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "wwdc16.MainViewAnimator.animationDidStart (__ObjC.CAAnimation) -&gt; ()"
-                  moduleName = "wwdc16"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bartosz/Library/Developer/Xcode%20Projects/_myProjects/wwdc16/wwdc16/Utilities/MainViewAnimator.swift"
-                  timestampString = "482857025.026549"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "115"
-                  endingLineNumber = "115"
-                  offsetFromSymbolStart = "28">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "wwdc16.MainViewAnimator.animationDidStart (__ObjC.CAAnimation) -&gt; ()"
-                  moduleName = "wwdc16"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bartosz/Library/Developer/Xcode%20Projects/_myProjects/wwdc16/wwdc16/Utilities/MainViewAnimator.swift"
-                  timestampString = "482857025.026756"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "115"
-                  endingLineNumber = "115"
-                  offsetFromSymbolStart = "76">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -208,6 +160,38 @@
             startingLineNumber = "211"
             endingLineNumber = "211"
             landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "wwdc16/UI/Main View/Bubble/AnimatedBubble.swift"
+            timestampString = "482947936.06666"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "generateBubbleBezierPath()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "wwdc16/UI/Skills/ProgressView.swift"
+            timestampString = "483044785.542858"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "startAnimation()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

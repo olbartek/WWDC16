@@ -86,7 +86,7 @@ extension SkillsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func shrinkCellAtIndexPath(indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! SkillsCategoryTableViewCell
-        cell.skillsViewHeightConstraint.constant = 0
+        cell.cellViewHeightConstraint.constant = 0
         selectedIndexPath = nil
         tableView.beginUpdates()
         tableView.endUpdates()
@@ -96,10 +96,11 @@ extension SkillsViewController: UITableViewDelegate, UITableViewDataSource {
         selectedIndexPath = indexPath
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! SkillsCategoryTableViewCell
         let selectedSkillCategory = skillCategories[indexPath.row]
-        let cellHeight = SkillModel.TVCHeight * CGFloat(selectedSkillCategory.skills.count)
-        cell.skillsViewHeightConstraint.constant = cellHeight
+        let cellsHeight = SkillModel.TVCHeight * CGFloat(selectedSkillCategory.skills.count)
+        cell.cellViewHeightConstraint.constant = SkillCategoryModel.TVCBasicHeight + cellsHeight
         tableView.beginUpdates()
         tableView.endUpdates()
+        cell.startSkillsAnimation()
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

@@ -16,6 +16,8 @@
 		4E3BB7A21CC8CEA300D5972C /* PresentedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3BB7A11CC8CEA300D5972C /* PresentedViewController.swift */; };
 		4E3BB7A51CC8DD3700D5972C /* ContactMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3BB7A41CC8DD3700D5972C /* ContactMeViewController.swift */; };
 		4E3BB7A71CC8DD7300D5972C /* ContactMe.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3BB7A61CC8DD7300D5972C /* ContactMe.storyboard */; };
+		4E3BB7A91CC9204C00D5972C /* CGFloat+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3BB7A81CC9204C00D5972C /* CGFloat+Random.swift */; };
+		4E3BB7AB1CCAA2E800D5972C /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3BB7AA1CCAA2E800D5972C /* ProgressView.swift */; };
 		4E4E35011CC646F10007BDBD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35001CC646F10007BDBD /* Constants.swift */; };
 		4E4E35031CC6546C0007BDBD /* AboutMe.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E4E35021CC6546C0007BDBD /* AboutMe.storyboard */; };
 		4E4E35051CC654810007BDBD /* MyApps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E4E35041CC654810007BDBD /* MyApps.storyboard */; };
@@ -27,7 +29,7 @@
 		4E4E35151CC655D10007BDBD /* InterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35141CC655D10007BDBD /* InterestsViewController.swift */; };
 		4E4E35511CC67C530007BDBD /* IntroViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35501CC67C530007BDBD /* IntroViewManager.swift */; };
 		4E4E35531CC7727C0007BDBD /* AnimateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35521CC7727C0007BDBD /* AnimateViewController.swift */; };
-		4E4E35551CC773760007BDBD /* MainViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35541CC773760007BDBD /* MainViewAnimator.swift */; };
+		4E4E35551CC773760007BDBD /* BubblesAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35541CC773760007BDBD /* BubblesAnimator.swift */; };
 		4E4E35571CC780040007BDBD /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35561CC780040007BDBD /* UIView+Constraints.swift */; };
 		4E4E355A1CC7B0A60007BDBD /* AnimatedBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35591CC7B0A60007BDBD /* AnimatedBubble.swift */; };
 		4E4E355C1CC7BAAD0007BDBD /* bubbles.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4E4E355B1CC7BAAD0007BDBD /* bubbles.gif */; };
@@ -64,6 +66,8 @@
 		4E3BB7A11CC8CEA300D5972C /* PresentedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PresentedViewController.swift; path = UI/PresentedViewController.swift; sourceTree = "<group>"; };
 		4E3BB7A41CC8DD3700D5972C /* ContactMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactMeViewController.swift; path = "UI/Contact Me/ContactMeViewController.swift"; sourceTree = "<group>"; };
 		4E3BB7A61CC8DD7300D5972C /* ContactMe.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ContactMe.storyboard; path = UI/Storyboards/ContactMe.storyboard; sourceTree = "<group>"; };
+		4E3BB7A81CC9204C00D5972C /* CGFloat+Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CGFloat+Random.swift"; path = "Extensions/CGFloat+Random.swift"; sourceTree = "<group>"; };
+		4E3BB7AA1CCAA2E800D5972C /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgressView.swift; path = UI/Skills/ProgressView.swift; sourceTree = "<group>"; };
 		4E4E35001CC646F10007BDBD /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "Supporting Files/Constants.swift"; sourceTree = "<group>"; };
 		4E4E35021CC6546C0007BDBD /* AboutMe.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AboutMe.storyboard; path = UI/Storyboards/AboutMe.storyboard; sourceTree = "<group>"; };
 		4E4E35041CC654810007BDBD /* MyApps.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MyApps.storyboard; path = UI/Storyboards/MyApps.storyboard; sourceTree = "<group>"; };
@@ -75,7 +79,7 @@
 		4E4E35141CC655D10007BDBD /* InterestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InterestsViewController.swift; path = UI/Interests/InterestsViewController.swift; sourceTree = "<group>"; };
 		4E4E35501CC67C530007BDBD /* IntroViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntroViewManager.swift; path = Utilities/IntroViewManager.swift; sourceTree = "<group>"; };
 		4E4E35521CC7727C0007BDBD /* AnimateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnimateViewController.swift; path = "UI/Main View/AnimateViewController.swift"; sourceTree = "<group>"; };
-		4E4E35541CC773760007BDBD /* MainViewAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewAnimator.swift; path = Utilities/MainViewAnimator.swift; sourceTree = "<group>"; };
+		4E4E35541CC773760007BDBD /* BubblesAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BubblesAnimator.swift; path = Utilities/BubblesAnimator.swift; sourceTree = "<group>"; };
 		4E4E35561CC780040007BDBD /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Constraints.swift"; path = "Extensions/UIView+Constraints.swift"; sourceTree = "<group>"; };
 		4E4E35591CC7B0A60007BDBD /* AnimatedBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnimatedBubble.swift; path = "UI/Main View/Bubble/AnimatedBubble.swift"; sourceTree = "<group>"; };
 		4E4E355B1CC7BAAD0007BDBD /* bubbles.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bubbles.gif; sourceTree = "<group>"; };
@@ -121,6 +125,7 @@
 				4E3BB7951CC83D0500D5972C /* SkillsCategoryTableViewCell.xib */,
 				4E3BB79D1CC8487B00D5972C /* SkillTableViewCell.swift */,
 				4E3BB79E1CC8487B00D5972C /* SkillTableViewCell.xib */,
+				4E3BB7AA1CCAA2E800D5972C /* ProgressView.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -256,6 +261,7 @@
 				4E7DAF8E1CC62D4800D48EB9 /* UIColor+ThemeColor.swift */,
 				4E7DAF901CC62D8600D48EB9 /* UITableViewCell+Identifier.swift */,
 				4E4E35561CC780040007BDBD /* UIView+Constraints.swift */,
+				4E3BB7A81CC9204C00D5972C /* CGFloat+Random.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -306,7 +312,7 @@
 			children = (
 				4E4E355B1CC7BAAD0007BDBD /* bubbles.gif */,
 				4E4E35501CC67C530007BDBD /* IntroViewManager.swift */,
-				4E4E35541CC773760007BDBD /* MainViewAnimator.swift */,
+				4E4E35541CC773760007BDBD /* BubblesAnimator.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -426,10 +432,12 @@
 				4E3BB79F1CC8487B00D5972C /* SkillTableViewCell.swift in Sources */,
 				4E3BB7A21CC8CEA300D5972C /* PresentedViewController.swift in Sources */,
 				4E3BB79A1CC83EE600D5972C /* SkillsCategory.swift in Sources */,
+				4E3BB7AB1CCAA2E800D5972C /* ProgressView.swift in Sources */,
 				4E7DAF9E1CC62EF500D48EB9 /* CategoryTableViewCell.swift in Sources */,
 				4E4E35511CC67C530007BDBD /* IntroViewManager.swift in Sources */,
 				4E4E35571CC780040007BDBD /* UIView+Constraints.swift in Sources */,
 				4E7DAF911CC62D8600D48EB9 /* UITableViewCell+Identifier.swift in Sources */,
+				4E3BB7A91CC9204C00D5972C /* CGFloat+Random.swift in Sources */,
 				4E4E350F1CC655800007BDBD /* AboutMeViewController.swift in Sources */,
 				4E3BB7961CC83D0500D5972C /* SkillsCategoryTableViewCell.swift in Sources */,
 				4E7DAF8F1CC62D4800D48EB9 /* UIColor+ThemeColor.swift in Sources */,
@@ -438,7 +446,7 @@
 				4E4E35131CC655B50007BDBD /* SkillsViewController.swift in Sources */,
 				4E7DAF611CC6278E00D48EB9 /* AppDelegate.swift in Sources */,
 				4E4E355A1CC7B0A60007BDBD /* AnimatedBubble.swift in Sources */,
-				4E4E35551CC773760007BDBD /* MainViewAnimator.swift in Sources */,
+				4E4E35551CC773760007BDBD /* BubblesAnimator.swift in Sources */,
 				4E7DAF931CC62DCB00D48EB9 /* MainViewController.swift in Sources */,
 				4E3BB79C1CC83F5800D5972C /* Skill.swift in Sources */,
 				4E4E35111CC6559D0007BDBD /* MyAppsViewController.swift in Sources */,

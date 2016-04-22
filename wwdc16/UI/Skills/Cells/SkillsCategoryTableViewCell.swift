@@ -14,9 +14,9 @@ class SkillsCategoryTableViewCell: UITableViewCell {
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var tableView: UITableView!
-    @IBOutlet weak var skillsViewHeightConstraint: NSLayoutConstraint! {
+    @IBOutlet weak var cellViewHeightConstraint: NSLayoutConstraint! {
         didSet {
-            skillsViewHeightConstraint.constant = 0
+            cellViewHeightConstraint.constant = SkillCategoryModel.TVCBasicHeight
         }
     }
     
@@ -39,6 +39,15 @@ class SkillsCategoryTableViewCell: UITableViewCell {
     func registerNibs() {
         tableView.registerNib(UINib(nibName: SkillTableViewCell.identifier(), bundle: nil), forCellReuseIdentifier: SkillTableViewCell.identifier())
     }
+    
+    // MARK: Skills animation
+    
+    func startSkillsAnimation() {
+        for row in 0..<skills.count {
+            let cellToAnimate = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: 0)) as! SkillTableViewCell
+            cellToAnimate.startProgressAnimation()
+        }
+    }
 }
 
 extension SkillsCategoryTableViewCell: UITableViewDelegate, UITableViewDataSource {
@@ -50,9 +59,7 @@ extension SkillsCategoryTableViewCell: UITableViewDelegate, UITableViewDataSourc
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell        = tableView.dequeueReusableCellWithIdentifier(SkillTableViewCell.identifier(), forIndexPath: indexPath) as! SkillTableViewCell
         let skill    = skills[indexPath.row]
-        cell.nameLabel.text = skill.name
-        cell.selectionStyle = .None
-        cell.userInteractionEnabled = false
+        cell.configureWithSkill(skill)
         return cell
     }
     

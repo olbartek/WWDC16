@@ -8,7 +8,16 @@
 
 import UIKit
 
-class MainViewAnimator: NSObject {
+protocol BubblesAnimatorDelegate {
+    func bubbleAnimationDidStart()
+    func bubbleAnimationDidStop()
+}
+
+class BubblesAnimator: NSObject {
+    
+    private struct Constants {
+        static let BubbleCreationInterval: NSTimeInterval = 0.5
+    }
     
     // MARK: Properties
     
@@ -16,9 +25,10 @@ class MainViewAnimator: NSObject {
     var barView         : UIView!
     var bubbleColors    : [UIColor] = [.themeOrangeColor(), .themePurpleColor(), .themePlumColor(), .themeBlueColor(), .themeRedColor()]
     
-    var bubbleAnimation : CAAnimationGroup?
+    var barAnimation    : CAAnimationGroup?
     var bubbleTimer     : NSTimer?
     var timerTicks      = 0
+    var delegate        : BubblesAnimatorDelegate?
     
     // MARK: Initialization
     
@@ -45,16 +55,13 @@ class MainViewAnimator: NSObject {
             .constrain(.Width, .Equal, constant: barSize.width)?
             .constrain(.Height, .Equal, constant: barSize.height)
 
-        
-        
-        
     }
     
     // MARK: Bubble timer
     
     func createBubbleTimer() {
         timerTicks      = 0
-        bubbleTimer     = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(createBubbles(_:)), userInfo: nil, repeats: true)
+        bubbleTimer     = NSTimer.scheduledTimerWithTimeInterval(Constants.BubbleCreationInterval, target: self, selector: #selector(createBubbles(_:)), userInfo: nil, repeats: true)
     }
     
     func invalidateBubbleTimer() {
@@ -73,7 +80,7 @@ class MainViewAnimator: NSObject {
             print("\(degrees)")
             for i in 0..<5 {
                 if let bubbleType = AnimatedBubbleType(rawValue: i) {
-                    let newBubble = createBubbleWithType(bubbleType, startAngle: CGFloat(wholeRangeAngle), duration: 2 * Animation.Bubbles.RotateOneHalfDuration + Animation.Bubbles.DelayBetweenRotations - Double(timerTicks) * 0.1)
+                    let newBubble = createBubbleWithType(bubbleType, startAngle: CGFloat(wholeRangeAngle), maxDuration: 2 * Animation.Bubbles.RotateOneHalfDuration + Animation.Bubbles.DelayBetweenRotations - Double(timerTicks) * 0.1)
                     newBubble.startBubbleAnimation()
                 }
             }
@@ -84,6 +91,7 @@ class MainViewAnimator: NSObject {
     // MARK: Animations
     
     func startAnimation() {
+        delegate?.bubbleAnimationDidStart()
         let rotateFirstHalf         = CABasicAnimation(keyPath: "transform.rotation")
         rotateFirstHalf.fromValue   = 0.0
         rotateFirstHalf.toValue     = CGFloat(-M_PI)
@@ -96,23 +104,22 @@ class MainViewAnimator: NSObject {
         rotateSecondHalf.duration   = Animation.Bubbles.RotateOneHalfDuration
         rotateSecondHalf.beginTime  = rotateFirstHalf.beginTime + rotateFirstHalf.duration + Animation.Bubbles.DelayBetweenRotations
         
-        bubbleAnimation             = CAAnimationGroup()
-        guard let bubbleAnimation   = bubbleAnimation else { return }
-        bubbleAnimation.animations  = [rotateFirstHalf, rotateSecondHalf]
-        bubbleAnimation.duration    = rotateFirstHalf.duration + rotateSecondHalf.duration + Animation.Bubbles.DelayBetweenRotations
-        bubbleAnimation.repeatCount = 1
-        bubbleAnimation.delegate    = self
+        barAnimation                = CAAnimationGroup()
+        guard let barAnimation      = barAnimation else { return }
+        barAnimation.animations     = [rotateFirstHalf, rotateSecondHalf]
+        barAnimation.duration       = rotateFirstHalf.duration + rotateSecondHalf.duration + Animation.Bubbles.DelayBetweenRotations
+        barAnimation.repeatCount    = 1
+        barAnimation.delegate       = self
         
-        barView.layer.addAnimation(bubbleAnimation, forKey: "barRotation")
-        
+        barView.layer.addAnimation(barAnimation, forKey: "barRotation")
         
         createBubbleTimer()
         
     }
     
     
-    func createBubbleWithType(type: AnimatedBubbleType, startAngle: CGFloat, duration: CFTimeInterval) -> AnimatedBubble {
-        let bubbleView = AnimatedBubble(type: type, referenceView: referenceView, startAngle: startAngle, duration: duration)
+    func createBubbleWithType(type: AnimatedBubbleType, startAngle: CGFloat, maxDuration: CFTimeInterval) -> AnimatedBubble {
+        let bubbleView = AnimatedBubble(type: type, referenceView: referenceView, startAngle: startAngle, duration: maxDuration)
         referenceView.addSubview(bubbleView)
         return bubbleView
     }
@@ -121,13 +128,12 @@ class MainViewAnimator: NSObject {
     // MARK: Animation delegate
     
     override func animationDidStart(anim: CAAnimation) {
-        if let bubbleAnim = bubbleAnimation where bubbleAnim == anim {
-            
-        }
+
     }
     
     override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
         invalidateBubbleTimer()
+        delegate?.bubbleAnimationDidStop()
     }
 
 }

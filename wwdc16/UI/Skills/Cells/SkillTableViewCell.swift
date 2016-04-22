@@ -9,7 +9,24 @@
 import UIKit
 
 class SkillTableViewCell: UITableViewCell {
-
-    @IBOutlet var nameLabel: UILabel!
     
+    // MARK: Properties
+    
+    @IBOutlet var nameLabel         : UILabel!
+    @IBOutlet weak var progressView : ProgressView!
+    
+    // MARK: Configuration
+    
+    func configureWithSkill(skill: Skill) {
+        nameLabel.text = skill.name
+        progressView.progressFill = Double(skill.knowledgePercentage) / 100.0
+        selectionStyle = .None
+        userInteractionEnabled = false
+    }
+    
+    // MARK: Animations
+    
+    func startProgressAnimation() {
+        progressView.startAnimation()
+    }
 }

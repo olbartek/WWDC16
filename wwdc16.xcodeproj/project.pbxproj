@@ -45,6 +45,7 @@
 		4E7DAF9E1CC62EF500D48EB9 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7DAF9C1CC62EF500D48EB9 /* CategoryTableViewCell.swift */; };
 		4E7DAF9F1CC62EF500D48EB9 /* CategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E7DAF9D1CC62EF500D48EB9 /* CategoryTableViewCell.xib */; };
 		4EBCAD211CCBADFF00C89041 /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBCAD201CCBADFF00C89041 /* DefaultsManager.swift */; };
+		4EBCAD231CCBED5000C89041 /* MyLocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBCAD221CCBED5000C89041 /* MyLocationAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		4E7DAF9C1CC62EF500D48EB9 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryTableViewCell.swift; path = "UI/Main View/Cells/CategoryTableViewCell.swift"; sourceTree = "<group>"; };
 		4E7DAF9D1CC62EF500D48EB9 /* CategoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CategoryTableViewCell.xib; path = "UI/Main View/Cells/CategoryTableViewCell.xib"; sourceTree = "<group>"; };
 		4EBCAD201CCBADFF00C89041 /* DefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DefaultsManager.swift; path = Utilities/DefaultsManager.swift; sourceTree = "<group>"; };
+		4EBCAD221CCBED5000C89041 /* MyLocationAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyLocationAnnotation.swift; path = UI/AboutMe/MyLocationAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				4E4E350E1CC655800007BDBD /* AboutMeViewController.swift */,
+				4EBCAD221CCBED5000C89041 /* MyLocationAnnotation.swift */,
 			);
 			name = AboutMe;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				4E3BB79A1CC83EE600D5972C /* SkillsCategory.swift in Sources */,
 				4E7DAF9E1CC62EF500D48EB9 /* CategoryTableViewCell.swift in Sources */,
 				4E3BB7AD1CCADD9F00D5972C /* ContactButton.swift in Sources */,
+				4EBCAD231CCBED5000C89041 /* MyLocationAnnotation.swift in Sources */,
 				4E4E35511CC67C530007BDBD /* IntroViewManager.swift in Sources */,
 				4E4E35571CC780040007BDBD /* UIView+Constraints.swift in Sources */,
 				4E7DAF911CC62D8600D48EB9 /* UITableViewCell+Identifier.swift in Sources */,

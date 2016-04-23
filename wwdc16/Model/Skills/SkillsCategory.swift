@@ -15,13 +15,15 @@ class SkillsCategory: NSObject {
     
     // MARK: Properties
     
-    var name    : String
-    var skills  = [Skill]()
+    var name        : String
+    var imageName   : String
+    var skills      = [Skill]()
     
     // MARK: Initialization
     
-    init(name: String, skills: [[String: AnyObject]]) {
+    init(name: String, imageName: String, skills: [[String: AnyObject]]) {
         self.name = name
+        self.imageName = imageName
         for skill in skills {
             if let skillName = skill[skillNameKey] as? String, skillPercentage = skill[skillKnowledgePercentageKey] as? Int {
                 let newSkill = Skill(name: skillName, knowledgePercentage: skillPercentage)

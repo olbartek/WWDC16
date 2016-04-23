@@ -19,6 +19,8 @@ class SkillsCategoryTableViewCell: UITableViewCell {
             cellViewHeightConstraint.constant = SkillCategoryModel.TVCBasicHeight
         }
     }
+    @IBOutlet weak var categoryImageView: UIImageView!
+    @IBOutlet weak var cellView: UIView!
     
     var skills = [Skill]()
     var selectedIndexPath: NSIndexPath?
@@ -27,13 +29,15 @@ class SkillsCategoryTableViewCell: UITableViewCell {
    
     func configureWithSkillCategory(skillCategory: SkillsCategory) {
         titleLabel.text = skillCategory.name
+        categoryImageView.image = UIImage(named: skillCategory.imageName)
         skills = skillCategory.skills
         registerNibs()
         tableView.delegate = self
         tableView.dataSource = self
+        cellView.layer.cornerRadius = SkillCategoryModel.CellCornerRadius
+        cellView.layer.masksToBounds = true
         selectionStyle = .None
-        layer.cornerRadius = SkillCategoryModel.CellCornerRadius
-        layer.masksToBounds = true
+        backgroundColor = .clearColor()
     }
     
     func registerNibs() {

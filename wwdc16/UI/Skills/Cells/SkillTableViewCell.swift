@@ -16,7 +16,7 @@ class SkillTableViewCell: UITableViewCell {
     @IBOutlet weak var progressView : UIView!
     @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
     
-    let progressViewWidth: CGFloat = 196.0
+    let progressViewWidth: CGFloat = 180.0
     var progress                    : CGFloat = 1.0
     
     // MARK: Configuration

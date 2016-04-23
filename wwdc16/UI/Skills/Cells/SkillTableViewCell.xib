@@ -18,14 +18,14 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bVL-33-wMj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skill name" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vj1-IJ-qgV">
-                                <rect key="frame" x="8" y="17.5" width="100" height="45"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skill name" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vj1-IJ-qgV">
+                                <rect key="frame" x="20" y="17.5" width="100" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="2xQ-5p-ONN"/>
                                     <constraint firstAttribute="height" constant="30" id="3pB-SM-1KH"/>
                                     <constraint firstAttribute="width" constant="100" id="sMv-fU-FKH"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
@@ -35,7 +35,7 @@
                                 </variation>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXV-1i-OpU">
-                                <rect key="frame" x="116" y="32" width="0.0" height="15"/>
+                                <rect key="frame" x="128" y="32" width="0.0" height="15"/>
                                 <color key="backgroundColor" red="0.99215686270000003" green="0.3921568627" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" id="rZ5-Rb-aW6"/>
@@ -56,7 +56,7 @@
                             <constraint firstItem="aXV-1i-OpU" firstAttribute="leading" secondItem="vj1-IJ-qgV" secondAttribute="trailing" constant="8" id="Vmc-uR-zh2"/>
                             <constraint firstItem="vj1-IJ-qgV" firstAttribute="centerY" secondItem="bVL-33-wMj" secondAttribute="centerY" id="cwM-HP-h5M"/>
                             <constraint firstAttribute="height" constant="80" id="f0q-AL-61A"/>
-                            <constraint firstItem="vj1-IJ-qgV" firstAttribute="leading" secondItem="bVL-33-wMj" secondAttribute="leading" constant="8" id="maB-vm-MMu"/>
+                            <constraint firstItem="vj1-IJ-qgV" firstAttribute="leading" secondItem="bVL-33-wMj" secondAttribute="leading" constant="20" id="maB-vm-MMu"/>
                             <constraint firstAttribute="trailing" secondItem="aXV-1i-OpU" secondAttribute="trailing" constant="8" id="rHk-Fj-rie"/>
                             <constraint firstItem="aXV-1i-OpU" firstAttribute="centerY" secondItem="bVL-33-wMj" secondAttribute="centerY" id="xwj-cX-FIB"/>
                         </constraints>

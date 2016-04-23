@@ -8,8 +8,9 @@
 
 import UIKit
 
-let categoryNameKey     = "name"
-let categorySkillsKey   = "skills"
+let categoryNameKey         = "name"
+let categoryImageNameKey    = "imageName"
+let categorySkillsKey       = "skills"
 
 class SkillsViewController: PresentedViewController {
     
@@ -20,8 +21,8 @@ class SkillsViewController: PresentedViewController {
     var skillCategories: [SkillsCategory] = {
         var categories = [SkillsCategory]()
         for categoryDict in SkillCategoryModel.Categories {
-            if let categoryName = categoryDict[categoryNameKey] as? String, categorySkills = categoryDict[categorySkillsKey] as? [[String: AnyObject]] {
-                let newCategory = SkillsCategory(name: categoryName, skills: categorySkills)
+            if let categoryName = categoryDict[categoryNameKey] as? String, categoryImageName = categoryDict[categoryImageNameKey] as? String, categorySkills = categoryDict[categorySkillsKey] as? [[String: AnyObject]] {
+                let newCategory = SkillsCategory(name: categoryName, imageName: categoryImageName, skills: categorySkills)
                 categories.append(newCategory)
             }
         }

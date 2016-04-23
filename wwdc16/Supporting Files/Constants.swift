@@ -73,28 +73,31 @@ struct CategoryModel {
 struct SkillCategoryModel {
     static let Categories: [[String: AnyObject]] = [
         ["name" : "Programming",
+        "imageName" : "skill-category-programming",
         "skills" : [
             ["skillName" : "Obj-C", "percentage" : 90],
             ["skillName" : "Swift", "percentage" : 70],
             ["skillName" : "PHP", "percentage" : 60]
         ]],
         ["name" : "Electronics",
-            "skills" : [
+        "imageName" : "skill-category-electronics",
+        "skills" : [
                 ["skillName" : "ARM Cortex-M", "percentage" : 60],
                 ["skillName" : "AVR", "percentage" : 50],
                 ["skillName" : "RaspberryPI", "percentage" : 35]
         ]],
         ["name" : "Graphic Design",
-            "skills" : [
+        "imageName" : "skill-category-graphic-design",
+        "skills" : [
                 ["skillName" : "Adobe Photoshop", "percentage" : 60],
                 ["skillName" : "Adobe Illustrator", "percentage" : 40],
                 ["skillName" : "Gimp", "percentage" : 80]
             ]],
     ]
-    static let TVCBasicHeight: CGFloat = 100.0
+    static let TVCBasicHeight: CGFloat = 80.0
     static let CellCornerRadius: CGFloat = 8.0
 }
 
 struct SkillModel {
-    static let TVCHeight: CGFloat = 80.0
+    static let TVCHeight: CGFloat = 60.0
 }

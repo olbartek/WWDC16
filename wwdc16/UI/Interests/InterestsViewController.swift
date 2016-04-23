@@ -14,7 +14,7 @@ class InterestsViewController: PresentedViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .themePurpleColor()
+        self.view.backgroundColor = .themeAzureColor()
     }
     
     // MARK: Actions

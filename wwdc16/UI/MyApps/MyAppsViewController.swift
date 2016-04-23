@@ -15,7 +15,7 @@ class MyAppsViewController: PresentedViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = .themeBlueColor()
+        self.view.backgroundColor = .themeMarineColor()
     }
     
     // MARK: Actions

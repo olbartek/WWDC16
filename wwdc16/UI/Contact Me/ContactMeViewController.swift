@@ -13,7 +13,7 @@ class ContactMeViewController: PresentedViewController {
     // MARK: Properties
     
     private struct Constants {
-        static let ButtonSide: CGFloat = 50.0
+        static let ButtonSide: CGFloat = 75.0
         static let MovementAnimationDuration: CFTimeInterval = 0.3
         static func MovementAnimationKeyAtIndex(index: Int) -> String { return "movementAnimation\(index)" }
         static let SinglePulseAnimationDuration: CFTimeInterval = 0.5
@@ -32,7 +32,7 @@ class ContactMeViewController: PresentedViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .themeRedColor()
+        self.view.backgroundColor = .themePinkColor()
         prepareContactButtons()
     }
     

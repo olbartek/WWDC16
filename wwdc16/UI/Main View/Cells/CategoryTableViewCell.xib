@@ -17,16 +17,16 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gL4-Bb-qGH">
                         <rect key="frame" x="0.0" y="8" width="250" height="233.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0IW-3f-YRC">
-                                <rect key="frame" x="75" y="92" width="100" height="100"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="about-me" translatesAutoresizingMaskIntoConstraints="NO" id="0IW-3f-YRC">
+                                <rect key="frame" x="85" y="57" width="80" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="5Cz-ga-uR7"/>
-                                    <constraint firstAttribute="width" constant="100" id="UO3-lS-DZD"/>
+                                    <constraint firstAttribute="height" constant="80" id="5Cz-ga-uR7"/>
+                                    <constraint firstAttribute="width" constant="80" id="UO3-lS-DZD"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnw-70-JpC">
-                                <rect key="frame" x="20" y="46.5" width="210" height="41"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About me" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnw-70-JpC">
+                                <rect key="frame" x="20" y="153.5" width="210" height="28"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -35,8 +35,8 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="cnw-70-JpC" secondAttribute="trailing" constant="20" id="2zO-io-6uV"/>
                             <constraint firstItem="cnw-70-JpC" firstAttribute="centerX" secondItem="gL4-Bb-qGH" secondAttribute="centerX" id="4K6-lY-zhx"/>
-                            <constraint firstItem="cnw-70-JpC" firstAttribute="centerY" secondItem="gL4-Bb-qGH" secondAttribute="centerY" constant="-50" id="FI3-V8-Pyq"/>
-                            <constraint firstItem="0IW-3f-YRC" firstAttribute="centerY" secondItem="gL4-Bb-qGH" secondAttribute="centerY" constant="25" id="QiY-Lb-ZOe"/>
+                            <constraint firstItem="cnw-70-JpC" firstAttribute="centerY" secondItem="gL4-Bb-qGH" secondAttribute="centerY" constant="50" id="FI3-V8-Pyq"/>
+                            <constraint firstItem="0IW-3f-YRC" firstAttribute="centerY" secondItem="gL4-Bb-qGH" secondAttribute="centerY" constant="-20" id="QiY-Lb-ZOe"/>
                             <constraint firstItem="0IW-3f-YRC" firstAttribute="centerX" secondItem="gL4-Bb-qGH" secondAttribute="centerX" id="lIu-nG-tzV"/>
                             <constraint firstItem="cnw-70-JpC" firstAttribute="leading" secondItem="gL4-Bb-qGH" secondAttribute="leading" constant="20" id="pQ3-dM-9ho"/>
                         </constraints>
@@ -63,4 +63,7 @@
             <point key="canvasLocation" x="301" y="283"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="about-me" width="80" height="80"/>
+    </resources>
 </document>

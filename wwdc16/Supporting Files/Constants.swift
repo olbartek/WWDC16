@@ -64,9 +64,9 @@ struct Animation {
 
 struct CategoryModel {
     static let NumOfCategories  = 5
-    static let IconNames        = ["about-me", "interests", "skills", "my-apps", "about-me"]
-    static let Titles           = ["About me", "Interests", "Skills", "My Apps", "Contact me"]
-    static let Colors           : [UIColor] = [.themeOrangeColor(), .themePurpleColor(), .themePlumColor(), .themeBlueColor(), .themeRedColor()]
+    static let IconNames        = ["about-me", "my-apps", "hobbies", "skills", "contact-me"]
+    static let Titles           = ["About me", "My Apps", "My Hobbies", "My Skills", "Contact Me!"]
+    static let Colors           : [UIColor] = [.themeBlueColor(), .themeMarineColor(), .themeAzureColor(), .themeSkyBlueColor(), .themePinkColor()]
     static let TVCHeight: CGFloat = 250.0
 }
 

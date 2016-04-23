@@ -19,9 +19,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BNY-0L-XIQ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Me!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BNY-0L-XIQ">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -110,7 +110,7 @@
                                 </variation>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.90980392156862744" green="0.39215686274509803" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="0Rx-B5-bYl" firstAttribute="centerY" secondItem="6GS-l5-W3b" secondAttribute="centerY" id="0UD-Ls-dQS"/>
                             <constraint firstItem="BNY-0L-XIQ" firstAttribute="centerX" secondItem="6GS-l5-W3b" secondAttribute="centerX" id="D8x-xg-he7"/>
@@ -185,8 +185,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="fb-logo" width="75" height="75"/>
-        <image name="linkedin-logo" width="75" height="75"/>
+        <image name="fb-logo" width="250" height="250"/>
+        <image name="linkedin-logo" width="250" height="250"/>
         <image name="twitter-logo" width="75" height="75"/>
     </resources>
 </document>

@@ -88,7 +88,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.3411764705882353" green="0.3411764705882353" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.52941176470588236" green="0.74901960784313726" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="7Gd-bV-D0o" firstAttribute="top" secondItem="mBS-mI-jOx" secondAttribute="bottom" constant="8" id="1q2-WF-eIL"/>
                             <constraint firstItem="XPi-i1-DwX" firstAttribute="leading" secondItem="Jnz-Pa-RRw" secondAttribute="leadingMargin" id="78k-RA-kr3"/>

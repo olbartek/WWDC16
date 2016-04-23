@@ -9,7 +9,7 @@
 import UIKit
 
 enum AnimatedBubbleType : Int {
-    case Orange, Purple, Plum, Blue, Red
+    case Blue, Marine, Azure, SkyBlue, Pink
 }
 
 class AnimatedBubble: UIView {
@@ -76,31 +76,31 @@ class AnimatedBubble: UIView {
     
     private func setColorAccordingToType() {
         switch type {
-        case .Orange:
-            backgroundColor = .themeOrangeColor()
-        case .Purple:
-            backgroundColor = .themePurpleColor()
-        case .Plum:
-            backgroundColor = .themePlumColor()
         case .Blue:
             backgroundColor = .themeBlueColor()
-        case .Red:
-            backgroundColor = .themeRedColor()
+        case .Marine:
+            backgroundColor = .themeMarineColor()
+        case .Azure:
+            backgroundColor = .themeAzureColor()
+        case .SkyBlue:
+            backgroundColor = .themeSkyBlueColor()
+        case .Pink:
+            backgroundColor = .themePinkColor()
         }
     }
     
     private func generatePathAccordingToTypeAndStartAngle() -> UIBezierPath {
         let pathRadius: CGFloat
         switch type {
-        case .Orange:
-            pathRadius = 106.0
-        case .Purple:
-            pathRadius = 86.0
-        case .Plum:
-            pathRadius = 64.0
         case .Blue:
+            pathRadius = 106.0
+        case .Marine:
+            pathRadius = 86.0
+        case .Azure:
+            pathRadius = 64.0
+        case .SkyBlue:
             pathRadius = 46.0
-        case .Red:
+        case .Pink:
             pathRadius = 24.0
         }
         let path = UIBezierPath()
@@ -112,15 +112,15 @@ class AnimatedBubble: UIView {
     private func generateBubbleBezierPath() -> UIBezierPath {
         let pathRadius: CGFloat
         switch type {
-        case .Orange:
-            pathRadius = 106.0
-        case .Purple:
-            pathRadius = 86.0
-        case .Plum:
-            pathRadius = 64.0
         case .Blue:
+            pathRadius = 106.0
+        case .Marine:
+            pathRadius = 86.0
+        case .Azure:
+            pathRadius = 64.0
+        case .SkyBlue:
             pathRadius = 46.0
-        case .Red:
+        case .Pink:
             pathRadius = 24.0
         }
         let bubblePath = UIBezierPath()

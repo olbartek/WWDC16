@@ -28,6 +28,7 @@ class MainViewController: UIViewController {
     var hideCategoriesTapGestureRight   : UITapGestureRecognizer?
     var animatingImage                  : UIImageView?
     var currentSnapshot                 : UIView?
+    var areCategoriesHidden             = true
     
     var categories: [Category] = {
         var categories = [Category]()
@@ -81,13 +82,17 @@ class MainViewController: UIViewController {
     }
     
     func didRecognizedShowCategoriesTapGesture(gesture: UITapGestureRecognizer) {
-        removeShowCategoriesTapGesture()
-        doAnimation()
+        if areCategoriesHidden {
+            removeShowCategoriesTapGesture()
+            doAnimation()
+        }
     }
     
     func didRecognizedHideCategoriesTapGesture(gesture: UITapGestureRecognizer) {
-        removeHideCategoriesTapGesture()
-        undoAnimation()
+        if !areCategoriesHidden {
+            removeHideCategoriesTapGesture()
+            undoAnimation()
+        }
     }
     
     func removeShowCategoriesTapGesture() {
@@ -111,18 +116,21 @@ class MainViewController: UIViewController {
     // MARK: Animations
     
     func doAnimation() {
+        view.userInteractionEnabled = false
         showNameLabels(false)
         //animateImage()
         showCategories()
     }
     
     func undoAnimation() {
-        
+        view.userInteractionEnabled = false
         tableViewHeightConstraint.constant = MainTableView.MinHeight
         UIView.animateWithDuration(Animation.HideCategories.Duration, animations: {
             self.view.layoutIfNeeded()
         }) { [weak self] (finished) in
             guard let weakSelf = self else { return }
+            weakSelf.view.userInteractionEnabled = true
+            weakSelf.areCategoriesHidden = true
             weakSelf.showNameLabels(true)
             weakSelf.addShowCategoriesTapGesture()
         }
@@ -154,6 +162,8 @@ class MainViewController: UIViewController {
             },
                                    completion: { [weak self] (finished) in
                                     guard let weakSelf = self else { return }
+                                    weakSelf.view.userInteractionEnabled = true
+                                    weakSelf.areCategoriesHidden = false
                                     weakSelf.addHideCategoriesTapGesture()
             })
     }

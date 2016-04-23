@@ -33,7 +33,7 @@ class SkillsViewController: PresentedViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = .themeSkyBlueColor()
         registerNibs()
     }
     

@@ -14,7 +14,7 @@ class AboutMeViewController: PresentedViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .themeOrangeColor()
+        self.view.backgroundColor = .themeBlueColor()
     }
     
     // MARK: Actions

@@ -23,7 +23,7 @@ class BubblesAnimator: NSObject {
     
     var referenceView   : UIView
     var barView         : UIView!
-    var bubbleColors    : [UIColor] = [.themeOrangeColor(), .themePurpleColor(), .themePlumColor(), .themeBlueColor(), .themeRedColor()]
+    var bubbleColors    : [UIColor] = [.themeBlueColor(), .themeMarineColor(), .themeAzureColor(), .themeSkyBlueColor(), .themePinkColor()]
     
     var barAnimation    : CAAnimationGroup?
     var bubbleTimer     : NSTimer?

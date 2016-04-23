@@ -19,10 +19,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWx-w8-mh5">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BNY-0L-XIQ">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlA-l2-XN7">
@@ -49,49 +49,144 @@
                                     <action selector="didPressCloseButton" destination="HMq-s0-0aV" eventType="touchUpInside" id="jKV-Tg-u2e"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HX7-kM-s4t" customClass="ContactButton" customModule="wwdc16" customModuleProvider="target">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="1hg-yR-DQs"/>
+                                    <constraint firstAttribute="width" constant="50" id="Q75-77-jwe"/>
+                                </constraints>
+                                <state key="normal" image="twitter-logo"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="1hg-yR-DQs"/>
+                                        <exclude reference="Q75-77-jwe"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="1hg-yR-DQs"/>
+                                        <include reference="Q75-77-jwe"/>
+                                    </mask>
+                                </variation>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Rx-B5-bYl" customClass="ContactButton" customModule="wwdc16" customModuleProvider="target">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="9ee-pR-YFE"/>
+                                    <constraint firstAttribute="height" constant="50" id="Chi-sP-caX"/>
+                                </constraints>
+                                <state key="normal" image="linkedin-logo"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="9ee-pR-YFE"/>
+                                        <exclude reference="Chi-sP-caX"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="9ee-pR-YFE"/>
+                                        <include reference="Chi-sP-caX"/>
+                                    </mask>
+                                </variation>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KB4-iX-rtW" customClass="ContactButton" customModule="wwdc16" customModuleProvider="target">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="PiR-GX-e12"/>
+                                    <constraint firstAttribute="height" constant="50" id="k8D-M9-rDj"/>
+                                </constraints>
+                                <state key="normal" image="fb-logo"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="PiR-GX-e12"/>
+                                        <exclude reference="k8D-M9-rDj"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="PiR-GX-e12"/>
+                                        <include reference="k8D-M9-rDj"/>
+                                    </mask>
+                                </variation>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="iWx-w8-mh5" firstAttribute="centerX" secondItem="6GS-l5-W3b" secondAttribute="centerX" id="8o4-UW-EY1"/>
+                            <constraint firstItem="0Rx-B5-bYl" firstAttribute="centerY" secondItem="6GS-l5-W3b" secondAttribute="centerY" id="0UD-Ls-dQS"/>
+                            <constraint firstItem="BNY-0L-XIQ" firstAttribute="centerX" secondItem="6GS-l5-W3b" secondAttribute="centerX" id="D8x-xg-he7"/>
                             <constraint firstItem="rlA-l2-XN7" firstAttribute="trailing" secondItem="6GS-l5-W3b" secondAttribute="trailingMargin" id="Gor-aR-IfV"/>
-                            <constraint firstItem="iWx-w8-mh5" firstAttribute="centerY" secondItem="6GS-l5-W3b" secondAttribute="centerY" id="GxU-sT-FAP"/>
+                            <constraint firstItem="HX7-kM-s4t" firstAttribute="centerY" secondItem="6GS-l5-W3b" secondAttribute="centerY" id="J6O-Wv-mxX"/>
+                            <constraint firstItem="HX7-kM-s4t" firstAttribute="centerX" secondItem="6GS-l5-W3b" secondAttribute="centerX" id="LpO-vt-MuA"/>
                             <constraint firstItem="rlA-l2-XN7" firstAttribute="top" secondItem="kiI-2H-2Ta" secondAttribute="bottom" constant="8" id="QLR-lm-Wol"/>
+                            <constraint firstItem="0Rx-B5-bYl" firstAttribute="centerX" secondItem="6GS-l5-W3b" secondAttribute="centerX" id="YmH-XP-SEj"/>
                             <constraint firstItem="rlA-l2-XN7" firstAttribute="top" secondItem="kiI-2H-2Ta" secondAttribute="bottom" constant="8" id="YqA-D8-dbM"/>
                             <constraint firstAttribute="trailing" secondItem="rlA-l2-XN7" secondAttribute="trailing" constant="20" id="gX3-6g-xph"/>
+                            <constraint firstItem="KB4-iX-rtW" firstAttribute="centerX" secondItem="6GS-l5-W3b" secondAttribute="centerX" id="ho5-hH-Kuo"/>
+                            <constraint firstItem="BNY-0L-XIQ" firstAttribute="centerY" secondItem="6GS-l5-W3b" secondAttribute="centerY" id="osy-bt-5te"/>
+                            <constraint firstItem="KB4-iX-rtW" firstAttribute="centerY" secondItem="6GS-l5-W3b" secondAttribute="centerY" id="vOX-yK-Qai"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="iWx-w8-mh5"/>
+                                <exclude reference="BNY-0L-XIQ"/>
                                 <exclude reference="rlA-l2-XN7"/>
+                                <exclude reference="HX7-kM-s4t"/>
+                                <exclude reference="0Rx-B5-bYl"/>
+                                <exclude reference="KB4-iX-rtW"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="8o4-UW-EY1"/>
-                                <exclude reference="GxU-sT-FAP"/>
                                 <exclude reference="Gor-aR-IfV"/>
                                 <exclude reference="QLR-lm-Wol"/>
                                 <exclude reference="YqA-D8-dbM"/>
                                 <exclude reference="gX3-6g-xph"/>
+                                <exclude reference="0UD-Ls-dQS"/>
+                                <exclude reference="YmH-XP-SEj"/>
+                                <exclude reference="J6O-Wv-mxX"/>
+                                <exclude reference="LpO-vt-MuA"/>
+                                <exclude reference="ho5-hH-Kuo"/>
+                                <exclude reference="vOX-yK-Qai"/>
+                                <exclude reference="D8x-xg-he7"/>
+                                <exclude reference="osy-bt-5te"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="iWx-w8-mh5"/>
+                                <include reference="BNY-0L-XIQ"/>
                                 <include reference="rlA-l2-XN7"/>
+                                <include reference="HX7-kM-s4t"/>
+                                <include reference="0Rx-B5-bYl"/>
+                                <include reference="KB4-iX-rtW"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="8o4-UW-EY1"/>
-                                <include reference="GxU-sT-FAP"/>
-                                <include reference="Gor-aR-IfV"/>
+                                <exclude reference="Gor-aR-IfV"/>
                                 <include reference="QLR-lm-Wol"/>
                                 <include reference="YqA-D8-dbM"/>
                                 <include reference="gX3-6g-xph"/>
+                                <include reference="0UD-Ls-dQS"/>
+                                <include reference="YmH-XP-SEj"/>
+                                <include reference="J6O-Wv-mxX"/>
+                                <include reference="LpO-vt-MuA"/>
+                                <include reference="ho5-hH-Kuo"/>
+                                <include reference="vOX-yK-Qai"/>
+                                <include reference="D8x-xg-he7"/>
+                                <include reference="osy-bt-5te"/>
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="contactMeLabel" destination="BNY-0L-XIQ" id="nMl-Ph-XPG"/>
+                        <outletCollection property="contactButtons" destination="HX7-kM-s4t" collectionClass="NSMutableArray" id="ccP-WC-lr5"/>
+                        <outletCollection property="contactButtons" destination="0Rx-B5-bYl" collectionClass="NSMutableArray" id="APN-Sh-ug1"/>
+                        <outletCollection property="contactButtons" destination="KB4-iX-rtW" collectionClass="NSMutableArray" id="phF-SQ-K6a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7l5-JX-d4N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="464" y="354"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="fb-logo" width="75" height="75"/>
+        <image name="linkedin-logo" width="75" height="75"/>
+        <image name="twitter-logo" width="75" height="75"/>
+    </resources>
 </document>

@@ -66,7 +66,7 @@ class AnimatedBubble: UIView {
         let pathAnimation = CAKeyframeAnimation(keyPath: "position")
         pathAnimation.duration = duration
         pathAnimation.path  = animationPath.CGPath
-        pathAnimation.fillMode = kCAFillModeRemoved
+        pathAnimation.fillMode = kCAFillModeBackwards
         
         layer.addAnimation(pathAnimation, forKey: "movingAnimation")
         CATransaction.commit()

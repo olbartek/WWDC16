@@ -6,12 +6,12 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "my-apps@2x.png",
+      "filename" : "my-apps-shortcut@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "my-apps@3x.png",
+      "filename" : "my-apps-shortcut@3x.png",
       "scale" : "3x"
     }
   ],

@@ -22,18 +22,6 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
-	<key>UIRequiredDeviceCapabilities</key>
-	<array>
-		<string>armv7</string>
-	</array>
-	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-	</array>
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>
@@ -48,15 +36,15 @@
 			<key>UIApplicationShortcutItemIconFile</key>
 			<string>about-me-shortcut</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>About me</string>
+			<string>About Me</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>com.olbart.wwdc16.about-me</string>
 		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemIconFile</key>
-			<string>interests-shortcut</string>
+			<string>hobbies-shortcut</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>Interests</string>
+			<string>My Hobbies</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>com.olbart.wwdc16.interests</string>
 		</dict>
@@ -68,6 +56,18 @@
 			<key>UIApplicationShortcutItemType</key>
 			<string>com.olbart.wwdc16.skills</string>
 		</dict>
+	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 </dict>
 </plist>

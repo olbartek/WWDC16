@@ -44,6 +44,7 @@
 		4E7DAF931CC62DCB00D48EB9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7DAF921CC62DCB00D48EB9 /* MainViewController.swift */; };
 		4E7DAF9E1CC62EF500D48EB9 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7DAF9C1CC62EF500D48EB9 /* CategoryTableViewCell.swift */; };
 		4E7DAF9F1CC62EF500D48EB9 /* CategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E7DAF9D1CC62EF500D48EB9 /* CategoryTableViewCell.xib */; };
+		4EBCAD211CCBADFF00C89041 /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBCAD201CCBADFF00C89041 /* DefaultsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		4E7DAF921CC62DCB00D48EB9 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = "UI/Main View/MainViewController.swift"; sourceTree = "<group>"; };
 		4E7DAF9C1CC62EF500D48EB9 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryTableViewCell.swift; path = "UI/Main View/Cells/CategoryTableViewCell.swift"; sourceTree = "<group>"; };
 		4E7DAF9D1CC62EF500D48EB9 /* CategoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CategoryTableViewCell.xib; path = "UI/Main View/Cells/CategoryTableViewCell.xib"; sourceTree = "<group>"; };
+		4EBCAD201CCBADFF00C89041 /* DefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DefaultsManager.swift; path = Utilities/DefaultsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,6 +315,7 @@
 				4E4E355B1CC7BAAD0007BDBD /* bubbles.gif */,
 				4E4E35501CC67C530007BDBD /* IntroViewManager.swift */,
 				4E4E35541CC773760007BDBD /* BubblesAnimator.swift */,
+				4EBCAD201CCBADFF00C89041 /* DefaultsManager.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				4E4E35551CC773760007BDBD /* BubblesAnimator.swift in Sources */,
 				4E7DAF931CC62DCB00D48EB9 /* MainViewController.swift in Sources */,
 				4E3BB79C1CC83F5800D5972C /* Skill.swift in Sources */,
+				4EBCAD211CCBADFF00C89041 /* DefaultsManager.swift in Sources */,
 				4E4E35111CC6559D0007BDBD /* MyAppsViewController.swift in Sources */,
 				4E4E35011CC646F10007BDBD /* Constants.swift in Sources */,
 			);

@@ -19,7 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: App delegate main methods
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        return true
+        DefaultsManager.saveCategoryTypeToPresent(nil)
+        if let launchOptions = launchOptions {
+            return checkIfShortcutItemTriggeredApplicationStartWithLaunchOptions(launchOptions)
+        } else { return true }
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -89,23 +92,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func handleMyAppsShortcut() {
-        print("3D Touch: My Apps pressed.")
-        self.window?.rootViewController?.presentViewController(VC.MyApps, animated: false, completion: nil)
+        DefaultsManager.saveCategoryTypeToPresent(.MyApps)
     }
     
     func handleAboutMeShortcut() {
-        print("3D Touch: About me pressed.")
-        self.window?.rootViewController?.presentViewController(VC.AboutMe, animated: false, completion: nil)
+        DefaultsManager.saveCategoryTypeToPresent(.AboutMe)
     }
     
     func handleInterestsShortcut() {
-        print("3D Touch: Interests pressed.")
-        self.window?.rootViewController?.presentViewController(VC.Interests, animated: false, completion: nil)
+        DefaultsManager.saveCategoryTypeToPresent(.Interests)
     }
     
     func handleSkillsShortcut() {
-        print("3D Touch: Skills pressed.")
-        self.window?.rootViewController?.presentViewController(VC.Skills, animated: false, completion: nil)
+        DefaultsManager.saveCategoryTypeToPresent(.Skills)
     }
 
 

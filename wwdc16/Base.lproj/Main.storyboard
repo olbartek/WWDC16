@@ -150,9 +150,6 @@
                             <constraint firstItem="NCf-8V-05H" firstAttribute="top" secondItem="dcE-g5-6kQ" secondAttribute="bottom" constant="-5" id="Lms-cN-QMG"/>
                             <constraint firstItem="wDq-DG-vQe" firstAttribute="top" secondItem="xHq-xc-oln" secondAttribute="bottom" id="M0o-gN-eCE"/>
                             <constraint firstItem="xHq-xc-oln" firstAttribute="centerX" secondItem="dcE-g5-6kQ" secondAttribute="centerX" id="SPk-CP-U3s"/>
-                            <constraint firstItem="JHe-eW-3iX" firstAttribute="leading" secondItem="NCf-8V-05H" secondAttribute="trailing" constant="8" id="THP-wN-uh3">
-                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
-                            </constraint>
                             <constraint firstItem="dcE-g5-6kQ" firstAttribute="centerX" secondItem="wDq-DG-vQe" secondAttribute="centerX" id="VqG-i5-SB9"/>
                             <constraint firstAttribute="trailing" secondItem="JHe-eW-3iX" secondAttribute="trailing" id="WaW-zC-9YX"/>
                             <constraint firstItem="JHe-eW-3iX" firstAttribute="top" secondItem="wBW-lG-l6F" secondAttribute="bottom" id="WcJ-uu-851"/>
@@ -183,7 +180,6 @@
                                 <exclude reference="fPZ-7v-uXM"/>
                                 <exclude reference="lHx-oB-5OJ"/>
                                 <exclude reference="8ks-BV-QdQ"/>
-                                <exclude reference="THP-wN-uh3"/>
                                 <exclude reference="WaW-zC-9YX"/>
                                 <exclude reference="WcJ-uu-851"/>
                                 <exclude reference="SPk-CP-U3s"/>
@@ -219,7 +215,6 @@
                                 <include reference="fPZ-7v-uXM"/>
                                 <include reference="lHx-oB-5OJ"/>
                                 <include reference="8ks-BV-QdQ"/>
-                                <exclude reference="THP-wN-uh3"/>
                                 <include reference="WaW-zC-9YX"/>
                                 <include reference="WcJ-uu-851"/>
                                 <include reference="SPk-CP-U3s"/>

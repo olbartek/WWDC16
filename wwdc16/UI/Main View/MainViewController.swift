@@ -29,6 +29,7 @@ class MainViewController: UIViewController {
     var animatingImage                  : UIImageView?
     var currentSnapshot                 : UIView?
     var areCategoriesHidden             = true
+    var categoryTypeToPresent           : CategoryType?
     
     var categories: [Category] = {
         var categories = [Category]()
@@ -51,6 +52,16 @@ class MainViewController: UIViewController {
         showNameLabels(true, withAnimation: false)
         addGestureRecognizers()
         setupAnimatingImage()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(appBecomeActive(_:)), name: UIApplicationDidBecomeActiveNotification, object: nil)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+    
+    func appBecomeActive(notification: NSNotification) {
+        handleViewControllerToPresent()
     }
     
     // MARK: Appearance
@@ -61,6 +72,33 @@ class MainViewController: UIViewController {
     
     func configureTableView() {
         tableView.contentInset = UIEdgeInsets(top: 5+8, left: 0, bottom: 5+8, right: 0)
+    }
+    
+    func handleViewControllerToPresent() {
+        categoryTypeToPresent = DefaultsManager.loadCategoryTypeToPresent()
+        if let categoryTypeToPresent = categoryTypeToPresent {
+            let vc: UIViewController?
+            switch categoryTypeToPresent {
+            case .MyApps:
+                vc = VC.MyApps
+            case .AboutMe:
+                vc = VC.AboutMe
+            case .Interests:
+                vc = VC.Interests
+            case .Skills:
+                vc = VC.Skills
+            default:
+                vc = nil
+            }
+            if let vcToPresent = vc as? PresentedViewController {
+                vcToPresent.delegate = self
+                vcToPresent.categoryCellCenter = view.center
+                presentViewController(vcToPresent, animated: false, completion: {
+                    DefaultsManager.saveCategoryTypeToPresent(nil)
+                    self.categoryTypeToPresent = nil
+                })
+            }
+        }
     }
     
     // MARK: Gesture recognizers

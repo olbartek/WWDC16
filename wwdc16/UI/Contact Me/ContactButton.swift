@@ -8,34 +8,34 @@
 
 import UIKit
 
-enum ContactButtonType : Int {
+enum ContactImageType : Int {
     case Facebook, Twitter, Linkedin
 }
 
-class ContactButton: UIButton {
+class ContactImage: UIImageView {
     
-    var type: ContactButtonType? {
+    var type: ContactImageType? {
         didSet {
             guard let currentType = type else { return }
             switch currentType {
             case .Facebook:
-                setImage(UIImage(named:"fb-logo"), forState: .Normal)
+                image = UIImage(named:"fb-logo")
             case .Twitter:
-                setImage(UIImage(named:"twitter-logo"), forState: .Normal)
+                image = UIImage(named:"twitter-logo")
             case .Linkedin:
-                setImage(UIImage(named:"linkedin-logo"), forState: .Normal)
+                image = UIImage(named:"linkedin-logo")
             }
         }
     }
     var startAngle: CGFloat = 0.0
     
     private struct Constants {
-        static let ButtonRadius: CGFloat = 25.0
+        static let ImageRadius: CGFloat = 25.0
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        layer.cornerRadius = Constants.ButtonRadius
+        layer.cornerRadius = Constants.ImageRadius
         layer.masksToBounds = true
     }
 

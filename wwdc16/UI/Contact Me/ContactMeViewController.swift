@@ -13,19 +13,19 @@ class ContactMeViewController: PresentedViewController {
     // MARK: Properties
     
     private struct Constants {
-        static let ButtonSide: CGFloat = 75.0
+        static let ImageSide: CGFloat = 75.0
         static let MovementAnimationDuration: CFTimeInterval = 0.3
         static func MovementAnimationKeyAtIndex(index: Int) -> String { return "movementAnimation\(index)" }
         static let SinglePulseAnimationDuration: CFTimeInterval = 0.5
         static let SigleRotationAnimationDuration: CFTimeInterval = 8
         static let LabelAlphaAnimationDuration: CFTimeInterval = 0.5
-        static let ButtonOffsetFromViewCenter: CGFloat = 100.0
+        static let ImageOffsetFromViewCenter: CGFloat = 100.0
     }
     var currentEndPosition = CGPointZero
-    var currentContactButton: ContactButton?
+    var currentContactImage: ContactImage?
     var animationIndex = 0
     
-    @IBOutlet var contactButtons: [ContactButton]!
+    @IBOutlet var contactImages: [ContactImage]!
     @IBOutlet weak var contactMeLabel: UILabel!
     
     // MARK: VC's Lifecycle
@@ -33,12 +33,12 @@ class ContactMeViewController: PresentedViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .themePinkColor()
-        prepareContactButtons()
+        prepareContactImages()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        hideContactButtons(true)
+        hideContactImages(true)
         contactMeLabel.layer.opacity = 0.0
     }
     
@@ -49,41 +49,43 @@ class ContactMeViewController: PresentedViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        buttonMovementAnimation()
+        contactImagesMovementAnimation()
     }
     
     // MARK: Preparation
     
-    func prepareContactButtons() {
-        for i in 0..<contactButtons.count {
-            let contactButton = contactButtons[i]
-            contactButton.type = ContactButtonType(rawValue: i)
-            contactButton.addTarget(self, action: #selector(didPressContactButton(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+    func prepareContactImages() {
+        for i in 0..<contactImages.count {
+            let contactImage = contactImages[i]
+            contactImage.type = ContactImageType(rawValue: i)
+            contactImage.userInteractionEnabled = true
         }
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOnView(_:)))
+        view.addGestureRecognizer(tapGesture)
     }
     
     // MARK: Appearance
     
-    func hideContactButtons(hide: Bool) {
+    func hideContactImages(hide: Bool) {
         let alphaToSet: CGFloat = hide ? 0.0 : 1.0
-        contactButtons.forEach { (button) in
+        contactImages.forEach { (button) in
             button.alpha = alphaToSet
         }
     }
     
     // MARK: Animations
     
-    func buttonMovementAnimation() {
+    func contactImagesMovementAnimation() {
         
         let startPosition = view.center
-        let initialEndPosition = CGPoint(x: view.center.x, y: view.center.y + Constants.ButtonOffsetFromViewCenter)
-        let initialAngle = 2 * CGFloat(M_PI) / CGFloat(contactButtons.count)
+        let initialEndPosition = CGPoint(x: view.center.x, y: view.center.y + Constants.ImageOffsetFromViewCenter)
+        let initialAngle = 2 * CGFloat(M_PI) / CGFloat(contactImages.count)
         currentEndPosition = CGPointZero
         
         
-        for (index, contactButton) in contactButtons.enumerate() {
+        for (index, contactImage) in contactImages.enumerate() {
             let angle = initialAngle * CGFloat(index)
-            contactButton.startAngle = angle
+            contactImage.startAngle = angle
             
             var rotationTransform = CGAffineTransformMakeTranslation(startPosition.x, startPosition.y)
             rotationTransform = CGAffineTransformRotate(rotationTransform, angle)
@@ -91,7 +93,7 @@ class ContactMeViewController: PresentedViewController {
             let endPosition = CGPointApplyAffineTransform(initialEndPosition, rotationTransform)
             
             currentEndPosition = endPosition
-            currentContactButton = contactButton
+            currentContactImage = contactImage
             
             let alphaAnimation = CABasicAnimation(keyPath: "opacity")
             alphaAnimation.fromValue = 0.0
@@ -107,24 +109,24 @@ class ContactMeViewController: PresentedViewController {
             groupAnimation.duration = Constants.MovementAnimationDuration
             groupAnimation.removedOnCompletion = true
             groupAnimation.fillMode = kCAFillModeBackwards
-            if index == contactButtons.count - 1 {
+            if index == contactImages.count - 1 {
                 groupAnimation.delegate = self
             }
             
-            contactButton.layer.position = endPosition
-            contactButton.layer.opacity = 1.0
-            contactButton.layer.addAnimation(groupAnimation, forKey: Constants.MovementAnimationKeyAtIndex(index))
+            contactImage.layer.position = endPosition
+            contactImage.layer.opacity = 1.0
+            contactImage.layer.addAnimation(groupAnimation, forKey: Constants.MovementAnimationKeyAtIndex(index))
             
         }
     }
     
-    func buttonRotationAnimation() {
+    func contactImagesRotationAnimation() {
         
-        for contactButton in contactButtons {
+        for contactImage in contactImages {
             let animationPath = UIBezierPath()
-            animationPath.moveToPoint(contactButton.layer.position)
-            let startAngle = CGFloat(M_PI_2) + contactButton.startAngle
-            animationPath.addArcWithCenter(view.center, radius: Constants.ButtonOffsetFromViewCenter, startAngle: startAngle, endAngle: 2 * CGFloat(M_PI) + startAngle, clockwise: true)
+            animationPath.moveToPoint(contactImage.layer.position)
+            let startAngle = CGFloat(M_PI_2) + contactImage.startAngle
+            animationPath.addArcWithCenter(view.center, radius: Constants.ImageOffsetFromViewCenter, startAngle: startAngle, endAngle: 2 * CGFloat(M_PI) + startAngle, clockwise: true)
             animationPath.closePath()
             let pathAnimation = CAKeyframeAnimation(keyPath: "position")
             pathAnimation.beginTime = CACurrentMediaTime() + Constants.LabelAlphaAnimationDuration
@@ -136,7 +138,7 @@ class ContactMeViewController: PresentedViewController {
             //pathAnimation.rotationMode = kCAAnimationRotateAuto
             pathAnimation.fillMode = kCAFillModeBoth
             
-            contactButton.layer.addAnimation(pathAnimation, forKey: "movingAnimation")
+            contactImage.layer.addAnimation(pathAnimation, forKey: "movingAnimation")
         }
         
     }
@@ -165,8 +167,8 @@ class ContactMeViewController: PresentedViewController {
     
     func removeAllAnimations() {
         contactMeLabel.layer.removeAllAnimations()
-        contactButtons.forEach { (button) in
-            button.layer.removeAllAnimations()
+        contactImages.forEach { (image) in
+            image.layer.removeAllAnimations()
         }
     }
     
@@ -179,7 +181,7 @@ class ContactMeViewController: PresentedViewController {
 
     override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
         labelPulseAnimation()
-        buttonRotationAnimation()
+        contactImagesRotationAnimation()
         print("Movement Animation stopped")
     }
     
@@ -189,9 +191,17 @@ class ContactMeViewController: PresentedViewController {
         dismissViewControllerWithoutAnimation()
     }
     
-    func didPressContactButton(button: ContactButton) {
-        guard let buttonType = button.type else { return }
-        switch buttonType {
+    func didTapOnView(gesture: UITapGestureRecognizer) {
+        let touchPoint = gesture.locationInView(view)
+        for contactImage in contactImages {
+            if let presentationLayer = contactImage.layer.presentationLayer() as? CALayer, let _ = presentationLayer.hitTest(touchPoint), contactImageType = contactImage.type {
+                didPressContactImageWithType(contactImageType)
+            }
+        }
+    }
+    
+    func didPressContactImageWithType(type: ContactImageType) {
+        switch type {
         case .Facebook:
             print("Facebook button")
         case .Linkedin:

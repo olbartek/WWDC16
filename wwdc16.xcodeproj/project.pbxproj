@@ -44,6 +44,7 @@
 		4E7DAF9F1CC62EF500D48EB9 /* CategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E7DAF9D1CC62EF500D48EB9 /* CategoryTableViewCell.xib */; };
 		4EBCAD211CCBADFF00C89041 /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBCAD201CCBADFF00C89041 /* DefaultsManager.swift */; };
 		4EBCAD231CCBED5000C89041 /* MyLocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBCAD221CCBED5000C89041 /* MyLocationAnnotation.swift */; };
+		4EFBC5FB1CCD332300E18A24 /* BOTextAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFBC5FA1CCD332300E18A24 /* BOTextAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		4E7DAF9D1CC62EF500D48EB9 /* CategoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CategoryTableViewCell.xib; path = "UI/Main View/Cells/CategoryTableViewCell.xib"; sourceTree = "<group>"; };
 		4EBCAD201CCBADFF00C89041 /* DefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DefaultsManager.swift; path = Utilities/DefaultsManager.swift; sourceTree = "<group>"; };
 		4EBCAD221CCBED5000C89041 /* MyLocationAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyLocationAnnotation.swift; path = UI/AboutMe/MyLocationAnnotation.swift; sourceTree = "<group>"; };
+		4EFBC5FA1CCD332300E18A24 /* BOTextAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BOTextAnimator.swift; path = Utilities/BOTextAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -310,6 +312,7 @@
 		4E7DAFA21CC6358000D48EB9 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				4EFBC5FA1CCD332300E18A24 /* BOTextAnimator.swift */,
 				4E4E35501CC67C530007BDBD /* IntroViewManager.swift */,
 				4E4E35541CC773760007BDBD /* BubblesAnimator.swift */,
 				4EBCAD201CCBADFF00C89041 /* DefaultsManager.swift */,
@@ -436,6 +439,7 @@
 				4E4E35511CC67C530007BDBD /* IntroViewManager.swift in Sources */,
 				4E4E35571CC780040007BDBD /* UIView+Constraints.swift in Sources */,
 				4E7DAF911CC62D8600D48EB9 /* UITableViewCell+Identifier.swift in Sources */,
+				4EFBC5FB1CCD332300E18A24 /* BOTextAnimator.swift in Sources */,
 				4E3BB7A91CC9204C00D5972C /* CGFloat+Random.swift in Sources */,
 				4E4E350F1CC655800007BDBD /* AboutMeViewController.swift in Sources */,
 				4E3BB7961CC83D0500D5972C /* SkillsCategoryTableViewCell.swift in Sources */,

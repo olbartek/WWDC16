@@ -26,7 +26,7 @@ class ContactMeViewController: PresentedViewController {
     var animationIndex = 0
     
     @IBOutlet var contactImages: [ContactImage]!
-    @IBOutlet weak var contactMeLabel: UILabel!
+    @IBOutlet weak var contactMeImage: UIImageView!
     
     // MARK: VC's Lifecycle
 
@@ -39,7 +39,7 @@ class ContactMeViewController: PresentedViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         hideContactImages(true)
-        contactMeLabel.layer.opacity = 0.0
+        contactMeImage.layer.opacity = 0.0
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -143,7 +143,7 @@ class ContactMeViewController: PresentedViewController {
         
     }
     
-    func labelPulseAnimation() {
+    func contactMeImagePulseAnimation() {
         let alphaAnimation = CABasicAnimation(keyPath: "opacity")
         alphaAnimation.duration = Constants.LabelAlphaAnimationDuration
         alphaAnimation.fromValue = 0.0
@@ -159,14 +159,14 @@ class ContactMeViewController: PresentedViewController {
         pulseAnimation.toValue = 0.7
         pulseAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         
-        contactMeLabel.layer.opacity = 1.0
+        contactMeImage.layer.opacity = 1.0
         
-        contactMeLabel.layer.addAnimation(alphaAnimation, forKey: "alphaAnimation")
-        contactMeLabel.layer.addAnimation(pulseAnimation, forKey: "pulseAnimation")
+        contactMeImage.layer.addAnimation(alphaAnimation, forKey: "alphaAnimation")
+        contactMeImage.layer.addAnimation(pulseAnimation, forKey: "pulseAnimation")
     }
     
     func removeAllAnimations() {
-        contactMeLabel.layer.removeAllAnimations()
+        contactMeImage.layer.removeAllAnimations()
         contactImages.forEach { (image) in
             image.layer.removeAllAnimations()
         }
@@ -180,7 +180,7 @@ class ContactMeViewController: PresentedViewController {
     }
 
     override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
-        labelPulseAnimation()
+        contactMeImagePulseAnimation()
         contactImagesRotationAnimation()
         print("Movement Animation stopped")
     }

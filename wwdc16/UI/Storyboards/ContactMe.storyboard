@@ -19,12 +19,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Me!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BNY-0L-XIQ">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="contact-me" translatesAutoresizingMaskIntoConstraints="NO" id="SPD-cc-3V7">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="clX-e8-cby"/>
+                                    <constraint firstAttribute="width" constant="30" id="x61-f6-W83"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="clX-e8-cby"/>
+                                        <exclude reference="x61-f6-W83"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="clX-e8-cby"/>
+                                        <include reference="x61-f6-W83"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlA-l2-XN7">
                                 <rect key="frame" x="530" y="28" width="50" height="50"/>
                                 <constraints>
@@ -95,14 +108,14 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="LpP-mr-TMe"/>
                                         <exclude reference="1gT-Cy-27u"/>
+                                        <exclude reference="LpP-mr-TMe"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="LpP-mr-TMe"/>
                                         <include reference="1gT-Cy-27u"/>
+                                        <include reference="LpP-mr-TMe"/>
                                     </mask>
                                 </variation>
                             </imageView>
@@ -110,67 +123,67 @@
                         <color key="backgroundColor" red="0.90980392156862744" green="0.39215686274509803" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="xwE-3Y-7Nv" firstAttribute="centerX" secondItem="6GS-l5-W3b" secondAttribute="centerX" id="1vd-UI-AIp"/>
+                            <constraint firstItem="SPD-cc-3V7" firstAttribute="centerX" secondItem="6GS-l5-W3b" secondAttribute="centerX" id="9x0-7b-pmC"/>
                             <constraint firstItem="hLp-Tx-aLF" firstAttribute="centerY" secondItem="6GS-l5-W3b" secondAttribute="centerY" id="Ci2-6Q-Xdt"/>
-                            <constraint firstItem="BNY-0L-XIQ" firstAttribute="centerX" secondItem="6GS-l5-W3b" secondAttribute="centerX" id="D8x-xg-he7"/>
                             <constraint firstItem="rlA-l2-XN7" firstAttribute="trailing" secondItem="6GS-l5-W3b" secondAttribute="trailingMargin" id="Gor-aR-IfV"/>
+                            <constraint firstItem="SPD-cc-3V7" firstAttribute="centerY" secondItem="6GS-l5-W3b" secondAttribute="centerY" id="KaR-fm-Lmi"/>
                             <constraint firstItem="rlA-l2-XN7" firstAttribute="top" secondItem="kiI-2H-2Ta" secondAttribute="bottom" constant="8" id="QLR-lm-Wol"/>
                             <constraint firstItem="wM9-fw-KSt" firstAttribute="centerX" secondItem="6GS-l5-W3b" secondAttribute="centerX" id="STc-fV-hsS"/>
                             <constraint firstItem="rlA-l2-XN7" firstAttribute="top" secondItem="kiI-2H-2Ta" secondAttribute="bottom" constant="8" id="YqA-D8-dbM"/>
                             <constraint firstItem="xwE-3Y-7Nv" firstAttribute="centerY" secondItem="6GS-l5-W3b" secondAttribute="centerY" id="fuE-Tv-rWi"/>
                             <constraint firstAttribute="trailing" secondItem="rlA-l2-XN7" secondAttribute="trailing" constant="20" id="gX3-6g-xph"/>
-                            <constraint firstItem="BNY-0L-XIQ" firstAttribute="centerY" secondItem="6GS-l5-W3b" secondAttribute="centerY" id="osy-bt-5te"/>
                             <constraint firstItem="hLp-Tx-aLF" firstAttribute="centerX" secondItem="6GS-l5-W3b" secondAttribute="centerX" id="xAE-aU-yyA"/>
                             <constraint firstItem="wM9-fw-KSt" firstAttribute="centerY" secondItem="6GS-l5-W3b" secondAttribute="centerY" id="xW5-cu-m6h"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="BNY-0L-XIQ"/>
+                                <exclude reference="SPD-cc-3V7"/>
                                 <exclude reference="rlA-l2-XN7"/>
                                 <exclude reference="xwE-3Y-7Nv"/>
                                 <exclude reference="hLp-Tx-aLF"/>
                                 <exclude reference="wM9-fw-KSt"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="1vd-UI-AIp"/>
-                                <exclude reference="fuE-Tv-rWi"/>
-                                <exclude reference="Ci2-6Q-Xdt"/>
-                                <exclude reference="xAE-aU-yyA"/>
-                                <exclude reference="STc-fV-hsS"/>
-                                <exclude reference="xW5-cu-m6h"/>
                                 <exclude reference="Gor-aR-IfV"/>
                                 <exclude reference="QLR-lm-Wol"/>
                                 <exclude reference="YqA-D8-dbM"/>
                                 <exclude reference="gX3-6g-xph"/>
-                                <exclude reference="D8x-xg-he7"/>
-                                <exclude reference="osy-bt-5te"/>
+                                <exclude reference="Ci2-6Q-Xdt"/>
+                                <exclude reference="xAE-aU-yyA"/>
+                                <exclude reference="STc-fV-hsS"/>
+                                <exclude reference="xW5-cu-m6h"/>
+                                <exclude reference="1vd-UI-AIp"/>
+                                <exclude reference="fuE-Tv-rWi"/>
+                                <exclude reference="9x0-7b-pmC"/>
+                                <exclude reference="KaR-fm-Lmi"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="BNY-0L-XIQ"/>
+                                <include reference="SPD-cc-3V7"/>
                                 <include reference="rlA-l2-XN7"/>
                                 <include reference="xwE-3Y-7Nv"/>
                                 <include reference="hLp-Tx-aLF"/>
                                 <include reference="wM9-fw-KSt"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="1vd-UI-AIp"/>
-                                <include reference="fuE-Tv-rWi"/>
-                                <include reference="Ci2-6Q-Xdt"/>
-                                <include reference="xAE-aU-yyA"/>
-                                <include reference="STc-fV-hsS"/>
-                                <include reference="xW5-cu-m6h"/>
                                 <exclude reference="Gor-aR-IfV"/>
                                 <include reference="QLR-lm-Wol"/>
                                 <include reference="YqA-D8-dbM"/>
                                 <include reference="gX3-6g-xph"/>
-                                <include reference="D8x-xg-he7"/>
-                                <include reference="osy-bt-5te"/>
+                                <include reference="Ci2-6Q-Xdt"/>
+                                <include reference="xAE-aU-yyA"/>
+                                <include reference="STc-fV-hsS"/>
+                                <include reference="xW5-cu-m6h"/>
+                                <include reference="1vd-UI-AIp"/>
+                                <include reference="fuE-Tv-rWi"/>
+                                <include reference="9x0-7b-pmC"/>
+                                <include reference="KaR-fm-Lmi"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="contactMeLabel" destination="BNY-0L-XIQ" id="nMl-Ph-XPG"/>
+                        <outlet property="contactMeImage" destination="SPD-cc-3V7" id="yuW-lN-If6"/>
                         <outletCollection property="contactImages" destination="xwE-3Y-7Nv" collectionClass="NSMutableArray" id="i1E-vk-l3c"/>
                         <outletCollection property="contactImages" destination="hLp-Tx-aLF" collectionClass="NSMutableArray" id="aQS-qc-9K5"/>
                         <outletCollection property="contactImages" destination="wM9-fw-KSt" collectionClass="NSMutableArray" id="qSh-kE-ATq"/>
@@ -182,6 +195,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="contact-me" width="80" height="80"/>
         <image name="fb-logo" width="250" height="250"/>
         <image name="linkedin-logo" width="250" height="250"/>
         <image name="twitter-logo" width="75" height="75"/>

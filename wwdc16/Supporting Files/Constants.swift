@@ -56,9 +56,9 @@ struct Animation {
         static let Duration = 0.5
     }
     struct Bubbles {
-        static let Duration: NSTimeInterval = 4.0
-        static let RotateOneHalfDuration: CFTimeInterval = 1.5
-        static let DelayBetweenRotations: CFTimeInterval = 0.25
+        static let RotateOneHalfDuration: CFTimeInterval = 1.0
+        static let DelayBetweenRotations: CFTimeInterval = 0.0
+        static let DelayAfterRotations: CFTimeInterval = 0.5
     }
 }
 
@@ -67,7 +67,7 @@ struct CategoryModel {
     static let IconNames        = ["about-me", "my-apps", "hobbies", "skills", "contact-me"]
     static let Titles           = ["About me", "My Apps", "My Hobbies", "My Skills", "Contact Me!"]
     static let Colors           : [UIColor] = [.themeBlueColor(), .themeMarineColor(), .themeAzureColor(), .themeSkyBlueColor(), .themePinkColor()]
-    static let TVCHeight: CGFloat = 250.0
+    static let TVCHeight        : CGFloat = 250.0
 }
 
 struct SkillCategoryModel {
@@ -82,7 +82,7 @@ struct SkillCategoryModel {
         ["name" : "Electronics",
         "imageName" : "skill-category-electronics",
         "skills" : [
-                ["skillName" : "ARM Cortex-M", "percentage" : 60],
+                ["skillName" : "ARM Cortex", "percentage" : 60],
                 ["skillName" : "AVR", "percentage" : 50],
                 ["skillName" : "RaspberryPI", "percentage" : 35]
         ]],

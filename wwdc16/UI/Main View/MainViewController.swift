@@ -16,12 +16,18 @@ class MainViewController: UIViewController {
     
     // MARK: Properties
     
+    private struct Constants {
+        static let BubbleAnimationViewSide: CGFloat = 300.0
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var surnameLabel: UILabel!
     @IBOutlet weak var leftMarginView: UIView!
     @IBOutlet weak var rightMarginView: UIView!
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topBar: UIView!
+    @IBOutlet weak var bottomBar: UIView!
     
     var showCategoriesTapGesture        : UITapGestureRecognizer?
     var hideCategoriesTapGestureLeft    : UITapGestureRecognizer?
@@ -30,6 +36,8 @@ class MainViewController: UIViewController {
     var currentSnapshot                 : UIView?
     var areCategoriesHidden             = true
     var categoryTypeToPresent           : CategoryType?
+    var bubbleAnimationView             : UIView?
+    var bubblesAnimator                 : BubblesAnimator?
     
     var categories: [Category] = {
         var categories = [Category]()
@@ -51,7 +59,6 @@ class MainViewController: UIViewController {
         configureTableView()
         showNameLabels(true, withAnimation: false)
         addGestureRecognizers()
-        setupAnimatingImage()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(appBecomeActive(_:)), name: UIApplicationDidBecomeActiveNotification, object: nil)
     }
     
@@ -156,8 +163,8 @@ class MainViewController: UIViewController {
     func doAnimation() {
         view.userInteractionEnabled = false
         showNameLabels(false)
-        //animateImage()
-        showCategories()
+        performSelector(#selector(animateBubbles), withObject: nil, afterDelay: Animation.ShowNameLabels.Duration)
+        performSelector(#selector(showCategories), withObject: nil, afterDelay: Animation.ShowNameLabels.Duration + 2 * Animation.Bubbles.RotateOneHalfDuration + Animation.Bubbles.DelayBetweenRotations)
     }
     
     func undoAnimation() {
@@ -189,6 +196,8 @@ class MainViewController: UIViewController {
     }
     
     func showCategories() {
+        topBar.hidden = false
+        bottomBar.hidden = false
         tableViewHeightConstraint.constant = MainTableView.MaxHeight
         UIView.animateWithDuration(Animation.ShowCategories.Duration,
                                    delay: Animation.ShowCategories.Delay,
@@ -206,36 +215,37 @@ class MainViewController: UIViewController {
             })
     }
     
-    func animateImage() {
-        animatingImage?.startAnimating()
+    func animateBubbles() {
+        let bubbleAnimationView = UIView(frame: CGRectZero)
+        bubbleAnimationView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bubbleAnimationView)
+        view.bringSubviewToFront(bubbleAnimationView)
+        bubbleAnimationView
+            .constrain(.CenterY, .Equal, bubbleAnimationView.superview!, .CenterY)?
+            .constrain(.CenterX, .Equal, bubbleAnimationView.superview!, .CenterX)?
+            .constrain(.Width, .Equal, constant: Constants.BubbleAnimationViewSide)?
+            .constrain(.Height, .Equal, constant: Constants.BubbleAnimationViewSide)
+        self.bubbleAnimationView = bubbleAnimationView
+        
+        let bubblesAnimator = BubblesAnimator(referenceView: bubbleAnimationView)
+        bubblesAnimator.delegate = self
+        self.bubblesAnimator = bubblesAnimator
+        
+        topBar.hidden = true
+        bottomBar.hidden = true
+        
+        bubblesAnimator.startAnimation()
     }
     
-    func setupAnimatingImage() {
-        let animatingImage = UIImageView(frame: CGRect(origin: CGPointZero, size: CGSize(width: AnimatingImage.Width, height: AnimatingImage.Height)))
-        animatingImage.center = view.center
-        animatingImage.animationImages       = [UIImage(named: "bubbles.gif")!]
-        animatingImage.animationDuration     = Animation.Bubbles.Duration
-        animatingImage.animationRepeatCount  = 0
-        self.animatingImage = animatingImage
-        view.addSubview(animatingImage)
-    }
-    
-    func generateAnimationImages() -> [UIImage] {
-        var imgs: [UIImage] = []
-        var imgName = ""
-        for i in 0...55 {
-            if i < 10 {
-                imgName = "Comp 1_0000\(i)"
-            } else if i == 34 { continue }
-            else {
-                imgName = "Comp 1_000\(i)"
-            }
-            
-            imgs.append(UIImage(named: imgName)!)
+    func cleanupAfterBubblesAnimation() {
+        if let bubbleAnimationView = bubbleAnimationView {
+            bubbleAnimationView.removeFromSuperview()
+            self.bubbleAnimationView = nil
         }
-        return imgs
+        if let _ = bubblesAnimator {
+            self.bubblesAnimator = nil
+        }
     }
-    
     
 }
 
@@ -305,6 +315,8 @@ extension MainViewController: CategoryTableViewCellDelegate {
     }
 }
 
+// MARK: MainViewController delegate
+
 extension MainViewController: MainViewControllerDelegate {
     func presentedViewControllerWillDismissToCenterPoint(centerPoint: CGPoint, withSnapShot snapshot: UIView) {
         currentSnapshot = snapshot
@@ -314,5 +326,16 @@ extension MainViewController: MainViewControllerDelegate {
                 self.currentSnapshot!.removeFromSuperview()
                 self.currentSnapshot = nil
         }
+    }
+}
+
+// MARK: BubblesAnimator delegate
+
+extension MainViewController: BubblesAnimatorDelegate {
+    func bubbleAnimationDidStart() {
+        
+    }
+    func bubbleAnimationDidStop() {
+        cleanupAfterBubblesAnimation()
     }
 }

@@ -177,28 +177,28 @@
                                 <exclude reference="etg-ke-l0Q"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="56B-D8-4zK"/>
+                                <exclude reference="G1E-N6-fjf"/>
+                                <exclude reference="ftd-qN-xgG"/>
+                                <exclude reference="gNF-Jd-erF"/>
+                                <exclude reference="pul-Oe-58e"/>
+                                <exclude reference="wQV-hs-dXC"/>
+                                <exclude reference="SPk-CP-U3s"/>
+                                <exclude reference="lpa-0v-2mN"/>
                                 <exclude reference="fPZ-7v-uXM"/>
                                 <exclude reference="lHx-oB-5OJ"/>
                                 <exclude reference="8ks-BV-QdQ"/>
                                 <exclude reference="WaW-zC-9YX"/>
                                 <exclude reference="WcJ-uu-851"/>
-                                <exclude reference="SPk-CP-U3s"/>
-                                <exclude reference="lpa-0v-2mN"/>
                                 <exclude reference="KaV-ab-aOS"/>
                                 <exclude reference="Lms-cN-QMG"/>
                                 <exclude reference="gRy-I4-vB8"/>
-                                <exclude reference="M0o-gN-eCE"/>
                                 <exclude reference="D7G-BR-5gH"/>
                                 <exclude reference="Ici-wv-m59"/>
                                 <exclude reference="VqG-i5-SB9"/>
                                 <exclude reference="eh4-rf-Esn"/>
                                 <exclude reference="w44-6e-UCK"/>
-                                <exclude reference="ftd-qN-xgG"/>
-                                <exclude reference="gNF-Jd-erF"/>
-                                <exclude reference="pul-Oe-58e"/>
-                                <exclude reference="wQV-hs-dXC"/>
-                                <exclude reference="56B-D8-4zK"/>
-                                <exclude reference="G1E-N6-fjf"/>
+                                <exclude reference="M0o-gN-eCE"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -212,108 +212,45 @@
                                 <include reference="etg-ke-l0Q"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="56B-D8-4zK"/>
+                                <include reference="G1E-N6-fjf"/>
+                                <include reference="ftd-qN-xgG"/>
+                                <include reference="gNF-Jd-erF"/>
+                                <include reference="pul-Oe-58e"/>
+                                <include reference="wQV-hs-dXC"/>
+                                <include reference="SPk-CP-U3s"/>
+                                <include reference="lpa-0v-2mN"/>
                                 <include reference="fPZ-7v-uXM"/>
                                 <include reference="lHx-oB-5OJ"/>
                                 <include reference="8ks-BV-QdQ"/>
                                 <include reference="WaW-zC-9YX"/>
                                 <include reference="WcJ-uu-851"/>
-                                <include reference="SPk-CP-U3s"/>
-                                <include reference="lpa-0v-2mN"/>
                                 <include reference="KaV-ab-aOS"/>
                                 <include reference="Lms-cN-QMG"/>
                                 <include reference="gRy-I4-vB8"/>
-                                <include reference="M0o-gN-eCE"/>
                                 <include reference="D7G-BR-5gH"/>
                                 <include reference="Ici-wv-m59"/>
                                 <include reference="VqG-i5-SB9"/>
                                 <include reference="eh4-rf-Esn"/>
                                 <include reference="w44-6e-UCK"/>
-                                <include reference="ftd-qN-xgG"/>
-                                <include reference="gNF-Jd-erF"/>
-                                <include reference="pul-Oe-58e"/>
-                                <include reference="wQV-hs-dXC"/>
-                                <include reference="56B-D8-4zK"/>
-                                <include reference="G1E-N6-fjf"/>
+                                <include reference="M0o-gN-eCE"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="bottomBar" destination="NCf-8V-05H" id="YOZ-T9-vcw"/>
                         <outlet property="leftMarginView" destination="0O4-MI-R3P" id="tuI-vb-JP9"/>
                         <outlet property="nameLabel" destination="xHq-xc-oln" id="qzH-DP-vhc"/>
                         <outlet property="rightMarginView" destination="JHe-eW-3iX" id="Npu-tw-lR3"/>
                         <outlet property="surnameLabel" destination="etg-ke-l0Q" id="fbK-An-FLw"/>
                         <outlet property="tableView" destination="dcE-g5-6kQ" id="Tr0-KZ-hyh"/>
                         <outlet property="tableViewHeightConstraint" destination="SsP-c3-MNb" id="T12-Jy-bIK"/>
+                        <outlet property="topBar" destination="wDq-DG-vQe" id="amR-UD-q9Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8En-YH-gfh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="196.5" y="275.25"/>
-        </scene>
-        <!--Animate View Controller-->
-        <scene sceneID="bSL-6D-hr7">
-            <objects>
-                <viewController id="fup-6s-Hr3" customClass="AnimateViewController" customModule="wwdc16" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Tr2-Q5-6dh"/>
-                        <viewControllerLayoutGuide type="bottom" id="06q-nq-YMT"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="46G-7U-9Rz">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iIb-mP-AMj">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" red="0.99215686270000003" green="0.3921568627" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="PN1-3i-KN0"/>
-                                    <constraint firstAttribute="height" constant="300" id="v53-vA-dlM"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="PN1-3i-KN0"/>
-                                        <exclude reference="v53-vA-dlM"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="PN1-3i-KN0"/>
-                                        <include reference="v53-vA-dlM"/>
-                                    </mask>
-                                </variation>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="iIb-mP-AMj" firstAttribute="centerY" secondItem="46G-7U-9Rz" secondAttribute="centerY" id="BG5-7n-HnZ"/>
-                            <constraint firstItem="iIb-mP-AMj" firstAttribute="centerX" secondItem="46G-7U-9Rz" secondAttribute="centerX" id="ydP-V1-ef0"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="iIb-mP-AMj"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="BG5-7n-HnZ"/>
-                                <exclude reference="ydP-V1-ef0"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="iIb-mP-AMj"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="BG5-7n-HnZ"/>
-                                <include reference="ydP-V1-ef0"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <connections>
-                        <outlet property="animationView" destination="iIb-mP-AMj" id="eBd-y3-axS"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dHc-ee-NzB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="823.5" y="272.25"/>
         </scene>
     </scenes>
 </document>

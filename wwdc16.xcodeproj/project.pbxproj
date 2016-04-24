@@ -28,11 +28,9 @@
 		4E4E35131CC655B50007BDBD /* SkillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35121CC655B50007BDBD /* SkillsViewController.swift */; };
 		4E4E35151CC655D10007BDBD /* InterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35141CC655D10007BDBD /* InterestsViewController.swift */; };
 		4E4E35511CC67C530007BDBD /* IntroViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35501CC67C530007BDBD /* IntroViewManager.swift */; };
-		4E4E35531CC7727C0007BDBD /* AnimateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35521CC7727C0007BDBD /* AnimateViewController.swift */; };
 		4E4E35551CC773760007BDBD /* BubblesAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35541CC773760007BDBD /* BubblesAnimator.swift */; };
 		4E4E35571CC780040007BDBD /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35561CC780040007BDBD /* UIView+Constraints.swift */; };
 		4E4E355A1CC7B0A60007BDBD /* AnimatedBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E35591CC7B0A60007BDBD /* AnimatedBubble.swift */; };
-		4E4E355C1CC7BAAD0007BDBD /* bubbles.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4E4E355B1CC7BAAD0007BDBD /* bubbles.gif */; };
 		4E4E355F1CC817100007BDBD /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E355E1CC817100007BDBD /* Category.swift */; };
 		4E7DAF611CC6278E00D48EB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7DAF601CC6278E00D48EB9 /* AppDelegate.swift */; };
 		4E7DAF661CC6278E00D48EB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E7DAF641CC6278E00D48EB9 /* Main.storyboard */; };
@@ -80,11 +78,9 @@
 		4E4E35121CC655B50007BDBD /* SkillsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SkillsViewController.swift; path = UI/Skills/SkillsViewController.swift; sourceTree = "<group>"; };
 		4E4E35141CC655D10007BDBD /* InterestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InterestsViewController.swift; path = UI/Interests/InterestsViewController.swift; sourceTree = "<group>"; };
 		4E4E35501CC67C530007BDBD /* IntroViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntroViewManager.swift; path = Utilities/IntroViewManager.swift; sourceTree = "<group>"; };
-		4E4E35521CC7727C0007BDBD /* AnimateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnimateViewController.swift; path = "UI/Main View/AnimateViewController.swift"; sourceTree = "<group>"; };
 		4E4E35541CC773760007BDBD /* BubblesAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BubblesAnimator.swift; path = Utilities/BubblesAnimator.swift; sourceTree = "<group>"; };
 		4E4E35561CC780040007BDBD /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Constraints.swift"; path = "Extensions/UIView+Constraints.swift"; sourceTree = "<group>"; };
 		4E4E35591CC7B0A60007BDBD /* AnimatedBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnimatedBubble.swift; path = "UI/Main View/Bubble/AnimatedBubble.swift"; sourceTree = "<group>"; };
-		4E4E355B1CC7BAAD0007BDBD /* bubbles.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bubbles.gif; sourceTree = "<group>"; };
 		4E4E355E1CC817100007BDBD /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Category.swift; path = Model/Category.swift; sourceTree = "<group>"; };
 		4E7DAF5D1CC6278E00D48EB9 /* wwdc16.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wwdc16.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E7DAF601CC6278E00D48EB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -276,7 +272,6 @@
 			children = (
 				4E7DAF831CC62B6D00D48EB9 /* Cells */,
 				4E7DAF921CC62DCB00D48EB9 /* MainViewController.swift */,
-				4E4E35521CC7727C0007BDBD /* AnimateViewController.swift */,
 			);
 			name = "Main View";
 			sourceTree = "<group>";
@@ -315,7 +310,6 @@
 		4E7DAFA21CC6358000D48EB9 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				4E4E355B1CC7BAAD0007BDBD /* bubbles.gif */,
 				4E4E35501CC67C530007BDBD /* IntroViewManager.swift */,
 				4E4E35541CC773760007BDBD /* BubblesAnimator.swift */,
 				4EBCAD201CCBADFF00C89041 /* DefaultsManager.swift */,
@@ -412,7 +406,6 @@
 				4E7DAF661CC6278E00D48EB9 /* Main.storyboard in Resources */,
 				4E4E35071CC654A10007BDBD /* Skills.storyboard in Resources */,
 				4E3BB7971CC83D0500D5972C /* SkillsCategoryTableViewCell.xib in Resources */,
-				4E4E355C1CC7BAAD0007BDBD /* bubbles.gif in Resources */,
 				4E3BB7A71CC8DD7300D5972C /* ContactMe.storyboard in Resources */,
 				4E7DAF9F1CC62EF500D48EB9 /* CategoryTableViewCell.xib in Resources */,
 				4E3BB7A01CC8487B00D5972C /* SkillTableViewCell.xib in Resources */,
@@ -433,7 +426,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E4E35531CC7727C0007BDBD /* AnimateViewController.swift in Sources */,
 				4E3BB7A51CC8DD3700D5972C /* ContactMeViewController.swift in Sources */,
 				4E3BB79F1CC8487B00D5972C /* SkillTableViewCell.swift in Sources */,
 				4E3BB7A21CC8CEA300D5972C /* PresentedViewController.swift in Sources */,

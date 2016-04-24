@@ -94,7 +94,6 @@ class InterestsViewController: PresentedViewController {
 extension InterestsViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let contentOffsetX = scrollView.contentOffset.x
-        print("\(contentOffsetX)")
         for (index, headerViewAnimator) in headerViewAnimators.enumerate() {
             let startOffsetX = viewWidth * (CGFloat(index) - 0.5)
             let endOffsetX = startOffsetX + 0.5 * viewWidth

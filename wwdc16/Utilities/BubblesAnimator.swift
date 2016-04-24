@@ -79,8 +79,8 @@ class BubblesAnimator: NSObject {
         if let presentationLayer = barView.layer.presentationLayer() as? CALayer {
             let angle = atan2f(Float(presentationLayer.affineTransform().b), Float(presentationLayer.affineTransform().a))
             let wholeRangeAngle = (angle <= 0 ? angle + 2 * Float(M_PI): angle)
-            let degrees = wholeRangeAngle * 180.0 / Float(M_PI)
-            print("\(degrees)")
+//            let degrees = wholeRangeAngle * 180.0 / Float(M_PI)
+//            print("\(degrees)")
             for i in 0..<5 {
                 if let bubbleType = AnimatedBubbleType(rawValue: i) {
                     let newBubble = createBubbleWithType(bubbleType, startAngle: CGFloat(wholeRangeAngle), maxDuration: 2 * Animation.Bubbles.RotateOneHalfDuration + Animation.Bubbles.DelayBetweenRotations - Double(timerTicks) * 0.1)

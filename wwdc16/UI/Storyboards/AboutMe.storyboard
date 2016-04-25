@@ -26,14 +26,16 @@
                                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EqI-La-XwL" userLabel="firstView">
                                                 <rect key="frame" x="20" y="20" width="400" height="800"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uaY-8K-xuD">
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uaY-8K-xuD" customClass="CloseButton" customModule="wwdc16" customModuleProvider="target">
                                                         <rect key="frame" x="330" y="20" width="50" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="50" id="e4v-ec-Tqj"/>
                                                             <constraint firstAttribute="height" constant="50" id="uNL-40-oZ9"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                        <state key="normal" title="X"/>
+                                                        <state key="normal">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
                                                         <variation key="default">
                                                             <mask key="constraints">
                                                                 <exclude reference="e4v-ec-Tqj"/>
@@ -212,7 +214,6 @@
                                                 <variation key="default">
                                                     <mask key="constraints">
                                                         <exclude reference="Ijf-4O-JMq"/>
-                                                        <exclude reference="HhW-eq-2io"/>
                                                         <exclude reference="Wb3-Bf-m29"/>
                                                         <exclude reference="jN8-di-IrM"/>
                                                         <exclude reference="tdL-hx-Wxa"/>
@@ -228,12 +229,12 @@
                                                         <exclude reference="hmP-zm-hGy"/>
                                                         <exclude reference="32b-ZK-t5X"/>
                                                         <exclude reference="WtM-pu-3YS"/>
+                                                        <exclude reference="HhW-eq-2io"/>
                                                     </mask>
                                                 </variation>
                                                 <variation key="heightClass=regular-widthClass=compact">
                                                     <mask key="constraints">
                                                         <include reference="Ijf-4O-JMq"/>
-                                                        <include reference="HhW-eq-2io"/>
                                                         <include reference="Wb3-Bf-m29"/>
                                                         <include reference="jN8-di-IrM"/>
                                                         <include reference="tdL-hx-Wxa"/>
@@ -249,6 +250,7 @@
                                                         <include reference="hmP-zm-hGy"/>
                                                         <include reference="32b-ZK-t5X"/>
                                                         <include reference="WtM-pu-3YS"/>
+                                                        <include reference="HhW-eq-2io"/>
                                                     </mask>
                                                 </variation>
                                             </view>
@@ -665,6 +667,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="400" height="1600"/>
                     <connections>
+                        <outlet property="closeButton" destination="uaY-8K-xuD" id="b0b-Hs-ASw"/>
                         <outlet property="distanceLabel" destination="vFl-FN-93P" id="Tjs-Ze-QJu"/>
                         <outlet property="distanceUnitLabel" destination="aj8-4e-crM" id="eye-Ve-3jP"/>
                         <outlet property="distanceViewPositionConstraint" destination="yIV-Ql-e4v" id="368-E5-9lw"/>

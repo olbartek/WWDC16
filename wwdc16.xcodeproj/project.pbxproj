@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E0B7E311CCE4B070062F5B1 /* UIBezierPath+crossPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B7E301CCE4B070062F5B1 /* UIBezierPath+crossPath.swift */; };
+		4E0B7E331CCE53120062F5B1 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B7E321CCE53120062F5B1 /* CloseButton.swift */; };
 		4E3BB7961CC83D0500D5972C /* SkillsCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3BB7941CC83D0500D5972C /* SkillsCategoryTableViewCell.swift */; };
 		4E3BB7971CC83D0500D5972C /* SkillsCategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E3BB7951CC83D0500D5972C /* SkillsCategoryTableViewCell.xib */; };
 		4E3BB79A1CC83EE600D5972C /* SkillsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3BB7991CC83EE600D5972C /* SkillsCategory.swift */; };
@@ -58,6 +60,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E0B7E301CCE4B070062F5B1 /* UIBezierPath+crossPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIBezierPath+crossPath.swift"; path = "Extensions/UIBezierPath+crossPath.swift"; sourceTree = "<group>"; };
+		4E0B7E321CCE53120062F5B1 /* CloseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloseButton.swift; path = UI/CloseButton.swift; sourceTree = "<group>"; };
 		4E3BB7941CC83D0500D5972C /* SkillsCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SkillsCategoryTableViewCell.swift; path = UI/Skills/Cells/SkillsCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		4E3BB7951CC83D0500D5972C /* SkillsCategoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SkillsCategoryTableViewCell.xib; path = UI/Skills/Cells/SkillsCategoryTableViewCell.xib; sourceTree = "<group>"; };
 		4E3BB7991CC83EE600D5972C /* SkillsCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SkillsCategory.swift; path = Model/Skills/SkillsCategory.swift; sourceTree = "<group>"; };
@@ -254,6 +258,7 @@
 				4E3BB7A31CC8DD0700D5972C /* Contact Me */,
 				4E7DAFA01CC6353500D48EB9 /* Storyboards */,
 				4E3BB7A11CC8CEA300D5972C /* PresentedViewController.swift */,
+				4E0B7E321CCE53120062F5B1 /* CloseButton.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -265,6 +270,7 @@
 				4E7DAF901CC62D8600D48EB9 /* UITableViewCell+Identifier.swift */,
 				4E4E35561CC780040007BDBD /* UIView+Constraints.swift */,
 				4E3BB7A81CC9204C00D5972C /* CGFloat+Random.swift */,
+				4E0B7E301CCE4B070062F5B1 /* UIBezierPath+crossPath.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -429,6 +435,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E0B7E311CCE4B070062F5B1 /* UIBezierPath+crossPath.swift in Sources */,
 				4E3BB7A51CC8DD3700D5972C /* ContactMeViewController.swift in Sources */,
 				4E3BB79F1CC8487B00D5972C /* SkillTableViewCell.swift in Sources */,
 				4E3BB7A21CC8CEA300D5972C /* PresentedViewController.swift in Sources */,
@@ -446,6 +453,7 @@
 				4E7DAF8F1CC62D4800D48EB9 /* UIColor+ThemeColor.swift in Sources */,
 				4E4E355F1CC817100007BDBD /* Category.swift in Sources */,
 				4E4E35151CC655D10007BDBD /* InterestsViewController.swift in Sources */,
+				4E0B7E331CCE53120062F5B1 /* CloseButton.swift in Sources */,
 				4E4E35131CC655B50007BDBD /* SkillsViewController.swift in Sources */,
 				4E7DAF611CC6278E00D48EB9 /* AppDelegate.swift in Sources */,
 				4E4E355A1CC7B0A60007BDBD /* AnimatedBubble.swift in Sources */,

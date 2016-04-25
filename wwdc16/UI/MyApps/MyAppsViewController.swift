@@ -108,5 +108,24 @@ class MyAppsViewController: PresentedViewController {
     @IBAction func didPressCloseButton() {
         dismissViewControllerWithoutAnimation()
     }
+}
 
+extension MyAppsViewController: UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        changeCloseButtonColor()
+    }
+    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+        changeCloseButtonColor()
+    }
+    
+    func changeCloseButtonColor() {
+        let pageIndex = Int(scrollView.contentOffset.x) / Int(viewWidth)
+        if pageIndex == 0 {
+        closeButton.bottomLeftTopRightCrossPartLayer?.fillColor = UIColor.whiteColor().CGColor
+        closeButton.topLeftBottomRightCrossPartLayer?.fillColor = UIColor.whiteColor().CGColor
+        } else {
+        closeButton.bottomLeftTopRightCrossPartLayer?.fillColor = UIColor.themeMarineColor().CGColor
+        closeButton.topLeftBottomRightCrossPartLayer?.fillColor = UIColor.themeMarineColor().CGColor
+        }
+    }
 }

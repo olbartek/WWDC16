@@ -37,6 +37,8 @@ class AboutMeViewController: PresentedViewController {
     @IBOutlet weak var distanceUnitLabel: UILabel!
     @IBOutlet weak var userLocationTextField: UITextField!
     
+    
+    
     @IBOutlet weak var visibleViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var distanceViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var distanceViewPositionConstraint: NSLayoutConstraint!

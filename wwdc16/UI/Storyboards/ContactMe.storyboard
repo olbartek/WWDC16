@@ -37,14 +37,16 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlA-l2-XN7">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlA-l2-XN7" customClass="CloseButton" customModule="wwdc16" customModuleProvider="target">
                                 <rect key="frame" x="530" y="28" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="KO1-sA-9Lp"/>
                                     <constraint firstAttribute="height" constant="50" id="cJA-Ph-vYa"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="X"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="KO1-sA-9Lp"/>
@@ -378,6 +380,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="closeButton" destination="rlA-l2-XN7" id="m2I-oz-146"/>
                         <outlet property="contactInfoImage" destination="AyO-3Q-fTf" id="z9k-Nt-mnT"/>
                         <outlet property="contactInfoImageHeightConstraint" destination="8Yy-3Z-ZC5" id="6rO-vO-7a8"/>
                         <outlet property="contactInfoLabel" destination="YGx-6M-vJB" id="Jll-41-7TF"/>

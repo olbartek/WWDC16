@@ -14,11 +14,29 @@ class PresentedViewController: UIViewController {
     
     var delegate            : MainViewControllerDelegate?
     var categoryCellCenter  = CGPointZero
+    @IBOutlet weak var closeButton: CloseButton!
     
     // MARK: VC's Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        view.setNeedsLayout()
+        view.setNeedsDisplay()
+        closeButton.drawCross()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        closeButton.removeCrossLayer()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        closeButton.animateCross()
     }
     
     // MARK: Dismiss animation
@@ -32,14 +50,5 @@ class PresentedViewController: UIViewController {
             }
         }
     }
-    
-//    func createSnapShot() {
-//        if let superVC =  as? UIViewController {
-//            let snapshot = superVC.view.snapshotViewAfterScreenUpdates(false)
-//            if let window = UIApplication.sharedApplication().keyWindow {
-//                window.rootViewController?.view.addSubview(snapshot)
-//            }
-//        }
-//    }
 
 }

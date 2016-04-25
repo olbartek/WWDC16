@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "wwdc16/UI/Skills/SkillsViewController.swift"
-            timestampString = "483115225.898396"
+            timestampString = "483306131.212301"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -586,11 +586,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "wwdc16/UI/CloseButton.swift"
-            timestampString = "483288877.942424"
+            timestampString = "483300946.581359"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "drawCross()"
             landmarkType = "5">
          </BreakpointContent>
@@ -618,11 +618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "wwdc16/UI/CloseButton.swift"
-            timestampString = "483290987.025245"
+            timestampString = "483300946.581359"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "animateCross()"
             landmarkType = "5">
          </BreakpointContent>
@@ -634,11 +634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "wwdc16/UI/CloseButton.swift"
-            timestampString = "483290496.025086"
+            timestampString = "483300946.581359"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "drawCross()"
             landmarkType = "5">
          </BreakpointContent>
@@ -650,11 +650,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "wwdc16/UI/MyApps/MyAppsViewController.swift"
-            timestampString = "483291667.709671"
+            timestampString = "483294721.212382"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "scrollViewDidEndScrollingAnimation(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -666,13 +666,141 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "wwdc16/UI/MyApps/MyAppsViewController.swift"
-            timestampString = "483291668.448323"
+            timestampString = "483294721.212382"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "scrollViewDidEndDecelerating(_:)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "wwdc16/UI/Skills/SkillsViewController.swift"
+            timestampString = "483306131.212301"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "skillsCategoryCell(_:shouldOpenSkillsWithTouchForce:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "wwdc16.SkillsViewController.skillsCategoryCell (wwdc16.SkillsCategoryTableViewCell, shouldOpenSkillsWithTouchForce : CoreGraphics.CGFloat) -&gt; ()"
+                  moduleName = "wwdc16"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bartosz/Library/Developer/Xcode%20Projects/_myProjects/wwdc16/wwdc16/UI/Skills/SkillsViewController.swift"
+                  timestampString = "483303005.078875"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "120"
+                  endingLineNumber = "120"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "wwdc16.SkillsViewController.skillsCategoryCell (wwdc16.SkillsCategoryTableViewCell, shouldOpenSkillsWithTouchForce : CoreGraphics.CGFloat) -&gt; ()"
+                  moduleName = "wwdc16"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bartosz/Library/Developer/Xcode%20Projects/_myProjects/wwdc16/wwdc16/UI/Skills/SkillsViewController.swift"
+                  timestampString = "483303005.079045"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "120"
+                  endingLineNumber = "120"
+                  offsetFromSymbolStart = "84">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "wwdc16/UI/Skills/SkillsViewController.swift"
+            timestampString = "483306131.212301"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "enlargeCell(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "wwdc16/UI/Skills/SkillsViewController.swift"
+            timestampString = "483306131.212301"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "shrinkCell(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "wwdc16/UI/Skills/SkillsViewController.swift"
+            timestampString = "483306131.212301"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "tableView(_:didDeselectRowAtIndexPath:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "wwdc16.SkillsViewController.tableView (__ObjC.UITableView, didDeselectRowAtIndexPath : __ObjC.NSIndexPath) -&gt; ()"
+                  moduleName = "wwdc16"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bartosz/Library/Developer/Xcode%20Projects/_myProjects/wwdc16/wwdc16/UI/Skills/SkillsViewController.swift"
+                  timestampString = "483303972.532465"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "wwdc16.SkillsViewController.tableView (__ObjC.UITableView, didDeselectRowAtIndexPath : __ObjC.NSIndexPath) -&gt; ()"
+                  moduleName = "wwdc16"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bartosz/Library/Developer/Xcode%20Projects/_myProjects/wwdc16/wwdc16/UI/Skills/SkillsViewController.swift"
+                  timestampString = "483303972.532624"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "88">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

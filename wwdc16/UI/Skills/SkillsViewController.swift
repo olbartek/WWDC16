@@ -28,20 +28,24 @@ class SkillsViewController: PresentedViewController {
         }
         return categories
     }()
-    var selectedIndexPath: NSIndexPath?
+    var enlargedCell: SkillsCategoryTableViewCell?
     
     // MARK: VC's Lifecyle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .themeSkyBlueColor()
         registerNibs()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        closeButton.setFillColor(.themeSkyBlueColor())
+    }
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        if let selectedIndexPath = selectedIndexPath {
-            shrinkCellAtIndexPath(selectedIndexPath)
+        if let enlargedCell = enlargedCell {
+            enlargedCell.setDefaultColors()
+            shrinkCell(enlargedCell)
         }
     }
     
@@ -70,39 +74,49 @@ extension SkillsViewController: UITableViewDelegate, UITableViewDataSource {
         
         let skillCategory = skillCategories[indexPath.row]
         cell.configureWithSkillCategory(skillCategory)
+        if traitCollection.isForceTouchAvailable() {
+            cell.delegate = self
+        }
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let selectedIndexPath = selectedIndexPath where selectedIndexPath.row == indexPath.row {
-            shrinkCellAtIndexPath(indexPath)
-        } else {
-            enlargeCellAtIndexPath(indexPath)
+        if !traitCollection.isForceTouchAvailable() {
+            if let enlargedCell = enlargedCell {
+                shrinkCell(enlargedCell)
+            } else {
+                let cell = tableView.cellForRowAtIndexPath(indexPath) as! SkillsCategoryTableViewCell
+                enlargeCell(cell)
+            }
         }
     }
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        shrinkCellAtIndexPath(indexPath)
+        if !traitCollection.isForceTouchAvailable() {
+            if let enlargedCell = enlargedCell {
+                shrinkCell(enlargedCell)
+            }
+        }
     }
     
-    func shrinkCellAtIndexPath(indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! SkillsCategoryTableViewCell
+    func shrinkCell(cell: SkillsCategoryTableViewCell) {
         cell.cellViewHeightConstraint.constant = 0
-        selectedIndexPath = nil
+        enlargedCell = nil
         tableView.beginUpdates()
         tableView.endUpdates()
         cell.restartSkillsAnimation()
+        cell.isOpened = false
+        cell.shouldOpenDelegateSent = false
     }
     
-    func enlargeCellAtIndexPath(indexPath: NSIndexPath) {
-        selectedIndexPath = indexPath
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! SkillsCategoryTableViewCell
-        let selectedSkillCategory = skillCategories[indexPath.row]
-        let cellsHeight = SkillModel.TVCHeight * CGFloat(selectedSkillCategory.skills.count)
+    func enlargeCell(cell: SkillsCategoryTableViewCell) {
+        enlargedCell = cell
+        let cellsHeight = SkillModel.TVCHeight * CGFloat(cell.tableView.numberOfRowsInSection(0))
         cell.cellViewHeightConstraint.constant = SkillCategoryModel.TVCBasicHeight + cellsHeight
         tableView.beginUpdates()
         tableView.endUpdates()
         cell.startSkillsAnimation()
+        cell.isOpened = true
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -113,4 +127,18 @@ extension SkillsViewController: UITableViewDelegate, UITableViewDataSource {
         return UITableViewAutomaticDimension
     }
 
+}
+
+// MARK: SkillsCategoryTableViewCell delegate
+
+extension SkillsViewController: SkillsCategoryTableViewCellDelegate {
+    func skillsCategoryCell(cell: SkillsCategoryTableViewCell, shouldOpenSkillsWithTouchForce touchForce: CGFloat) {
+        if let enlargedCell = enlargedCell where enlargedCell != cell {
+            enlargedCell.setDefaultColors()
+            shrinkCell(enlargedCell)
+            enlargeCell(cell)
+        } else {
+            enlargeCell(cell)
+        }
+    }
 }

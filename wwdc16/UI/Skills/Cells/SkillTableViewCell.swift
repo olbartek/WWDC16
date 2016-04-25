@@ -12,11 +12,15 @@ class SkillTableViewCell: UITableViewCell {
     
     // MARK: Properties
     
+    private struct Constants {
+        static let ForceTouchNotAvailableColor = UIColor(red: 183.0 / 255.0, green: 183.0 / 255.0, blue: 183.0 / 255.0, alpha: 1.0)
+    }
+    
     @IBOutlet var nameLabel         : UILabel!
     @IBOutlet weak var progressView : UIView!
     @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
     
-    let progressViewWidth: CGFloat = 180.0
+    let progressViewWidth           : CGFloat  = 180.0
     var progress                    : CGFloat = 1.0
     
     // MARK: Configuration
@@ -26,6 +30,14 @@ class SkillTableViewCell: UITableViewCell {
         progress = CGFloat(skill.knowledgePercentage) / 100.0
         selectionStyle = .None
         userInteractionEnabled = false
+        backgroundColor = .clearColor()
+        if traitCollection.isForceTouchAvailable() {
+            nameLabel.textColor = .whiteColor()
+            progressView.backgroundColor = .whiteColor()
+        } else {
+            nameLabel.textColor = Constants.ForceTouchNotAvailableColor
+            progressView.backgroundColor = Constants.ForceTouchNotAvailableColor
+        }
     }
     
     // MARK: Animations

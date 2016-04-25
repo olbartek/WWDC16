@@ -276,7 +276,7 @@
                                                             </mask>
                                                         </variation>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ht1-JS-Nfp" userLabel="arrowDownView">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ht1-JS-Nfp" userLabel="arrowUpView">
                                                         <rect key="frame" x="100" y="712" width="200" height="60"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j71-Lb-8ex">

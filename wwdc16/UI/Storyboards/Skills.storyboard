@@ -51,7 +51,7 @@
                                     <constraint firstAttribute="height" constant="50" id="4Uf-0N-QnJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="35"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.52941176470588236" green="0.74901960784313726" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -88,7 +88,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.52941176470588236" green="0.74901960784313726" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="7Gd-bV-D0o" firstAttribute="top" secondItem="mBS-mI-jOx" secondAttribute="bottom" constant="8" id="1q2-WF-eIL"/>
                             <constraint firstItem="XPi-i1-DwX" firstAttribute="leading" secondItem="Jnz-Pa-RRw" secondAttribute="leadingMargin" id="78k-RA-kr3"/>

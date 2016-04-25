@@ -31,6 +31,13 @@ class CloseButton: UIButton {
         super.init(coder: aDecoder)
     }
     
+    // MARK: SetUp
+    
+    func setFillColor(color: UIColor) {
+        topLeftBottomRightCrossPartLayer?.fillColor = color.CGColor
+        bottomLeftTopRightCrossPartLayer?.fillColor = color.CGColor
+    }
+    
     // MARK: Drawing
 
     func drawCross() {

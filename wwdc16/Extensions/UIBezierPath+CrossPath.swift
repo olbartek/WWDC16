@@ -1,5 +1,5 @@
 //
-//  UIBezierPath+crossPath.swift
+//  UIBezierPath+CrossPath.swift
 //  wwdc16
 //
 //  Created by Bartosz Olszanowski on 25.04.2016.

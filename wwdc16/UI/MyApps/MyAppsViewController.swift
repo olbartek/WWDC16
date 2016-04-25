@@ -49,6 +49,7 @@ class MyAppsViewController: PresentedViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         setupMoveFirstViewTimer()
+        changeCloseButtonColor()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -121,11 +122,9 @@ extension MyAppsViewController: UIScrollViewDelegate {
     func changeCloseButtonColor() {
         let pageIndex = Int(scrollView.contentOffset.x) / Int(viewWidth)
         if pageIndex == 0 {
-        closeButton.bottomLeftTopRightCrossPartLayer?.fillColor = UIColor.whiteColor().CGColor
-        closeButton.topLeftBottomRightCrossPartLayer?.fillColor = UIColor.whiteColor().CGColor
+            closeButton.setFillColor(.whiteColor())
         } else {
-        closeButton.bottomLeftTopRightCrossPartLayer?.fillColor = UIColor.themeMarineColor().CGColor
-        closeButton.topLeftBottomRightCrossPartLayer?.fillColor = UIColor.themeMarineColor().CGColor
+            closeButton.setFillColor(.themeMarineColor())
         }
     }
 }

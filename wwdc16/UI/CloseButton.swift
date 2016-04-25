@@ -21,6 +21,8 @@ class CloseButton: UIButton {
     var topLeftBottomRightCrossPartLayer: CAShapeLayer?
     var bottomLeftTopRightCrossPartLayer: CAShapeLayer?
     
+    private var buttonFillColor: UIColor?
+    
     // MARK: Initialization
     
     override init(frame: CGRect) {
@@ -34,6 +36,7 @@ class CloseButton: UIButton {
     // MARK: SetUp
     
     func setFillColor(color: UIColor) {
+        buttonFillColor = color
         topLeftBottomRightCrossPartLayer?.fillColor = color.CGColor
         bottomLeftTopRightCrossPartLayer?.fillColor = color.CGColor
     }
@@ -41,10 +44,12 @@ class CloseButton: UIButton {
     // MARK: Drawing
 
     func drawCross() {
+        let fillColor = buttonFillColor ?? Constants.ButtonFillColor
+        
         let topLeftBottomRightBezierPath = UIBezierPath.crossPartTopLeftToBottomRightWithinRect(bounds, thickness: Constants.ButtonThickness)
         let topLeftBottomRightCrossPartLayer = CAShapeLayer()
         topLeftBottomRightCrossPartLayer.path = topLeftBottomRightBezierPath.CGPath
-        topLeftBottomRightCrossPartLayer.fillColor = Constants.ButtonFillColor.CGColor
+        topLeftBottomRightCrossPartLayer.fillColor = fillColor.CGColor
         let layerFrameTopLeftBottomRight = CGPathGetBoundingBox(topLeftBottomRightBezierPath.CGPath)
         topLeftBottomRightCrossPartLayer.bounds = layerFrameTopLeftBottomRight
         topLeftBottomRightCrossPartLayer.frame = layerFrameTopLeftBottomRight
@@ -55,7 +60,7 @@ class CloseButton: UIButton {
         let bottomLeftTopRightBezierPath = UIBezierPath.crossPartBottomLeftTopRightWithinRect(bounds, thickness: Constants.ButtonThickness)
         let bottomLeftTopRightCrossPartLayer = CAShapeLayer()
         bottomLeftTopRightCrossPartLayer.path = bottomLeftTopRightBezierPath.CGPath
-        bottomLeftTopRightCrossPartLayer.fillColor = Constants.ButtonFillColor.CGColor
+        bottomLeftTopRightCrossPartLayer.fillColor = fillColor.CGColor
         let layerFrameBottomLeftTopRight = CGPathGetBoundingBox(bottomLeftTopRightBezierPath.CGPath)
         bottomLeftTopRightCrossPartLayer.bounds = layerFrameBottomLeftTopRight
         bottomLeftTopRightCrossPartLayer.frame = layerFrameBottomLeftTopRight

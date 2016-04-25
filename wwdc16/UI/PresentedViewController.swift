@@ -26,7 +26,6 @@ class PresentedViewController: UIViewController {
         super.viewWillAppear(animated)
         view.setNeedsLayout()
         view.setNeedsDisplay()
-        closeButton.drawCross()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -36,6 +35,7 @@ class PresentedViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        closeButton.drawCross()
         closeButton.animateCross()
     }
     

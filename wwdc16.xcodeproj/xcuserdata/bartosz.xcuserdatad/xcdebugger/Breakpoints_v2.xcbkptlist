@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "wwdc16/UI/Contact Me/ContactMeViewController.swift"
-            timestampString = "483180194.778161"
+            timestampString = "483278824.634719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
             landmarkName = "contactImagesRotationAnimation()"
             landmarkType = "5">
          </BreakpointContent>
@@ -528,6 +528,38 @@
             startingLineNumber = "62"
             endingLineNumber = "62"
             landmarkName = "viewDidAppear(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "wwdc16/UI/Contact Me/ContactMeViewController.swift"
+            timestampString = "483278824.634719"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "prepareContactImages()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "wwdc16/UI/Contact Me/ContactMeViewController.swift"
+            timestampString = "483278824.634719"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "prepareContactInfoView()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

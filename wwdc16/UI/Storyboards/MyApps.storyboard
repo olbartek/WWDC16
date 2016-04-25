@@ -56,7 +56,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="0.2196078431372549" green="0.81568627450980391" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.36862745098039218" green="0.792156862745098" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="YW2-6w-N6i" secondAttribute="trailing" constant="8" id="7J8-uL-dYC"/>
                                                             <constraint firstItem="YW2-6w-N6i" firstAttribute="top" secondItem="R23-cL-wpp" secondAttribute="bottom" constant="8" id="D5m-M6-t55"/>
@@ -127,7 +127,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clime" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUe-lR-aQX">
                                                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="30"/>
-                                                                <color key="textColor" red="0.21960784310000001" green="0.81568627449999997" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="textColor" red="0.36862745099999999" green="0.79215686269999996" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clime-icon" translatesAutoresizingMaskIntoConstraints="NO" id="DQ4-LY-ATp">
@@ -250,7 +250,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acti" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOU-ef-shj">
                                                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="30"/>
-                                                                <color key="textColor" red="0.21960784310000001" green="0.81568627449999997" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="textColor" red="0.36862745099999999" green="0.79215686269999996" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="acti-screen" translatesAutoresizingMaskIntoConstraints="NO" id="1Ue-Hd-ZMF">
@@ -417,7 +417,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GreatKiddo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgy-IZ-iqw">
                                                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="30"/>
-                                                                <color key="textColor" red="0.21960784310000001" green="0.81568627449999997" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="textColor" red="0.36862745099999999" green="0.79215686269999996" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greatkiddo-screen" translatesAutoresizingMaskIntoConstraints="NO" id="fzd-xK-yDB">
@@ -825,7 +825,7 @@
         <image name="clime-icon" width="512" height="512"/>
         <image name="clime-screen" width="375" height="667"/>
         <image name="greatkiddo-icon" width="512" height="512"/>
-        <image name="greatkiddo-screen" width="621" height="1104"/>
+        <image name="greatkiddo-screen" width="375" height="666"/>
         <image name="my-apps-large" width="300" height="300"/>
     </resources>
 </document>

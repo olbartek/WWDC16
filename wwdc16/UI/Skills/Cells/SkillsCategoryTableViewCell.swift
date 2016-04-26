@@ -23,7 +23,7 @@ class SkillsCategoryTableViewCell: UITableViewCell {
         static let Brightness: CGFloat = 96.0 / 100.0
         static let MinSaturation: CGFloat = 5.0 / 100.0
         static let MaxSaturation: CGFloat = 67.0 / 100.0
-        static let MinForcePercentageToOpenCell: CGFloat = 0.8
+        static let MinForcePercentageToOpenCell: CGFloat = 0.95
     }
     
     @IBOutlet var titleLabel: UILabel!

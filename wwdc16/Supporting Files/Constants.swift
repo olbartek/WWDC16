@@ -75,16 +75,19 @@ struct SkillCategoryModel {
         ["name" : "Programming",
         "imageName" : "skill-category-programming",
         "skills" : [
-            ["skillName" : "Obj-C", "percentage" : 90],
-            ["skillName" : "Swift", "percentage" : 70],
-            ["skillName" : "PHP", "percentage" : 60]
+            ["skillName" : "Obj-C", "percentage" : 80],
+            ["skillName" : "Swift", "percentage" : 90],
+            ["skillName" : "PHP", "percentage" : 60],
+            ["skillName" : "C", "percentage" : 70],
+            ["skillName" : "C++", "percentage" : 50]
         ]],
         ["name" : "Electronics",
         "imageName" : "skill-category-electronics",
         "skills" : [
-                ["skillName" : "ARM Cortex", "percentage" : 60],
-                ["skillName" : "AVR", "percentage" : 50],
-                ["skillName" : "RaspberryPI", "percentage" : 35]
+                ["skillName" : "ARM Cortex", "percentage" : 70],
+                ["skillName" : "AVR", "percentage" : 30],
+                ["skillName" : "RaspberryPI", "percentage" : 60],
+                ["skillName" : "Arduino", "percentage" : 20]
         ]],
         ["name" : "Graphic Design",
         "imageName" : "skill-category-graphic-design",

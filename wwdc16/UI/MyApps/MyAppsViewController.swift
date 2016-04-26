@@ -35,7 +35,9 @@ class MyAppsViewController: PresentedViewController {
         }
     }
     @IBOutlet weak var introImage: UIImageView!
-    @IBOutlet var appImageViews: [UIImageView]!
+    @IBOutlet var firstAppImageViews: [UIImageView]!
+    @IBOutlet var secondAppImageViews: [UIImageView]!
+    @IBOutlet var thirdAppImageViews: [UIImageView]!
     @IBOutlet weak var closeButtonLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var viewWidthConstraint: NSLayoutConstraint!
     
@@ -53,12 +55,14 @@ class MyAppsViewController: PresentedViewController {
         setupMoveFirstViewTimer()
         changeCloseButtonColor()
         addIntroImageAnimation()
+        addAppImagesAnimationForPageIndex(getCurrentPageIndex())
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         invalidateTimer()
         removeIntroImageAnimation()
+        removeAppImagesAnimation()
     }
     
     // MARK: Appearance
@@ -66,6 +70,10 @@ class MyAppsViewController: PresentedViewController {
     func setConstraints() {
         closeButtonLeadingConstraint.constant = view.bounds.size.width - Constants.CloseButtonOffsetFromRightEdge
         viewWidthConstraint.constant = viewWidth
+    }
+    
+    func getCurrentPageIndex() -> Int {
+        return Int(scrollView.contentOffset.x) / Int(viewWidth)
     }
     
     // MARK: Animations
@@ -101,6 +109,130 @@ class MyAppsViewController: PresentedViewController {
         introImage.layer.removeAllAnimations()
     }
     
+    func addAppImagesAnimationForPageIndex(pageIndex: Int) {
+        removeAppImagesAnimation()
+        switch pageIndex {
+        case 1:
+            addGroupAnimationToFirstImage(firstAppImageViews.first!, secondImage: firstAppImageViews.last!)
+        case 2:
+            addGroupAnimationToFirstImage(secondAppImageViews.first!, secondImage: secondAppImageViews.last!)
+        case 3:
+            addGroupAnimationToFirstImage(thirdAppImageViews.first!, secondImage: thirdAppImageViews.last!)
+        default:
+            break
+        }
+    }
+    
+    func removeAppImagesAnimation() {
+        firstAppImageViews.forEach { (imageView) in
+            imageView.layer.removeAllAnimations()
+        }
+        secondAppImageViews.forEach { (imageView) in
+            imageView.layer.removeAllAnimations()
+        }
+        thirdAppImageViews.forEach { (imageView) in
+            imageView.layer.removeAllAnimations()
+        }
+    }
+    
+    func addGroupAnimationToFirstImage(firstImage: UIImageView, secondImage: UIImageView) {
+        
+        firstImage.layer.zPosition = -1
+        secondImage.layer.zPosition = 1
+        
+        firstImage.layer.addAnimation(firstPhotoAnimation(), forKey: "shuffle")
+        secondImage.layer.addAnimation(secondPhotoAnimation(), forKey: "shuffle")
+        
+    }
+    
+    func firstPhotoAnimation() -> CAAnimationGroup {
+        let zPosition = CABasicAnimation(keyPath: "zPosition")
+        zPosition.fromValue = -1
+        zPosition.toValue = 1
+        zPosition.duration = 1.2
+        
+        let rotation = CAKeyframeAnimation(keyPath: "transform.rotation")
+        rotation.values = [0, 0.14, 0]
+        rotation.duration = 1.2
+        rotation.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut), CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)]
+        
+        let position = CAKeyframeAnimation(keyPath: "position")
+        position.values = [NSValue(CGPoint: CGPointZero), NSValue(CGPoint: CGPoint(x: 100, y: -20)), NSValue(CGPoint: CGPointZero)]
+        position.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut), CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)]
+        position.additive = true
+        position.duration = 1.2
+        
+        let zPosition2 = CABasicAnimation(keyPath: "zPosition")
+        zPosition2.fromValue = 1
+        zPosition2.toValue = -1
+        zPosition2.beginTime = zPosition.duration
+        zPosition2.duration = 1.2
+        
+        let rotation2 = CAKeyframeAnimation(keyPath: "transform.rotation")
+        rotation2.values = [0, 0.14, 0]
+        rotation2.beginTime = rotation.duration
+        rotation2.duration = 1.2
+        rotation2.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut), CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)]
+        
+        let position2 = CAKeyframeAnimation(keyPath: "position")
+        position2.values = [NSValue(CGPoint: CGPointZero), NSValue(CGPoint: CGPoint(x: 100, y: -20)), NSValue(CGPoint: CGPointZero)]
+        position2.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut), CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)]
+        position2.additive = true
+        position2.beginTime = position.duration
+        position2.duration = 1.2
+        
+        let group = CAAnimationGroup()
+        group.animations = [zPosition, rotation, position, zPosition2, rotation2, position2]
+        group.duration = 6
+        group.repeatCount = Float.infinity
+        
+        return group
+    }
+    
+    func secondPhotoAnimation() -> CAAnimationGroup {
+        let zPosition = CABasicAnimation(keyPath: "zPosition")
+        zPosition.fromValue = 1
+        zPosition.toValue = -1
+        zPosition.duration = 1.2
+        
+        let rotation = CAKeyframeAnimation(keyPath: "transform.rotation")
+        rotation.values = [0, -0.14, 0]
+        rotation.duration = 1.2
+        rotation.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut), CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)]
+        
+        let position = CAKeyframeAnimation(keyPath: "position")
+        position.values = [NSValue(CGPoint: CGPointZero), NSValue(CGPoint: CGPoint(x: -100, y: 20)), NSValue(CGPoint: CGPointZero)]
+        position.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut), CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)]
+        position.additive = true
+        position.duration = 1.2
+        
+        let zPosition2 = CABasicAnimation(keyPath: "zPosition")
+        zPosition2.fromValue = -1
+        zPosition2.toValue = 1
+        zPosition2.beginTime = zPosition.duration
+        zPosition2.duration = 1.2
+        
+        let rotation2 = CAKeyframeAnimation(keyPath: "transform.rotation")
+        rotation2.values = [0, -0.14, 0]
+        rotation2.beginTime = rotation.duration
+        rotation2.duration = 1.2
+        rotation2.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut), CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)]
+        
+        let position2 = CAKeyframeAnimation(keyPath: "position")
+        position2.values = [NSValue(CGPoint: CGPointZero), NSValue(CGPoint: CGPoint(x: -100, y: 20)), NSValue(CGPoint: CGPointZero)]
+        position2.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut), CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)]
+        position2.additive = true
+        position2.beginTime = position.duration
+        position2.duration = 1.2
+        
+        let group = CAAnimationGroup()
+        group.animations = [zPosition, rotation, position, zPosition2, rotation2, position2]
+        group.duration = 6
+        group.repeatCount = Float.infinity
+        
+        return group
+    }
+    
     // MARK: NSTimer
     
     func setupMoveFirstViewTimer() {
@@ -111,6 +243,7 @@ class MyAppsViewController: PresentedViewController {
         let pageIndex = Int(scrollView.contentOffset.x) / Int(viewWidth)
         if pageIndex == 0 {
             scrollView.setContentOffset(CGPoint(x: viewWidth, y: 0), animated: true)
+            IntroViewManager.presentIntroViewWithType(.MyApps, onPresenter: self)
         }
     }
     
@@ -132,7 +265,7 @@ class MyAppsViewController: PresentedViewController {
     }
     
     func didDetectSwipeDown(gesture: UISwipeGestureRecognizer) {
-        let pageIndex = Int(scrollView.contentOffset.x) / Int(viewWidth)
+        let pageIndex = getCurrentPageIndex()
         
         if pageIndex != 0 && pageIndex <= Constants.AppURLs.count {
             if let urlToOpen = NSURL(string: Constants.AppURLs[pageIndex - 1]) {
@@ -151,9 +284,11 @@ class MyAppsViewController: PresentedViewController {
 extension MyAppsViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         changeCloseButtonColor()
+        addAppImagesAnimationForPageIndex(getCurrentPageIndex())
     }
     func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
         changeCloseButtonColor()
+        addAppImagesAnimationForPageIndex(getCurrentPageIndex())
     }
     
     func changeCloseButtonColor() {

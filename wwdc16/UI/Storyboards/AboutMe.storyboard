@@ -109,14 +109,12 @@
                                                             </mask>
                                                         </variation>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Lorem Ipsum is simply dummy text of the printing and typeset- ting industry. Lorem Ipsum has been the industry's stavi." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZZ-Az-gyM">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" ambiguous="YES" misplaced="YES" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZZ-Az-gyM">
                                                         <rect key="frame" x="20" y="421" width="360" height="291"/>
+                                                        <string key="text">I am student on a fifth year of Automatics and Robotics at AGH Univesity of Technology in Cracow, Poland. I started my iOS development adventure one year ago and I am very proud of choosing my carrier. </string>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
-                                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                            <rect key="frame" x="20" y="429" width="360" height="291"/>
-                                                        </variation>
                                                     </label>
                                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oyZ-d0-kaZ" userLabel="arrowDownView">
                                                         <rect key="frame" x="100" y="712" width="200" height="60"/>

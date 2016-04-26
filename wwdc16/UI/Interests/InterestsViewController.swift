@@ -247,6 +247,7 @@ class InterestsViewController: PresentedViewController {
         let pageIndex = Int(scrollView.contentOffset.x) / Int(viewWidth)
         if pageIndex == 0 {
             scrollView.setContentOffset(CGPoint(x: viewWidth, y: 0), animated: true)
+            IntroViewManager.presentIntroViewWithType(.MyHobbies, onPresenter: self)
         }
     }
     

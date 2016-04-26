@@ -41,6 +41,10 @@ class SkillsViewController: PresentedViewController {
         super.viewWillAppear(animated)
         closeButton.setFillColor(.themeSkyBlueColor())
     }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        IntroViewManager.presentIntroViewWithType(.MySkills, onPresenter: self)
+    }
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         if let enlargedCell = enlargedCell {

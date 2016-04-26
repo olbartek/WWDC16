@@ -50,6 +50,8 @@
 		4E9381F11CCFA8FD0029B502 /* snowboard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E9381EE1CCFA8FD0029B502 /* snowboard.jpg */; };
 		4E9381F21CCFA8FD0029B502 /* travelling.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E9381EF1CCFA8FD0029B502 /* travelling.jpg */; };
 		4E9381F31CCFA8FD0029B502 /* electronics.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E9381F01CCFA8FD0029B502 /* electronics.jpg */; };
+		4E9381F51CCFBEF20029B502 /* IntroViewTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9381F41CCFBEF20029B502 /* IntroViewTemplate.swift */; };
+		4E9381F81CCFBF200029B502 /* IntroViewTemplate.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E9381F71CCFBF200029B502 /* IntroViewTemplate.xib */; };
 		4EBCAD211CCBADFF00C89041 /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBCAD201CCBADFF00C89041 /* DefaultsManager.swift */; };
 		4EBCAD231CCBED5000C89041 /* MyLocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBCAD221CCBED5000C89041 /* MyLocationAnnotation.swift */; };
 		4EFBC5FB1CCD332300E18A24 /* BOTextAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFBC5FA1CCD332300E18A24 /* BOTextAnimator.swift */; };
@@ -113,6 +115,8 @@
 		4E9381EE1CCFA8FD0029B502 /* snowboard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = snowboard.jpg; sourceTree = "<group>"; };
 		4E9381EF1CCFA8FD0029B502 /* travelling.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = travelling.jpg; sourceTree = "<group>"; };
 		4E9381F01CCFA8FD0029B502 /* electronics.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = electronics.jpg; sourceTree = "<group>"; };
+		4E9381F41CCFBEF20029B502 /* IntroViewTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntroViewTemplate.swift; path = Utilities/IntroViewTemplate.swift; sourceTree = "<group>"; };
+		4E9381F71CCFBF200029B502 /* IntroViewTemplate.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IntroViewTemplate.xib; path = Utilities/IntroViewTemplate.xib; sourceTree = "<group>"; };
 		4EBCAD201CCBADFF00C89041 /* DefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DefaultsManager.swift; path = Utilities/DefaultsManager.swift; sourceTree = "<group>"; };
 		4EBCAD221CCBED5000C89041 /* MyLocationAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyLocationAnnotation.swift; path = UI/AboutMe/MyLocationAnnotation.swift; sourceTree = "<group>"; };
 		4EFBC5FA1CCD332300E18A24 /* BOTextAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BOTextAnimator.swift; path = Utilities/BOTextAnimator.swift; sourceTree = "<group>"; };
@@ -344,12 +348,22 @@
 		4E7DAFA21CC6358000D48EB9 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				4E9381F61CCFBEF50029B502 /* IntroView */,
 				4EFBC5FA1CCD332300E18A24 /* BOTextAnimator.swift */,
-				4E4E35501CC67C530007BDBD /* IntroViewManager.swift */,
 				4E4E35541CC773760007BDBD /* BubblesAnimator.swift */,
 				4EBCAD201CCBADFF00C89041 /* DefaultsManager.swift */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		4E9381F61CCFBEF50029B502 /* IntroView */ = {
+			isa = PBXGroup;
+			children = (
+				4E4E35501CC67C530007BDBD /* IntroViewManager.swift */,
+				4E9381F41CCFBEF20029B502 /* IntroViewTemplate.swift */,
+				4E9381F71CCFBF200029B502 /* IntroViewTemplate.xib */,
+			);
+			name = IntroView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -445,6 +459,7 @@
 				4E7DAF661CC6278E00D48EB9 /* Main.storyboard in Resources */,
 				4E4E35071CC654A10007BDBD /* Skills.storyboard in Resources */,
 				4E3BB7971CC83D0500D5972C /* SkillsCategoryTableViewCell.xib in Resources */,
+				4E9381F81CCFBF200029B502 /* IntroViewTemplate.xib in Resources */,
 				4E3BB7A71CC8DD7300D5972C /* ContactMe.storyboard in Resources */,
 				4E9381F11CCFA8FD0029B502 /* snowboard.jpg in Resources */,
 				4E7DAF9F1CC62EF500D48EB9 /* CategoryTableViewCell.xib in Resources */,
@@ -489,6 +504,7 @@
 				4E7DAF611CC6278E00D48EB9 /* AppDelegate.swift in Sources */,
 				4E4E355A1CC7B0A60007BDBD /* AnimatedBubble.swift in Sources */,
 				4E4E35551CC773760007BDBD /* BubblesAnimator.swift in Sources */,
+				4E9381F51CCFBEF20029B502 /* IntroViewTemplate.swift in Sources */,
 				4E7DAF931CC62DCB00D48EB9 /* MainViewController.swift in Sources */,
 				4E3BB79C1CC83F5800D5972C /* Skill.swift in Sources */,
 				4E0B7E351CCE89B40062F5B1 /* UITraitCollection+ForceTouch.swift in Sources */,

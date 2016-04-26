@@ -170,6 +170,7 @@ class ContactMeViewController: PresentedViewController {
     func contactImagesRotationAnimation() {
         
         for contactImage in contactImages {
+            contactImage.layer.removeAllAnimations()
             let animationPath = UIBezierPath()
             animationPath.moveToPoint(contactImage.layer.position)
             let startAngle = CGFloat(M_PI_2) + contactImage.startAngle
@@ -181,7 +182,7 @@ class ContactMeViewController: PresentedViewController {
             pathAnimation.path  = animationPath.CGPath
             pathAnimation.repeatCount = Float.infinity
             pathAnimation.calculationMode = kCAAnimationPaced
-            pathAnimation.fillMode = kCAFillModeBoth
+            pathAnimation.fillMode = kCAFillModeBackwards
             
             contactImage.layer.addAnimation(pathAnimation, forKey: "movingAnimation")
         }
@@ -222,11 +223,11 @@ class ContactMeViewController: PresentedViewController {
         contactInfoImage.image = imageFromType(type)
         contactInfoLabel.text = contactTextFromType(type)
         contactInfoImageHeightConstraint.constant = Constants.ContactInfoImageMaxHeight
-        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.5, options: .CurveEaseInOut, animations: {
+        UIView.animateWithDuration(0.25, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.5, options: .CurveEaseInOut, animations: {
             self.view.layoutIfNeeded()
             }) { (finished) in
                 self.contactInfoLabelLeadingConstraint.constant = 0
-                UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.5, options: .CurveEaseInOut, animations: {
+                UIView.animateWithDuration(0.25, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.5, options: .CurveEaseInOut, animations: {
                     self.view.layoutIfNeeded()
                     }, completion: { (finished) in
                         self.contactInfoViewAnimating = false
@@ -238,11 +239,11 @@ class ContactMeViewController: PresentedViewController {
     func hideContactInfoAndShowAnotherInfo(showAnother: Bool, withType type: ContactImageType? = nil) {
         contactInfoViewAnimating = true
         contactInfoLabelLeadingConstraint.constant = -1.0 * contactInfoLabelWidthConstraint.constant
-        UIView.animateWithDuration(0.5, animations: {
+        UIView.animateWithDuration(0.25, animations: {
             self.view.layoutIfNeeded()
             }) { (finished) in
                 self.contactInfoImageHeightConstraint.constant = Constants.ContactInfoImageMinHeight
-                UIView.animateWithDuration(0.5, animations: {
+                UIView.animateWithDuration(0.25, animations: {
                     self.view.layoutIfNeeded()
                     }, completion: { [weak self](finished) in
                         guard let weakSelf = self else { return }
@@ -282,6 +283,7 @@ class ContactMeViewController: PresentedViewController {
         for contactImage in contactImages {
             if let presentationLayer = contactImage.layer.presentationLayer() as? CALayer, let _ = presentationLayer.hitTest(touchPoint), contactImageType = contactImage.type {
                 didPressContactImageWithType(contactImageType)
+                return
             }
         }
     }

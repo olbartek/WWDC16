@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import AVFoundation
 
 class AboutMeViewController: PresentedViewController {
     
@@ -37,8 +38,6 @@ class AboutMeViewController: PresentedViewController {
     @IBOutlet weak var distanceUnitLabel: UILabel!
     @IBOutlet weak var userLocationTextField: UITextField!
     
-    
-    
     @IBOutlet weak var visibleViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var distanceViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var distanceViewPositionConstraint: NSLayoutConstraint!
@@ -46,6 +45,7 @@ class AboutMeViewController: PresentedViewController {
     var mapViewConfigured = false
     var tapGestureRecognizer: UITapGestureRecognizer?
     var currentKeyboardHeight: CGFloat = 0.0
+    var speechSynthesizer = AVSpeechSynthesizer()
     
     // MARK: VC's Lifecycle
 
@@ -89,8 +89,8 @@ class AboutMeViewController: PresentedViewController {
         mapView.layer.borderColor = Constants.MapViewBorderColor.CGColor
         
         let myLocationCoordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(Constants.MyLocationLatitude), longitude: CLLocationDegrees(Constants.MyLocationLongitude))
-        let myLocationAnnotation = MyLocationAnnotation(coordinate: myLocationCoordinate, title: "", subtitle: "")
-        let region = MKCoordinateRegionMakeWithDistance(myLocationCoordinate, 1000000.0, 1000000.0)
+        let myLocationAnnotation = MyLocationAnnotation(coordinate: myLocationCoordinate, title: "Cracow, Poland, Europe", subtitle: "")
+        let region = MKCoordinateRegionMakeWithDistance(myLocationCoordinate, 1000.0, 1000.0)
         
         mapView.addAnnotation(myLocationAnnotation)
         mapView.setRegion(region, animated: true)
@@ -103,7 +103,18 @@ class AboutMeViewController: PresentedViewController {
         distanceViewPositionConstraint.constant = 0.0
         UIView.animateWithDuration(Constants.DistanceViewAppearingAnimationDuration, delay: Constants.DistanceViewAppearingDelay, usingSpringWithDamping: Constants.DistanceViewAppearingDamping, initialSpringVelocity: Constants.DistanceViewAppearingInitialVelocity, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
             self.view.layoutIfNeeded()
-            }, completion: nil)
+            }, completion: { (finished) in
+                let unitToSpeak = self.systemIsUsingMetricUnits() ? " kilometers" : " miles"
+                self.speakText("Wow! That's " + distanceString.distance + unitToSpeak)
+                
+        })
+    }
+    
+    // Speech synthesizer
+    func speakText(text: String) {
+        let speechUtterance = AVSpeechUtterance(string: text)
+        speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        speechSynthesizer.speakUtterance(speechUtterance)
     }
     
     // MARK: Keyboard
@@ -122,8 +133,7 @@ class AboutMeViewController: PresentedViewController {
         let frame = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
         difference = currentKeyboardHeight - frame.size.height
         currentKeyboardHeight = frame.height
-        view.frame = CGRectOffset(self.view.frame, 0, difference);
-        
+        view.frame = CGRectOffset(self.view.frame, 0, difference)
     }
     
     func keyboardWillHide(notification: NSNotification) {
@@ -221,9 +231,9 @@ extension AboutMeViewController: MKMapViewDelegate {
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
         if let myLocationAnnotation = annotation as? MyLocationAnnotation {
-            
             let annotationView = MKAnnotationView(annotation: myLocationAnnotation, reuseIdentifier: Constants.AnnotationIdentifier)
             annotationView.image = Constants.MarkerImage
+            annotationView.canShowCallout = true
             return annotationView
         }
         return nil

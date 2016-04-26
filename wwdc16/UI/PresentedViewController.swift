@@ -24,8 +24,8 @@ class PresentedViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        view.setNeedsLayout()
-        view.setNeedsDisplay()
+        //view.setNeedsLayout()
+        //view.setNeedsDisplay()
     }
     
     override func viewWillDisappear(animated: Bool) {

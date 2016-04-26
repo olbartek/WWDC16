@@ -41,11 +41,13 @@ class AboutMeViewController: PresentedViewController {
     @IBOutlet weak var visibleViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var distanceViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var distanceViewPositionConstraint: NSLayoutConstraint!
+    @IBOutlet weak var infoLabelTrailingConstraint: NSLayoutConstraint!
     
     var mapViewConfigured = false
     var tapGestureRecognizer: UITapGestureRecognizer?
     var currentKeyboardHeight: CGFloat = 0.0
     var speechSynthesizer = AVSpeechSynthesizer()
+    var viewHeight = UIScreen.mainScreen().bounds.size.height
     
     // MARK: VC's Lifecycle
 
@@ -85,6 +87,7 @@ class AboutMeViewController: PresentedViewController {
     }
     
     func configureMapView() {
+        for annotation in mapView.annotations { mapView.removeAnnotation(annotation) }
         mapView.layer.borderWidth = Constants.MapViewBorderWidth
         mapView.layer.borderColor = Constants.MapViewBorderColor.CGColor
         
@@ -108,6 +111,13 @@ class AboutMeViewController: PresentedViewController {
                 self.speakText("Wow! That's " + distanceString.distance + unitToSpeak)
                 
         })
+    }
+    
+    func animateInfoLabel() {
+        infoLabelTrailingConstraint.constant = 8.0
+        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.5, options: .CurveEaseInOut, animations: {
+            self.view.layoutIfNeeded()
+            }, completion: nil)
     }
     
     // Speech synthesizer
@@ -233,7 +243,6 @@ extension AboutMeViewController: MKMapViewDelegate {
         if let myLocationAnnotation = annotation as? MyLocationAnnotation {
             let annotationView = MKAnnotationView(annotation: myLocationAnnotation, reuseIdentifier: Constants.AnnotationIdentifier)
             annotationView.image = Constants.MarkerImage
-            annotationView.canShowCallout = true
             return annotationView
         }
         return nil
@@ -248,6 +257,27 @@ extension AboutMeViewController: UIScrollViewDelegate {
         if !mapViewConfigured {
             configureMapView()
             mapViewConfigured = true
+        }
+    }
+    
+    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+        prepareViewsForDisplaying()
+    }
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        prepareViewsForDisplaying()
+    }
+    
+    func prepareViewsForDisplaying() {
+        let pageIndex = Int(scrollView.contentOffset.y) / Int(viewHeight)
+        if pageIndex == 0 {
+            infoLabelTrailingConstraint.constant = -viewHeight
+            let myLocationCoordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(Constants.MyLocationLatitude), longitude: CLLocationDegrees(Constants.MyLocationLongitude))
+            let region = MKCoordinateRegionMakeWithDistance(myLocationCoordinate, 1000000.0, 1000000.0)
+            mapView.setRegion(region, animated: true)
+        } else {
+            configureMapView()
+            animateInfoLabel()
         }
     }
 }

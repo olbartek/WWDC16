@@ -20,7 +20,7 @@ public class BOTextAnimator: NSObject {
     public var fontName         = "Avenir-Roman"
     public var fontSize         : CGFloat = 50.0
     public var textToAnimate    = "Hello Swift!"
-    public var textColor        = UIColor.redColor().CGColor
+    public var textColor        = UIColor.whiteColor().CGColor
     public var delegate         : BOTextAnimatorDelegate?
     
     private var animationLayer  = CALayer()

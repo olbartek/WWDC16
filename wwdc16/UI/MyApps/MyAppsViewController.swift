@@ -20,6 +20,7 @@ class MyAppsViewController: PresentedViewController {
             "https://itunes.apple.com/us/app/acti/id1069891566?mt=8",
             "https://itunes.apple.com/us/app/greatkiddo/id1027545512?mt=8"
         ]
+        static let ShakeAnimationDuration: CFTimeInterval = 0.2
     }
     
     let viewWidth = UIScreen.mainScreen().bounds.size.width
@@ -33,6 +34,7 @@ class MyAppsViewController: PresentedViewController {
             }
         }
     }
+    @IBOutlet weak var introImage: UIImageView!
     @IBOutlet var appImageViews: [UIImageView]!
     @IBOutlet weak var closeButtonLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var viewWidthConstraint: NSLayoutConstraint!
@@ -50,11 +52,13 @@ class MyAppsViewController: PresentedViewController {
         super.viewWillAppear(animated)
         setupMoveFirstViewTimer()
         changeCloseButtonColor()
+        addIntroImageAnimation()
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         invalidateTimer()
+        removeIntroImageAnimation()
     }
     
     // MARK: Appearance
@@ -62,6 +66,39 @@ class MyAppsViewController: PresentedViewController {
     func setConstraints() {
         closeButtonLeadingConstraint.constant = view.bounds.size.width - Constants.CloseButtonOffsetFromRightEdge
         viewWidthConstraint.constant = viewWidth
+    }
+    
+    // MARK: Animations
+    
+    func addIntroImageAnimation() {
+        let timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        introImage.layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        
+        let shakeAnimationRight = CABasicAnimation(keyPath: "transform.rotation")
+        shakeAnimationRight.fromValue = 0
+        shakeAnimationRight.toValue = CGFloat(-M_PI_2 / 6)
+        shakeAnimationRight.duration = Constants.ShakeAnimationDuration / 2
+        shakeAnimationRight.autoreverses = true
+        shakeAnimationRight.timingFunction = timingFunction
+        
+        let shakeAnimationLeft = CABasicAnimation(keyPath: "transform.rotation")
+        shakeAnimationLeft.fromValue = 0
+        shakeAnimationLeft.toValue = CGFloat(M_PI_2 / 6)
+        shakeAnimationLeft.beginTime = Constants.ShakeAnimationDuration / 2
+        shakeAnimationLeft.duration = Constants.ShakeAnimationDuration / 2
+        shakeAnimationLeft.autoreverses = true
+        shakeAnimationLeft.timingFunction = timingFunction
+        
+        let animGroup = CAAnimationGroup()
+        animGroup.animations = [shakeAnimationRight, shakeAnimationLeft]
+        animGroup.duration = Constants.ShakeAnimationDuration + 1
+        animGroup.repeatCount = Float.infinity
+        
+        introImage.layer.addAnimation(animGroup, forKey: "shakeAnimation")
+    }
+    
+    func removeIntroImageAnimation() {
+        introImage.layer.removeAllAnimations()
     }
     
     // MARK: NSTimer

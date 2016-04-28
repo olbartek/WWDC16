@@ -36,6 +36,7 @@ class ContactMeViewController: PresentedViewController {
     @IBOutlet weak var contactMeImage: UIImageView!
     @IBOutlet weak var contactInfoImage: ContactImage!
     @IBOutlet weak var contactInfoLabel: UILabel!
+    @IBOutlet weak var contactInfoView: UIView!
     
     @IBOutlet weak var contactInfoImageHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var contactInfoLabelLeadingConstraint: NSLayoutConstraint!
@@ -224,11 +225,11 @@ class ContactMeViewController: PresentedViewController {
         contactInfoLabel.text = contactTextFromType(type)
         contactInfoImageHeightConstraint.constant = Constants.ContactInfoImageMaxHeight
         UIView.animateWithDuration(0.25, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.5, options: .CurveEaseInOut, animations: {
-            self.view.layoutIfNeeded()
+            self.contactInfoView.layoutIfNeeded()
             }) { (finished) in
                 self.contactInfoLabelLeadingConstraint.constant = 0
                 UIView.animateWithDuration(0.25, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.5, options: .CurveEaseInOut, animations: {
-                    self.view.layoutIfNeeded()
+                    self.contactInfoView.layoutIfNeeded()
                     }, completion: { (finished) in
                         self.contactInfoViewAnimating = false
                         self.contactInfoViewHidden = false
@@ -240,11 +241,11 @@ class ContactMeViewController: PresentedViewController {
         contactInfoViewAnimating = true
         contactInfoLabelLeadingConstraint.constant = -1.0 * contactInfoLabelWidthConstraint.constant
         UIView.animateWithDuration(0.25, animations: {
-            self.view.layoutIfNeeded()
+            self.contactInfoView.layoutIfNeeded()
             }) { (finished) in
                 self.contactInfoImageHeightConstraint.constant = Constants.ContactInfoImageMinHeight
                 UIView.animateWithDuration(0.25, animations: {
-                    self.view.layoutIfNeeded()
+                    self.contactInfoView.layoutIfNeeded()
                     }, completion: { [weak self](finished) in
                         guard let weakSelf = self else { return }
                         if showAnother {

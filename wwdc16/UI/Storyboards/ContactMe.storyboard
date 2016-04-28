@@ -386,6 +386,7 @@
                         <outlet property="contactInfoLabel" destination="YGx-6M-vJB" id="Jll-41-7TF"/>
                         <outlet property="contactInfoLabelLeadingConstraint" destination="hzq-L0-aaV" id="cqb-O3-PgS"/>
                         <outlet property="contactInfoLabelWidthConstraint" destination="yRE-se-6b7" id="D1g-Oy-hmM"/>
+                        <outlet property="contactInfoView" destination="bpB-M7-tNB" id="ayn-J1-dku"/>
                         <outlet property="contactMeImage" destination="SPD-cc-3V7" id="yuW-lN-If6"/>
                         <outletCollection property="contactImages" destination="xwE-3Y-7Nv" collectionClass="NSMutableArray" id="i1E-vk-l3c"/>
                         <outletCollection property="contactImages" destination="hLp-Tx-aLF" collectionClass="NSMutableArray" id="aQS-qc-9K5"/>

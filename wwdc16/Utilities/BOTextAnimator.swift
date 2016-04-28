@@ -147,7 +147,10 @@ public class BOTextAnimator: NSObject {
     }
     
     public func updatePathStrokeWithValue(value: CGFloat) {
-        pathLayer?.timeOffset = CFTimeInterval(value)
+        dispatch_async(dispatch_get_main_queue()) {
+            self.pathLayer?.timeOffset = CFTimeInterval(value)
+        }
+        
     }
     
     // MARK: Animation delegate

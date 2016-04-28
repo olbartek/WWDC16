@@ -164,39 +164,6 @@ class InterestsViewController: PresentedViewController {
         }
     }
     
-    func loadLivePhotos() {
-        for (index, livePhotoView) in livePhotoViews.enumerate() {
-            if let livePhoto = livePhotoForIndex(index) {
-                livePhotoView.livePhoto = livePhoto
-                 livePhotoView.startPlaybackWithStyle(.Hint)
-            }
-        }
-    }
-    
-    func livePhotoForIndex(index: Int) -> PHLivePhoto? {
-        let imageName: String?
-        switch index {
-        case 0:
-            imageName = "snowboarding"
-        case 1:
-            imageName = "snowboarding"
-        case 2:
-            imageName = "snowboarding"
-        default:
-            imageName = nil
-            break
-        }
-        if let imageName = imageName {
-            let path    = NSBundle.mainBundle().pathForResource(imageName, ofType: "dat")
-            let fileURL = NSURL(fileURLWithPath: path!)
-            let data    = NSData(contentsOfURL: fileURL)
-            if let livePhoto = NSKeyedUnarchiver.unarchiveObjectWithData(data!) as? PHLivePhoto {
-                return livePhoto
-            }
-        }
-        return nil
-    }
-    
     func hintLivePhotoAtIndex(index: Int) {
         let livePhotoView = livePhotoViews[index]
         livePhotoView.startPlaybackWithStyle(.Hint)
@@ -270,15 +237,24 @@ class InterestsViewController: PresentedViewController {
 extension InterestsViewController: UIScrollViewDelegate {
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        print("Did end decelerating, offset = \(scrollView.contentOffset.x)")
         hintLivePhoto()
+        updateTextAnimators()
     }
     
     func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+        print("Did end scrolling, offset = \(scrollView.contentOffset.x)")
         hintLivePhoto()
+        updateTextAnimators()
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
+        updateTextAnimators()
+    }
+    
+    func updateTextAnimators() {
         let contentOffsetX = scrollView.contentOffset.x - viewWidth
+        print("Update txtAnim, offset = \(contentOffsetX)")
         for (index, headerViewAnimator) in headerViewAnimators.enumerate() {
             let startOffsetX = viewWidth * (CGFloat(index) - 0.5)
             let endOffsetX = startOffsetX + 0.5 * viewWidth

@@ -81,7 +81,6 @@ class InterestsViewController: PresentedViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         setupMoveFirstViewTimer()
-        changeCloseButtonColor()
         addIntroImageAnimation()
     }
     
@@ -271,22 +270,11 @@ class InterestsViewController: PresentedViewController {
 extension InterestsViewController: UIScrollViewDelegate {
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        changeCloseButtonColor()
         hintLivePhoto()
     }
     
     func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
-        changeCloseButtonColor()
         hintLivePhoto()
-    }
-    
-    func changeCloseButtonColor() {
-        let pageIndex = Int(scrollView.contentOffset.x) / Int(viewWidth)
-        if pageIndex == 0 {
-            closeButton.setFillColor(.whiteColor())
-        } else {
-            closeButton.setFillColor(.themeMarineColor())
-        }
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {

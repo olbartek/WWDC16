@@ -10,8 +10,6 @@
 		4E0B7E311CCE4B070062F5B1 /* UIBezierPath+CrossPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B7E301CCE4B070062F5B1 /* UIBezierPath+CrossPath.swift */; };
 		4E0B7E331CCE53120062F5B1 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B7E321CCE53120062F5B1 /* CloseButton.swift */; };
 		4E0B7E351CCE89B40062F5B1 /* UITraitCollection+ForceTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B7E341CCE89B40062F5B1 /* UITraitCollection+ForceTouch.swift */; };
-		4E0B7E3A1CCF7A3F0062F5B1 /* yoshi.dat in Resources */ = {isa = PBXBuildFile; fileRef = 4E0B7E391CCF7A3F0062F5B1 /* yoshi.dat */; };
-		4E0B7E3E1CCF90460062F5B1 /* snowboarding.dat in Resources */ = {isa = PBXBuildFile; fileRef = 4E0B7E3D1CCF90460062F5B1 /* snowboarding.dat */; };
 		4E3BB7961CC83D0500D5972C /* SkillsCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3BB7941CC83D0500D5972C /* SkillsCategoryTableViewCell.swift */; };
 		4E3BB7971CC83D0500D5972C /* SkillsCategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E3BB7951CC83D0500D5972C /* SkillsCategoryTableViewCell.xib */; };
 		4E3BB79A1CC83EE600D5972C /* SkillsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3BB7991CC83EE600D5972C /* SkillsCategory.swift */; };
@@ -71,8 +69,6 @@
 		4E0B7E301CCE4B070062F5B1 /* UIBezierPath+CrossPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIBezierPath+CrossPath.swift"; path = "Extensions/UIBezierPath+CrossPath.swift"; sourceTree = "<group>"; };
 		4E0B7E321CCE53120062F5B1 /* CloseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloseButton.swift; path = UI/CloseButton.swift; sourceTree = "<group>"; };
 		4E0B7E341CCE89B40062F5B1 /* UITraitCollection+ForceTouch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITraitCollection+ForceTouch.swift"; path = "Extensions/UITraitCollection+ForceTouch.swift"; sourceTree = "<group>"; };
-		4E0B7E391CCF7A3F0062F5B1 /* yoshi.dat */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = yoshi.dat; sourceTree = "<group>"; };
-		4E0B7E3D1CCF90460062F5B1 /* snowboarding.dat */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = snowboarding.dat; sourceTree = "<group>"; };
 		4E3BB7941CC83D0500D5972C /* SkillsCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SkillsCategoryTableViewCell.swift; path = UI/Skills/Cells/SkillsCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		4E3BB7951CC83D0500D5972C /* SkillsCategoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SkillsCategoryTableViewCell.xib; path = UI/Skills/Cells/SkillsCategoryTableViewCell.xib; sourceTree = "<group>"; };
 		4E3BB7991CC83EE600D5972C /* SkillsCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SkillsCategory.swift; path = Model/Skills/SkillsCategory.swift; sourceTree = "<group>"; };
@@ -146,8 +142,6 @@
 				4E9381EE1CCFA8FD0029B502 /* snowboard.jpg */,
 				4E9381EF1CCFA8FD0029B502 /* travelling.jpg */,
 				4E9381F01CCFA8FD0029B502 /* electronics.jpg */,
-				4E0B7E3D1CCF90460062F5B1 /* snowboarding.dat */,
-				4E0B7E391CCF7A3F0062F5B1 /* yoshi.dat */,
 			);
 			name = Pictures;
 			sourceTree = "<group>";
@@ -416,6 +410,7 @@
 				TargetAttributes = {
 					4E7DAF5C1CC6278E00D48EB9 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = RV9KDGVAV4;
 					};
 					4E7DAF701CC6278E00D48EB9 = {
 						CreatedOnToolsVersion = 7.3;
@@ -451,11 +446,9 @@
 				4E9381F21CCFA8FD0029B502 /* travelling.jpg in Resources */,
 				4E7DAF6B1CC6278E00D48EB9 /* LaunchScreen.storyboard in Resources */,
 				4E7DAF681CC6278E00D48EB9 /* Assets.xcassets in Resources */,
-				4E0B7E3A1CCF7A3F0062F5B1 /* yoshi.dat in Resources */,
 				4E4E35051CC654810007BDBD /* MyApps.storyboard in Resources */,
 				4E4E35031CC6546C0007BDBD /* AboutMe.storyboard in Resources */,
 				4E4E35091CC654BB0007BDBD /* Interests.storyboard in Resources */,
-				4E0B7E3E1CCF90460062F5B1 /* snowboarding.dat in Resources */,
 				4E7DAF661CC6278E00D48EB9 /* Main.storyboard in Resources */,
 				4E4E35071CC654A10007BDBD /* Skills.storyboard in Resources */,
 				4E3BB7971CC83D0500D5972C /* SkillsCategoryTableViewCell.xib in Resources */,
@@ -639,6 +632,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = wwdc16/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.olbart.wwdc16;
@@ -650,6 +644,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = wwdc16/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.olbart.wwdc16;

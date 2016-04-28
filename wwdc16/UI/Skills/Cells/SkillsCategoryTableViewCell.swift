@@ -41,12 +41,14 @@ class SkillsCategoryTableViewCell: UITableViewCell {
     var selectedIndexPath: NSIndexPath?
     var isOpened = false
     var shouldOpenDelegateSent = false
+    var imageName: String!
 
     // MARK: Configuration
    
     func configureWithSkillCategory(skillCategory: SkillsCategory) {
         titleLabel.text = skillCategory.name
-        categoryImageView.image = UIImage(named: skillCategory.imageName)
+        imageName = skillCategory.imageName
+        categoryImageView.image = UIImage(named: skillCategory.imageName + "-blue")
         skills = skillCategory.skills
         registerNibs()
         tableView.delegate = self
@@ -76,6 +78,14 @@ class SkillsCategoryTableViewCell: UITableViewCell {
             return UIColor.whiteColor()
         } else {
             return Constants.TitleLabelTextColor
+        }
+    }
+    
+    func imageAccordingToTouchForcePercentage(forcePercentage: CGFloat) -> UIImage {
+        if forcePercentage >= 0.2 {
+            return UIImage(named: imageName)!
+        } else {
+            return UIImage(named: imageName + "-blue")!
         }
     }
     

@@ -490,27 +490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "wwdc16/UI/Interests/InterestsViewController.swift"
-            timestampString = "483374562.270144"
+            timestampString = "483530338.457847"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "viewWillAppear(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "wwdc16/UI/Interests/InterestsViewController.swift"
-            timestampString = "483374562.270144"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "clearTextAnimators()"
             landmarkType = "5">
          </BreakpointContent>
@@ -522,11 +506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "wwdc16/UI/Interests/InterestsViewController.swift"
-            timestampString = "483374562.270144"
+            timestampString = "483530338.457847"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "InterestsViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -810,11 +794,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "wwdc16/UI/Interests/InterestsViewController.swift"
-            timestampString = "483380026.834594"
+            timestampString = "483530338.457847"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "415"
-            endingLineNumber = "415">
+            startingLineNumber = "403"
+            endingLineNumber = "403">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -824,11 +808,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "wwdc16/UI/Interests/InterestsViewController.swift"
-            timestampString = "483380026.834594"
+            timestampString = "483530338.457847"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "421"
-            endingLineNumber = "421">
+            startingLineNumber = "409"
+            endingLineNumber = "409">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -870,11 +854,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "wwdc16/UI/Interests/InterestsViewController.swift"
-            timestampString = "483380026.834594"
+            timestampString = "483530338.457847"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
             landmarkName = "timerDidFinishCounting(_:)"
             landmarkType = "5">
             <Locations>

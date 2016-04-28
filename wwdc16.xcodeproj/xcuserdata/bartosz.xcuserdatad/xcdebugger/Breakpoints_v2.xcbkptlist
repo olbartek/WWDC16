@@ -794,11 +794,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "wwdc16/UI/Interests/InterestsViewController.swift"
-            timestampString = "483561344.521395"
+            timestampString = "483563304.369772"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "379"
-            endingLineNumber = "379">
+            startingLineNumber = "377"
+            endingLineNumber = "377">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -808,11 +808,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "wwdc16/UI/Interests/InterestsViewController.swift"
-            timestampString = "483561344.521395"
+            timestampString = "483563304.369772"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "385"
-            endingLineNumber = "385">
+            startingLineNumber = "383"
+            endingLineNumber = "383">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

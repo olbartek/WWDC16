@@ -274,16 +274,14 @@ extension InterestsViewController: UIImagePickerControllerDelegate, UINavigation
         if let photo = info[UIImagePickerControllerLivePhoto] as? PHLivePhoto {
             livePhotoViews[tappedIndex].livePhoto = photo
         } else {
-            notALivePhoto()
+            if let _ = info[UIImagePickerControllerOriginalImage] as? UIImage {
+                livePhotoViews[tappedIndex].livePhoto = nil
+            }
         }
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             livePhotoImageViews[tappedIndex].image = image
         }
         
         picker.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func notALivePhoto() {
-        print("Not a live photo")
     }
 }

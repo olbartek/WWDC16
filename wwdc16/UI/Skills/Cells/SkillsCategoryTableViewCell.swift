@@ -131,6 +131,8 @@ class SkillsCategoryTableViewCell: UITableViewCell {
     
 }
 
+// MARK: UITableView delegate & dataSource
+
 extension SkillsCategoryTableViewCell: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

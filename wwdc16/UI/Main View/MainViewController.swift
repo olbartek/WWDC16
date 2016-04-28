@@ -28,6 +28,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topBar: UIView!
     @IBOutlet weak var bottomBar: UIView!
+    @IBOutlet weak var tapToBeginLabel: UILabel!
     
     var showCategoriesTapGesture        : UITapGestureRecognizer?
     var hideCategoriesTapGestureLeft    : UITapGestureRecognizer?
@@ -188,10 +189,12 @@ class MainViewController: UIViewController {
             UIView.animateWithDuration(Animation.ShowNameLabels.Duration) {
                 self.nameLabel.alpha = alphaToSet
                 self.surnameLabel.alpha = alphaToSet
+                self.tapToBeginLabel.alpha = alphaToSet
             }
         } else {
             nameLabel.alpha = alphaToSet
             surnameLabel.alpha = alphaToSet
+            tapToBeginLabel.alpha = alphaToSet
         }
     }
     

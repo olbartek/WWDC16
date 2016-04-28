@@ -32,11 +32,11 @@ class IntroViewManager: NSObject {
             textToPresent = "Swipe down \nto reach AppStore"
             imageToPresent = UIImage(named: "swipe-down")
         case .MyHobbies:
-            textToPresent = "Double tap to change background photo. \nLive Photos are supported."
-            imageToPresent = nil
+            textToPresent = "Double tap to change \nbackground photo. \nLive Photos are supported."
+            imageToPresent = UIImage(named: "tap")
         case .MySkills:
             textToPresent = "Use force touch to show skills."
-            imageToPresent = nil
+            imageToPresent = UIImage(named: "force-touch")
         }
         viewToPresent.frame = presenter.view.bounds
         viewToPresent.textLabel.text = textToPresent

@@ -237,13 +237,11 @@ class InterestsViewController: PresentedViewController {
 extension InterestsViewController: UIScrollViewDelegate {
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        print("Did end decelerating, offset = \(scrollView.contentOffset.x)")
         hintLivePhoto()
         updateTextAnimators()
     }
     
     func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
-        print("Did end scrolling, offset = \(scrollView.contentOffset.x)")
         hintLivePhoto()
         updateTextAnimators()
     }
@@ -254,7 +252,6 @@ extension InterestsViewController: UIScrollViewDelegate {
     
     func updateTextAnimators() {
         let contentOffsetX = scrollView.contentOffset.x - viewWidth
-        print("Update txtAnim, offset = \(contentOffsetX)")
         for (index, headerViewAnimator) in headerViewAnimators.enumerate() {
             let startOffsetX = viewWidth * (CGFloat(index) - 0.5)
             let endOffsetX = startOffsetX + 0.5 * viewWidth

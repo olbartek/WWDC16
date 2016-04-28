@@ -40,10 +40,13 @@ class SkillsViewController: PresentedViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         closeButton.setFillColor(.themeSkyBlueColor())
+        
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        IntroViewManager.presentIntroViewWithType(.MySkills, onPresenter: self)
+        if traitCollection.isForceTouchAvailable() {
+            IntroViewManager.presentIntroViewWithType(.MySkills, onPresenter: self)
+        }
     }
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)

@@ -124,6 +124,7 @@ class SkillsCategoryTableViewCell: UITableViewCell {
                 }
                 cellView.backgroundColor = colorAccordingToTouchForcePercentage(forcePercentage)
                 titleLabel.textColor = titleLabelColorAccordingToTouchForcePercentage(forcePercentage)
+                categoryImageView.image = imageAccordingToTouchForcePercentage(forcePercentage)
             }
         }
     }

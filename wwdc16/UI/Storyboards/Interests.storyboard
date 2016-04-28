@@ -129,7 +129,7 @@
                                                                                 <variation key="heightClass=regular-widthClass=compact" constant="400"/>
                                                                             </constraint>
                                                                         </constraints>
-                                                                        <string key="text">I started snowboarding about 5 years ago. The fact that I can get onto the board makes me extremely happy every year. When I started my adventure with snowboarding I was a little sceptic about the fact that I could be a pro snowboarder one day. Now I prefer riding beside ski slopes where there is a lot of powder around.</string>
+                                                                        <string key="text">I started snowboarding about 5 years ago. The fact that I can get onto the board makes me extremely happy every year. When I started my adventure with snowboarding I was a little sceptic about the fact that I could be a pro snowboarder one day. Now I prefer riding backcountry where there is a lot of powder around.</string>
                                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <nil key="highlightedColor"/>
@@ -297,7 +297,8 @@
                                                                                 <variation key="heightClass=regular-widthClass=compact" constant="400"/>
                                                                             </constraint>
                                                                         </constraints>
-                                                                        <string key="text">I am really passionate about traveling to different sides of globe. The fact that you can meet many interesting people which do not see eye to eye with you, fascinates me a lot. Every country I have visited has its own unique culture and history which could be more or less understandable.</string>
+                                                                        <string key="text">I am really passionate about traveling to different sides of the globe. The fact that you can meet many interesting people who do not see eye to eye with you, fascinates me a lot. Every country I have visited has its own unique culture and history which could be more or less understandable.
+</string>
                                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <nil key="highlightedColor"/>
@@ -457,7 +458,7 @@
                                                                                 <variation key="heightClass=regular-widthClass=compact" constant="400"/>
                                                                             </constraint>
                                                                         </constraints>
-                                                                        <string key="text">My interest in electronics came when I started studying Automatics and Robotics. I have already made few projects which required the knowledge from the field of electronics. I have designed and implemented a flight control system for the quadcopter robot for my engineering thesis. I have also made a mechatronic hand which was able to repeat fingers movement. It used strain gauges to detect a position of a single finger.</string>
+                                                                        <string key="text">My interest in electronics came when I started studying Automatics and Robotics. I have already made few projects which required the knowledge from the field of electronics. I have designed and implemented a flight control system for the quadcopter robot as my engineering thesis. I have also made a mechatronic hand which was able to repeat fingers movement. It used strain gauges to detect a position of a single finger.</string>
                                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <nil key="highlightedColor"/>

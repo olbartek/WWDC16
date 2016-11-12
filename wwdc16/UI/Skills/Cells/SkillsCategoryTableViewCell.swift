@@ -96,16 +96,20 @@ class SkillsCategoryTableViewCell: UITableViewCell {
     // MARK: Skills animation
     
     func startSkillsAnimation() {
-        for row in 0..<skills.count {
-            let cellToAnimate = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! SkillTableViewCell
-            cellToAnimate.startProgressAnimation()
+        for cell in tableView.visibleCells {
+            if cell is SkillTableViewCell {
+                let skillTVC = cell as! SkillTableViewCell
+                skillTVC.startProgressAnimation()
+            }
         }
     }
     
     func restartSkillsAnimation() {
-        for row in 0..<skills.count {
-            let cellToAnimate = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! SkillTableViewCell
-            cellToAnimate.restartProgressAnimation()
+        for cell in tableView.visibleCells {
+            if cell is SkillTableViewCell {
+                let skillTVC = cell as! SkillTableViewCell
+                skillTVC.restartProgressAnimation()
+            }
         }
     }
     
@@ -140,7 +144,7 @@ extension SkillsCategoryTableViewCell: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell        = tableView.dequeueReusableCell(withIdentifier: SkillTableViewCell.identifier(), for: indexPath) as! SkillTableViewCell
+        let cell     = tableView.dequeueReusableCell(withIdentifier: SkillTableViewCell.identifier(), for: indexPath) as! SkillTableViewCell
         let skill    = skills[(indexPath as NSIndexPath).row]
         cell.configureWithSkill(skill)
         return cell

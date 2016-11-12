@@ -46,10 +46,10 @@ class SkillTableViewCell: UITableViewCell {
         progressWidthConstraint.constant = progressViewWidth * progress
         UIView.animate(withDuration: 0.8, animations: {
             self.layoutIfNeeded()
-        }) 
+        })
     }
     
     func restartProgressAnimation() {
-        progressWidthConstraint.constant = 0.0
+        self.progressWidthConstraint.constant = 0.0
     }
 }

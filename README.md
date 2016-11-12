@@ -1,2 +1,11 @@
 # WWDC16
-WWDC 2016 scholarship application
+WWDC 2016 scholarship winning application written entirely in Swift.
+
+## Used technologies
+- Swift 3.0
+- CoreGraphics
+- CoreAnimation
+
+## Presentation
+
+![alt tag](https://raw.githubusercontent.com/olbartek/WWDC16/master/wwdc16.gif)

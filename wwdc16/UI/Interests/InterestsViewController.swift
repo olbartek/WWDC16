@@ -15,8 +15,8 @@ class InterestsViewController: PresentedViewController {
     
     // MARK: Properties
     
-    private struct Constants {
-        static let TimerTimeInterval: NSTimeInterval = 1.5
+    fileprivate struct Constants {
+        static let TimerTimeInterval: TimeInterval = 1.5
         static let CloseButtonOffsetFromRightEdge: CGFloat = 20.0 + 50.0
         static let Headers = ["Snowboard", "Travelling", "Electronics"]
         static let PhotoImages = ["snowboard.jpg", "travelling.jpg", "electronics.jpg"]
@@ -24,13 +24,13 @@ class InterestsViewController: PresentedViewController {
     }
     
     var headerViewAnimators = [BOTextAnimator]()
-    let viewWidth = UIScreen.mainScreen().bounds.size.width
-    var moveFirstViewTimer: NSTimer?
+    let viewWidth = UIScreen.main.bounds.size.width
+    var moveFirstViewTimer: Timer?
     var currentTappedLivePhotoViewIndex: Int?
     
     @IBOutlet var livePhotoViews: [PHLivePhotoView]! {
         didSet {
-            livePhotoViews.sortInPlace { (firstView, secondView) -> Bool in
+            livePhotoViews.sort { (firstView, secondView) -> Bool in
                 return firstView.tag < secondView.tag
             }
             livePhotoViews.forEach { (livePhotoView) in
@@ -42,14 +42,14 @@ class InterestsViewController: PresentedViewController {
     }
     @IBOutlet var livePhotoImageViews: [UIImageView]! {
         didSet {
-            livePhotoImageViews.sortInPlace { (firstView, secondView) -> Bool in
+            livePhotoImageViews.sort { (firstView, secondView) -> Bool in
                 return firstView.tag < secondView.tag
             }
         }
     }
     @IBOutlet var headerViews: [UIView]! {
         didSet {
-            headerViews.sortInPlace { (firstView, secondView) -> Bool in
+            headerViews.sort { (firstView, secondView) -> Bool in
                 return firstView.tag < secondView.tag
             }
         }
@@ -57,7 +57,7 @@ class InterestsViewController: PresentedViewController {
     
     @IBOutlet var descriptionLabels: [UILabel]! {
         didSet {
-            descriptionLabels.sortInPlace { (firstLabel, secondLabel) -> Bool in
+            descriptionLabels.sort { (firstLabel, secondLabel) -> Bool in
                 return firstLabel.tag < secondLabel.tag
             }
         }
@@ -78,19 +78,19 @@ class InterestsViewController: PresentedViewController {
         loadPhotos()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupMoveFirstViewTimer()
         addIntroImageAnimation()
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         invalidateTimer()
         removeIntroImageAnimation()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setupTextAnimators()
         let index = Int(scrollView.contentOffset.x) / Int(viewWidth) - 1
@@ -98,7 +98,7 @@ class InterestsViewController: PresentedViewController {
             headerViewAnimators[index].updatePathStrokeWithValue(1.0)
         }
     }
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         clearTextAnimators()
     }
@@ -111,7 +111,7 @@ class InterestsViewController: PresentedViewController {
     }
     
     func setupTextAnimators() {
-        for (index, headerView) in headerViews.enumerate() {
+        for (index, headerView) in headerViews.enumerated() {
             let textAnimator = BOTextAnimator(referenceView: headerView)
             textAnimator.textToAnimate = Constants.Headers[index]
             textAnimator.prepareForAnimation()
@@ -125,8 +125,8 @@ class InterestsViewController: PresentedViewController {
     
     // MARK: Gesture Recognizers
     
-    func didTapOnView(gesture: UITapGestureRecognizer) {
-        if let currentLivePhotoView = gesture.view as? PHLivePhotoView, index = livePhotoViews.indexOf(currentLivePhotoView) {
+    func didTapOnView(_ gesture: UITapGestureRecognizer) {
+        if let currentLivePhotoView = gesture.view as? PHLivePhotoView, let index = livePhotoViews.index(of: currentLivePhotoView) {
          currentTappedLivePhotoViewIndex = index
             configureAndShowPhotoActionSheet()
         }
@@ -149,7 +149,7 @@ class InterestsViewController: PresentedViewController {
         animGroup.duration = Constants.SinglePulseAnimationDuration + 0.5
         animGroup.repeatCount = Float.infinity
         
-        introImage.layer.addAnimation(animGroup, forKey: "pulseAnimation")
+        introImage.layer.add(animGroup, forKey: "pulseAnimation")
     }
     
     func removeIntroImageAnimation() {
@@ -159,14 +159,14 @@ class InterestsViewController: PresentedViewController {
     // MARK: Photos
     
     func loadPhotos() {
-        for (index, photoImageView) in livePhotoImageViews.enumerate() {
+        for (index, photoImageView) in livePhotoImageViews.enumerated() {
             photoImageView.image = UIImage(named: Constants.PhotoImages[index])
         }
     }
     
-    func hintLivePhotoAtIndex(index: Int) {
+    func hintLivePhotoAtIndex(_ index: Int) {
         let livePhotoView = livePhotoViews[index]
-        livePhotoView.startPlaybackWithStyle(.Hint)
+        livePhotoView.startPlayback(with: .hint)
     }
     
     func hintLivePhoto() {
@@ -179,41 +179,41 @@ class InterestsViewController: PresentedViewController {
     // MARK: Photo Controller
     
     func configureAndShowPhotoActionSheet() {
-        let actionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        let chooseFromLibraryAction = UIAlertAction(title: "Choose from Library", style: .Default) { (action) -> Void in
+        let actionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let chooseFromLibraryAction = UIAlertAction(title: "Choose from Library", style: .default) { (action) -> Void in
             self.showPhotoLibraryController()
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: {
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
             (alert: UIAlertAction!) -> Void in
         })
         
         actionMenu.addAction(chooseFromLibraryAction)
         actionMenu.addAction(cancelAction)
-        presentViewController(actionMenu, animated: true, completion: nil)
+        present(actionMenu, animated: true, completion: nil)
     }
     
     func showPhotoLibraryController() {
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.allowsEditing = false
-        picker.sourceType = .PhotoLibrary
+        picker.sourceType = .photoLibrary
         let mediaTypes = [String(kUTTypeImage), String(kUTTypeLivePhoto)]
         picker.mediaTypes = mediaTypes;
         
-        presentViewController(picker, animated: true, completion: nil)
+        present(picker, animated: true, completion: nil)
     }
     
     // MARK: NSTimer
     
     func setupMoveFirstViewTimer() {
-        moveFirstViewTimer = NSTimer.scheduledTimerWithTimeInterval(Constants.TimerTimeInterval, target: self, selector: #selector(timerDidFinishCounting(_:)), userInfo: nil, repeats: false)
+        moveFirstViewTimer = Timer.scheduledTimer(timeInterval: Constants.TimerTimeInterval, target: self, selector: #selector(timerDidFinishCounting(_:)), userInfo: nil, repeats: false)
     }
     
-    func timerDidFinishCounting(timer: NSTimer) {
+    func timerDidFinishCounting(_ timer: Timer) {
         let pageIndex = Int(scrollView.contentOffset.x) / Int(viewWidth)
         if pageIndex == 0 {
             scrollView.setContentOffset(CGPoint(x: viewWidth, y: 0), animated: true)
-            IntroViewManager.presentIntroViewWithType(.MyHobbies, onPresenter: self)
+            IntroViewManager.presentIntroViewWithType(.myHobbies, onPresenter: self)
         }
     }
     
@@ -236,23 +236,23 @@ class InterestsViewController: PresentedViewController {
 
 extension InterestsViewController: UIScrollViewDelegate {
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         hintLivePhoto()
         updateTextAnimators()
     }
     
-    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         hintLivePhoto()
         updateTextAnimators()
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         updateTextAnimators()
     }
     
     func updateTextAnimators() {
         let contentOffsetX = scrollView.contentOffset.x - viewWidth
-        for (index, headerViewAnimator) in headerViewAnimators.enumerate() {
+        for (index, headerViewAnimator) in headerViewAnimators.enumerated() {
             let startOffsetX = viewWidth * (CGFloat(index) - 0.5)
             let endOffsetX = startOffsetX + 0.5 * viewWidth
             if contentOffsetX >= startOffsetX && contentOffsetX <= endOffsetX {
@@ -266,7 +266,7 @@ extension InterestsViewController: UIScrollViewDelegate {
 // MARK: UIImagePicker delegate 
 
 extension InterestsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         guard let tappedIndex = currentTappedLivePhotoViewIndex else { return }
         if let photo = info[UIImagePickerControllerLivePhoto] as? PHLivePhoto {
             livePhotoViews[tappedIndex].livePhoto = photo
@@ -279,6 +279,6 @@ extension InterestsViewController: UIImagePickerControllerDelegate, UINavigation
             livePhotoImageViews[tappedIndex].image = image
         }
         
-        picker.dismissViewControllerAnimated(true, completion: nil)
+        picker.dismiss(animated: true, completion: nil)
     }
 }

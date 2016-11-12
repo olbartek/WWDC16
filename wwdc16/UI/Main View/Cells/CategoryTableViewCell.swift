@@ -9,8 +9,8 @@
 import UIKit
 
 @objc protocol CategoryTableViewCellDelegate {
-    optional func animationDidStartForCategoryCell(categoryCell: CategoryTableViewCell, withItsCenterInMainViewCoords center: CGPoint)
-    optional func animationDidStopForCategoryCell(categoryCell: CategoryTableViewCell, withItsCenterInMainViewCoords center: CGPoint)
+    @objc optional func animationDidStartForCategoryCell(_ categoryCell: CategoryTableViewCell, withItsCenterInMainViewCoords center: CGPoint)
+    @objc optional func animationDidStopForCategoryCell(_ categoryCell: CategoryTableViewCell, withItsCenterInMainViewCoords center: CGPoint)
 }
 
 class CategoryTableViewCell: UITableViewCell {
@@ -28,26 +28,26 @@ class CategoryTableViewCell: UITableViewCell {
     
     // MARK: Configuration
     
-    func configureWithCategory(category: Category) {
+    func configureWithCategory(_ category: Category) {
         categoryType            = category.type
         bgView.backgroundColor  = category.bgColor
         titleLabel.text         = category.title
         iconImageView.image     = UIImage(named: category.iconName)
-        selectionStyle          = .None
+        selectionStyle          = .none
     }
     
     // MARK: Animation
     
     func performAnimation() {
-        guard let window = UIApplication.sharedApplication().keyWindow, mainView = window.rootViewController?.view else { return }
-        let cellFrameInMainViewCoords   = convertRect(bounds, toView: nil)
-        resizableView                   = UIView(frame: CGRectZero)
+        guard let window = UIApplication.shared.keyWindow, let mainView = window.rootViewController?.view else { return }
+        let cellFrameInMainViewCoords   = convert(bounds, to: nil)
+        resizableView                   = UIView(frame: CGRect.zero)
         resizableView!.backgroundColor  = bgView.backgroundColor
-        cellCenterInMainViewCoords      = CGPoint(x: CGRectGetMidX(cellFrameInMainViewCoords), y: CGRectGetMidY(cellFrameInMainViewCoords))
+        cellCenterInMainViewCoords      = CGPoint(x: cellFrameInMainViewCoords.midX, y: cellFrameInMainViewCoords.midY)
         resizableView!.center           = cellCenterInMainViewCoords!
         mainView.addSubview(resizableView!)
         delegate?.animationDidStartForCategoryCell?(self, withItsCenterInMainViewCoords: cellCenterInMainViewCoords!)
-        UIView.animateWithDuration(0.3, delay: 0.0, options: .CurveEaseInOut,
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions(),
                                    animations: {
                                     self.resizableView!.frame = mainView.frame
             }, completion: { [weak self] finished in

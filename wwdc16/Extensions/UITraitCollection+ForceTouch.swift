@@ -11,10 +11,10 @@ import UIKit
 
 extension UITraitCollection {
     func isForceTouchAvailable() -> Bool {
-        return self.forceTouchCapability == .Available && !isRunningSimulator
+        return self.forceTouchCapability == .available && !isRunningSimulator
     }
     
-    private var isRunningSimulator: Bool {
+    fileprivate var isRunningSimulator: Bool {
         get {
             return TARGET_OS_SIMULATOR != 0
         }

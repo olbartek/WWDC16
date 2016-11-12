@@ -12,7 +12,7 @@ class SkillTableViewCell: UITableViewCell {
     
     // MARK: Properties
     
-    private struct Constants {
+    fileprivate struct Constants {
         static let ForceTouchNotAvailableColor = UIColor(red: 183.0 / 255.0, green: 183.0 / 255.0, blue: 183.0 / 255.0, alpha: 1.0)
     }
     
@@ -25,15 +25,15 @@ class SkillTableViewCell: UITableViewCell {
     
     // MARK: Configuration
     
-    func configureWithSkill(skill: Skill) {
+    func configureWithSkill(_ skill: Skill) {
         nameLabel.text = skill.name
         progress = CGFloat(skill.knowledgePercentage) / 100.0
-        selectionStyle = .None
-        userInteractionEnabled = false
-        backgroundColor = .clearColor()
+        selectionStyle = .none
+        isUserInteractionEnabled = false
+        backgroundColor = UIColor.clear
         if traitCollection.isForceTouchAvailable() {
-            nameLabel.textColor = .whiteColor()
-            progressView.backgroundColor = .whiteColor()
+            nameLabel.textColor = UIColor.white
+            progressView.backgroundColor = UIColor.white
         } else {
             nameLabel.textColor = Constants.ForceTouchNotAvailableColor
             progressView.backgroundColor = Constants.ForceTouchNotAvailableColor
@@ -44,9 +44,9 @@ class SkillTableViewCell: UITableViewCell {
     
     func startProgressAnimation() {
         progressWidthConstraint.constant = progressViewWidth * progress
-        UIView.animateWithDuration(0.8) {
+        UIView.animate(withDuration: 0.8, animations: {
             self.layoutIfNeeded()
-        }
+        }) 
     }
     
     func restartProgressAnimation() {

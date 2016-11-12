@@ -11,8 +11,8 @@ import UIKit
 
 extension UIBezierPath {
     
-    class func crossPartTopLeftToBottomRightWithinRect(rect: CGRect, thickness: CGFloat) -> UIBezierPath {
-        let drawRect = CGRectInset(rect, 15.0, 15.0)
+    class func crossPartTopLeftToBottomRightWithinRect(_ rect: CGRect, thickness: CGFloat) -> UIBezierPath {
+        let drawRect = rect.insetBy(dx: 15.0, dy: 15.0)
         let x = drawRect.origin.x
         let y = drawRect.origin.y
         let width = drawRect.size.width
@@ -28,18 +28,18 @@ extension UIBezierPath {
         let bottomRightControlPoint = CGPoint(x: x + width, y: y + height)
         let topLeftControlPoint = CGPoint(x: x, y: y)
         
-        path.moveToPoint(topLeftLowerPoint)
-        path.addLineToPoint(bottomRightLowerPoint)
-        path.addQuadCurveToPoint(bottomRightUpperPoint, controlPoint: bottomRightControlPoint)
-        path.addLineToPoint(topLeftUpperPoint)
-        path.addQuadCurveToPoint(topLeftLowerPoint, controlPoint: topLeftControlPoint)
-        path.closePath()
+        path.move(to: topLeftLowerPoint)
+        path.addLine(to: bottomRightLowerPoint)
+        path.addQuadCurve(to: bottomRightUpperPoint, controlPoint: bottomRightControlPoint)
+        path.addLine(to: topLeftUpperPoint)
+        path.addQuadCurve(to: topLeftLowerPoint, controlPoint: topLeftControlPoint)
+        path.close()
         
         return path
     }
     
-    class func crossPartBottomLeftTopRightWithinRect(rect: CGRect, thickness: CGFloat) -> UIBezierPath {
-        let drawRect = CGRectInset(rect, 15.0, 15.0)
+    class func crossPartBottomLeftTopRightWithinRect(_ rect: CGRect, thickness: CGFloat) -> UIBezierPath {
+        let drawRect = rect.insetBy(dx: 15.0, dy: 15.0)
         let x = drawRect.origin.x
         let y = drawRect.origin.y
         let width = drawRect.size.width
@@ -55,12 +55,12 @@ extension UIBezierPath {
         let bottomLeftControlPoint = CGPoint(x: x, y: y + height)
         let topRightControlPoint = CGPoint(x: x + width, y: y)
         
-        path.moveToPoint(bottomLeftUpperPoint)
-        path.addLineToPoint(topRightUpperPoint)
-        path.addQuadCurveToPoint(topRightLowerPoint, controlPoint: topRightControlPoint)
-        path.addLineToPoint(bottomLeftLowerPoint)
-        path.addQuadCurveToPoint(bottomLeftUpperPoint, controlPoint: bottomLeftControlPoint)
-        path.closePath()
+        path.move(to: bottomLeftUpperPoint)
+        path.addLine(to: topRightUpperPoint)
+        path.addQuadCurve(to: topRightLowerPoint, controlPoint: topRightControlPoint)
+        path.addLine(to: bottomLeftLowerPoint)
+        path.addQuadCurve(to: bottomLeftUpperPoint, controlPoint: bottomLeftControlPoint)
+        path.close()
         
         return path
     }

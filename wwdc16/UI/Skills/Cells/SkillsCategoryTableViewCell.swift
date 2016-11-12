@@ -9,14 +9,14 @@
 import UIKit
 
 protocol SkillsCategoryTableViewCellDelegate {
-    func skillsCategoryCell(cell: SkillsCategoryTableViewCell, shouldOpenSkillsWithTouchForce touchForce: CGFloat)
+    func skillsCategoryCell(_ cell: SkillsCategoryTableViewCell, shouldOpenSkillsWithTouchForce touchForce: CGFloat)
 }
 
 class SkillsCategoryTableViewCell: UITableViewCell {
     
     // MARK: Properties
     
-    private struct Constants {
+    fileprivate struct Constants {
         static let CellBackgroundColor = UIColor(red: 242.0 / 255.0, green: 242.0 / 255.0, blue: 242.0 / 255.0, alpha: 1.0)
         static let TitleLabelTextColor = UIColor(red: 183.0 / 255.0, green: 183.0 / 255.0, blue: 183.0 / 255.0, alpha: 1.0)
         static let Hue: CGFloat = 212.0 / 360.0
@@ -38,14 +38,14 @@ class SkillsCategoryTableViewCell: UITableViewCell {
     
     var delegate: SkillsCategoryTableViewCellDelegate?
     var skills = [Skill]()
-    var selectedIndexPath: NSIndexPath?
+    var selectedIndexPath: IndexPath?
     var isOpened = false
     var shouldOpenDelegateSent = false
     var imageName: String!
 
     // MARK: Configuration
    
-    func configureWithSkillCategory(skillCategory: SkillsCategory) {
+    func configureWithSkillCategory(_ skillCategory: SkillsCategory) {
         titleLabel.text = skillCategory.name
         imageName = skillCategory.imageName
         categoryImageView.image = UIImage(named: skillCategory.imageName + "-blue")
@@ -55,8 +55,8 @@ class SkillsCategoryTableViewCell: UITableViewCell {
         tableView.dataSource = self
         cellView.layer.cornerRadius = SkillCategoryModel.CellCornerRadius
         cellView.layer.masksToBounds = true
-        selectionStyle = .None
-        backgroundColor = .clearColor()
+        selectionStyle = .none
+        backgroundColor = .clear
     }
     
     // MARK: Appearance
@@ -66,22 +66,22 @@ class SkillsCategoryTableViewCell: UITableViewCell {
         titleLabel.textColor = Constants.TitleLabelTextColor
     }
     
-    func colorAccordingToTouchForcePercentage(forcePercentage: CGFloat) -> UIColor {
+    func colorAccordingToTouchForcePercentage(_ forcePercentage: CGFloat) -> UIColor {
         
         let saturation = Constants.MinSaturation + forcePercentage * (Constants.MaxSaturation - Constants.MinSaturation)
         
         return UIColor(hue: Constants.Hue, saturation: saturation, brightness: Constants.Brightness, alpha: 1.0)
     }
     
-    func titleLabelColorAccordingToTouchForcePercentage(forcePercentage: CGFloat) -> UIColor {
+    func titleLabelColorAccordingToTouchForcePercentage(_ forcePercentage: CGFloat) -> UIColor {
         if forcePercentage >= 0.2 {
-            return UIColor.whiteColor()
+            return UIColor.white
         } else {
             return Constants.TitleLabelTextColor
         }
     }
     
-    func imageAccordingToTouchForcePercentage(forcePercentage: CGFloat) -> UIImage {
+    func imageAccordingToTouchForcePercentage(_ forcePercentage: CGFloat) -> UIImage {
         if forcePercentage >= 0.2 {
             return UIImage(named: imageName)!
         } else {
@@ -90,29 +90,29 @@ class SkillsCategoryTableViewCell: UITableViewCell {
     }
     
     func registerNibs() {
-        tableView.registerNib(UINib(nibName: SkillTableViewCell.identifier(), bundle: nil), forCellReuseIdentifier: SkillTableViewCell.identifier())
+        tableView.register(UINib(nibName: SkillTableViewCell.identifier(), bundle: nil), forCellReuseIdentifier: SkillTableViewCell.identifier())
     }
     
     // MARK: Skills animation
     
     func startSkillsAnimation() {
         for row in 0..<skills.count {
-            let cellToAnimate = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: 0)) as! SkillTableViewCell
+            let cellToAnimate = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! SkillTableViewCell
             cellToAnimate.startProgressAnimation()
         }
     }
     
     func restartSkillsAnimation() {
         for row in 0..<skills.count {
-            let cellToAnimate = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: 0)) as! SkillTableViewCell
+            let cellToAnimate = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! SkillTableViewCell
             cellToAnimate.restartProgressAnimation()
         }
     }
     
     // MARK: Force Touch
     
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        if let touch = touches.first where traitCollection.forceTouchCapability == .Available {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first , traitCollection.forceTouchCapability == .available {
             if !isOpened {
                 var forcePercentage = touch.force / (Constants.MinForcePercentageToOpenCell * touch.maximumPossibleForce)
                 if forcePercentage > 1.0 {
@@ -135,18 +135,18 @@ class SkillsCategoryTableViewCell: UITableViewCell {
 
 extension SkillsCategoryTableViewCell: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return skills.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell        = tableView.dequeueReusableCellWithIdentifier(SkillTableViewCell.identifier(), forIndexPath: indexPath) as! SkillTableViewCell
-        let skill    = skills[indexPath.row]
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell        = tableView.dequeueReusableCell(withIdentifier: SkillTableViewCell.identifier(), for: indexPath) as! SkillTableViewCell
+        let skill    = skills[(indexPath as NSIndexPath).row]
         cell.configureWithSkill(skill)
         return cell
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return SkillModel.TVCHeight
     }
 }

@@ -13,7 +13,7 @@ class PresentedViewController: UIViewController {
     // MARK: Properties
     
     var delegate            : MainViewControllerDelegate?
-    var categoryCellCenter  = CGPointZero
+    var categoryCellCenter  = CGPoint.zero
     @IBOutlet weak var closeButton: CloseButton!
     
     // MARK: VC's Lifecycle
@@ -22,18 +22,18 @@ class PresentedViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //view.setNeedsLayout()
         //view.setNeedsDisplay()
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         closeButton.removeCrossLayer()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         closeButton.drawCross()
         closeButton.animateCross()
@@ -42,11 +42,11 @@ class PresentedViewController: UIViewController {
     // MARK: Dismiss animation
     
     func dismissViewControllerWithoutAnimation() {
-        let snapshot = view.snapshotViewAfterScreenUpdates(false)
+        let snapshot = view.snapshotView(afterScreenUpdates: false)
         if let presentingViewController = presentingViewController {
-            presentingViewController.view.addSubview(snapshot)
-            dismissViewControllerAnimated(false) {
-                self.delegate?.presentedViewControllerWillDismissToCenterPoint(self.categoryCellCenter, withSnapShot: snapshot)
+            presentingViewController.view.addSubview(snapshot!)
+            dismiss(animated: false) {
+                self.delegate?.presentedViewControllerWillDismissToCenterPoint(self.categoryCellCenter, withSnapShot: snapshot!)
             }
         }
     }

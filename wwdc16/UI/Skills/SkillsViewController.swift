@@ -21,7 +21,7 @@ class SkillsViewController: PresentedViewController {
     var skillCategories: [SkillsCategory] = {
         var categories = [SkillsCategory]()
         for categoryDict in SkillCategoryModel.Categories {
-            if let categoryName = categoryDict[categoryNameKey] as? String, categoryImageName = categoryDict[categoryImageNameKey] as? String, categorySkills = categoryDict[categorySkillsKey] as? [[String: AnyObject]] {
+            if let categoryName = categoryDict[categoryNameKey] as? String, let categoryImageName = categoryDict[categoryImageNameKey] as? String, let categorySkills = categoryDict[categorySkillsKey] as? [[String: AnyObject]] {
                 let newCategory = SkillsCategory(name: categoryName, imageName: categoryImageName, skills: categorySkills)
                 categories.append(newCategory)
             }
@@ -37,18 +37,18 @@ class SkillsViewController: PresentedViewController {
         registerNibs()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         closeButton.setFillColor(.themeSkyBlueColor())
         
     }
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if traitCollection.isForceTouchAvailable() {
-            IntroViewManager.presentIntroViewWithType(.MySkills, onPresenter: self)
+            IntroViewManager.presentIntroViewWithType(.mySkills, onPresenter: self)
         }
     }
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         if let enlargedCell = enlargedCell {
             enlargedCell.setDefaultColors()
@@ -59,7 +59,7 @@ class SkillsViewController: PresentedViewController {
     // MARK: Appearance
     
     func registerNibs() {
-        tableView.registerNib(UINib(nibName: SkillsCategoryTableViewCell.identifier(), bundle: nil), forCellReuseIdentifier: SkillsCategoryTableViewCell.identifier())
+        tableView.register(UINib(nibName: SkillsCategoryTableViewCell.identifier(), bundle: nil), forCellReuseIdentifier: SkillsCategoryTableViewCell.identifier())
     }
     
     // MARK: Actions
@@ -72,14 +72,14 @@ class SkillsViewController: PresentedViewController {
 
 extension SkillsViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return skillCategories.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell        = tableView.dequeueReusableCellWithIdentifier(SkillsCategoryTableViewCell.identifier(), forIndexPath: indexPath) as! SkillsCategoryTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell        = tableView.dequeueReusableCell(withIdentifier: SkillsCategoryTableViewCell.identifier(), for: indexPath) as! SkillsCategoryTableViewCell
         
-        let skillCategory = skillCategories[indexPath.row]
+        let skillCategory = skillCategories[(indexPath as NSIndexPath).row]
         cell.configureWithSkillCategory(skillCategory)
         if traitCollection.isForceTouchAvailable() {
             cell.delegate = self
@@ -87,18 +87,18 @@ extension SkillsViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if !traitCollection.isForceTouchAvailable() {
             if let enlargedCell = enlargedCell {
                 shrinkCell(enlargedCell)
             } else {
-                let cell = tableView.cellForRowAtIndexPath(indexPath) as! SkillsCategoryTableViewCell
+                let cell = tableView.cellForRow(at: indexPath) as! SkillsCategoryTableViewCell
                 enlargeCell(cell)
             }
         }
     }
     
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         if !traitCollection.isForceTouchAvailable() {
             if let enlargedCell = enlargedCell {
                 shrinkCell(enlargedCell)
@@ -106,7 +106,7 @@ extension SkillsViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func shrinkCell(cell: SkillsCategoryTableViewCell) {
+    func shrinkCell(_ cell: SkillsCategoryTableViewCell) {
         cell.cellViewHeightConstraint.constant = 0
         enlargedCell = nil
         tableView.beginUpdates()
@@ -116,9 +116,9 @@ extension SkillsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.shouldOpenDelegateSent = false
     }
     
-    func enlargeCell(cell: SkillsCategoryTableViewCell) {
+    func enlargeCell(_ cell: SkillsCategoryTableViewCell) {
         enlargedCell = cell
-        let cellsHeight = SkillModel.TVCHeight * CGFloat(cell.tableView.numberOfRowsInSection(0))
+        let cellsHeight = SkillModel.TVCHeight * CGFloat(cell.tableView.numberOfRows(inSection: 0))
         cell.cellViewHeightConstraint.constant = SkillCategoryModel.TVCBasicHeight + cellsHeight
         tableView.beginUpdates()
         tableView.endUpdates()
@@ -126,11 +126,11 @@ extension SkillsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.isOpened = true
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
     
-    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
 
@@ -139,8 +139,8 @@ extension SkillsViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: SkillsCategoryTableViewCell delegate
 
 extension SkillsViewController: SkillsCategoryTableViewCellDelegate {
-    func skillsCategoryCell(cell: SkillsCategoryTableViewCell, shouldOpenSkillsWithTouchForce touchForce: CGFloat) {
-        if let enlargedCell = enlargedCell where enlargedCell != cell {
+    func skillsCategoryCell(_ cell: SkillsCategoryTableViewCell, shouldOpenSkillsWithTouchForce touchForce: CGFloat) {
+        if let enlargedCell = enlargedCell , enlargedCell != cell {
             enlargedCell.setDefaultColors()
             shrinkCell(enlargedCell)
             enlargeCell(cell)

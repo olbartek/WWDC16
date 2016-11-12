@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 public extension CGFloat {
-    public static func random(lower: CGFloat = 0, _ upper: CGFloat = 1) -> CGFloat {
+    public static func random(_ lower: CGFloat = 0, _ upper: CGFloat = 1) -> CGFloat {
         return CGFloat(Float(arc4random()) / Float(UINT32_MAX)) * (upper - lower) + lower
     }
 }

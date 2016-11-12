@@ -9,16 +9,16 @@
 import UIKit
 
 enum IntroViewType {
-    case MyApps
-    case MyHobbies
-    case MySkills
+    case myApps
+    case myHobbies
+    case mySkills
 }
 
 class IntroViewManager: NSObject {
     
     // MARK: Constants
     
-    private struct Constants {
+    fileprivate struct Constants {
         static let ForceTouchAnimationDuration: CFTimeInterval = 1.0
         static let SwipeAnimationDuration: CFTimeInterval = 1.0
         static let TapAnimationDuration: CFTimeInterval = 0.1
@@ -28,8 +28,8 @@ class IntroViewManager: NSObject {
     
     // MARK: Initialization
     
-    private class func getViewFromNib() -> IntroViewTemplate? {
-        if let aView =  NSBundle.mainBundle().loadNibNamed("IntroViewTemplate", owner: self, options: nil)[0] as? IntroViewTemplate {
+    fileprivate class func getViewFromNib() -> IntroViewTemplate? {
+        if let aView =  Bundle.main.loadNibNamed("IntroViewTemplate", owner: self, options: nil)?[0] as? IntroViewTemplate {
             return aView
         }
         return nil
@@ -37,18 +37,18 @@ class IntroViewManager: NSObject {
     
     // MARK: Presenting a view
     
-    class func presentIntroViewWithType(type: IntroViewType, onPresenter presenter: UIViewController) {
+    class func presentIntroViewWithType(_ type: IntroViewType, onPresenter presenter: UIViewController) {
         guard let viewToPresent = getViewFromNib() else { return }
         let textToPresent: String?
         let imageToPresent: UIImage?
         switch type {
-        case .MyApps:
+        case .myApps:
             textToPresent = "Swipe down \nto reach AppStore"
             imageToPresent = UIImage(named: "swipe-down")
-        case .MyHobbies:
+        case .myHobbies:
             textToPresent = "Double tap to change \nbackground photo. \nLive Photos are supported."
             imageToPresent = UIImage(named: "tap")
-        case .MySkills:
+        case .mySkills:
             textToPresent = "Use force touch to show skills."
             imageToPresent = UIImage(named: "force-touch")
         }
@@ -57,7 +57,7 @@ class IntroViewManager: NSObject {
         viewToPresent.imageView.image = imageToPresent
         
         presenter.view.addSubview(viewToPresent)
-        presenter.view.bringSubviewToFront(viewToPresent)
+        presenter.view.bringSubview(toFront: viewToPresent)
         viewToPresent.setNeedsLayout()
         viewToPresent.layoutIfNeeded()
         applyAnimationToImageView(viewToPresent.imageView, accordingToType: type)
@@ -67,12 +67,12 @@ class IntroViewManager: NSObject {
     
     // MARK: Animations
     
-    private class func tapAnimationFromStarPoint(startPoint: CGPoint) -> CAAnimation {
+    fileprivate class func tapAnimationFromStarPoint(_ startPoint: CGPoint) -> CAAnimation {
         let endPoint = CGPoint(x: startPoint.x, y: startPoint.y + Constants.TapAnimationYOffset)
         
         let anim = CABasicAnimation(keyPath: "position")
-        anim.fromValue = NSValue(CGPoint: startPoint)
-        anim.toValue = NSValue(CGPoint: endPoint)
+        anim.fromValue = NSValue(cgPoint: startPoint)
+        anim.toValue = NSValue(cgPoint: endPoint)
         anim.duration = Constants.TapAnimationDuration
         anim.autoreverses = true
         anim.beginTime = 1
@@ -86,7 +86,7 @@ class IntroViewManager: NSObject {
         return animGroup
     }
     
-    private class func forceTouchAnimation() -> CAAnimation {
+    fileprivate class func forceTouchAnimation() -> CAAnimation {
         let timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         
         let anim = CABasicAnimation(keyPath: "transform.scale")
@@ -104,12 +104,12 @@ class IntroViewManager: NSObject {
         return animGroup
     }
     
-    private class func swipeDownAnimationFromStartPoint(startPoint: CGPoint) -> CAAnimation {
+    fileprivate class func swipeDownAnimationFromStartPoint(_ startPoint: CGPoint) -> CAAnimation {
         let endPoint = CGPoint(x: startPoint.x, y: startPoint.y + Constants.SwipeAnimationYOffset)
         
         let anim = CABasicAnimation(keyPath: "position")
-        anim.fromValue = NSValue(CGPoint: startPoint)
-        anim.toValue = NSValue(CGPoint: endPoint)
+        anim.fromValue = NSValue(cgPoint: startPoint)
+        anim.toValue = NSValue(cgPoint: endPoint)
         anim.duration = Constants.SwipeAnimationDuration
         anim.autoreverses = true
         
@@ -121,14 +121,14 @@ class IntroViewManager: NSObject {
         return animGroup
     }
     
-    private class func applyAnimationToImageView(imageView: UIImageView, accordingToType type: IntroViewType) {
+    fileprivate class func applyAnimationToImageView(_ imageView: UIImageView, accordingToType type: IntroViewType) {
         switch type {
-        case .MyApps:
-            imageView.layer.addAnimation(swipeDownAnimationFromStartPoint(imageView.layer.position), forKey: "swipeDownAnimation")
-        case .MyHobbies:
-            imageView.layer.addAnimation(tapAnimationFromStarPoint(imageView.layer.position), forKey: "tapAnimation")
-        case .MySkills:
-            imageView.layer.addAnimation(forceTouchAnimation(), forKey: "forceTouchAnimation")
+        case .myApps:
+            imageView.layer.add(swipeDownAnimationFromStartPoint(imageView.layer.position), forKey: "swipeDownAnimation")
+        case .myHobbies:
+            imageView.layer.add(tapAnimationFromStarPoint(imageView.layer.position), forKey: "tapAnimation")
+        case .mySkills:
+            imageView.layer.add(forceTouchAnimation(), forKey: "forceTouchAnimation")
         }
     }
 

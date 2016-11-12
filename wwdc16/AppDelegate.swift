@@ -18,39 +18,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: App delegate main methods
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         DefaultsManager.saveCategoryTypeToPresent(nil)
         if let launchOptions = launchOptions {
-            return checkIfShortcutItemTriggeredApplicationStartWithLaunchOptions(launchOptions)
+            return checkIfShortcutItemTriggeredApplicationStartWithLaunchOptions(launchOptions as NSDictionary)
         } else { return true }
     }
 
-    func applicationWillResignActive(application: UIApplication) {
+    func applicationWillResignActive(_ application: UIApplication) {
     }
 
-    func applicationDidEnterBackground(application: UIApplication) {
+    func applicationDidEnterBackground(_ application: UIApplication) {
     }
 
-    func applicationWillEnterForeground(application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
     }
 
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         if let shortcutItem = shortcutItem {
-            handleShortcut(shortcutItem)
+            _ = handleShortcut(shortcutItem)
             self.shortcutItem = nil
         }
     }
 
-    func applicationWillTerminate(application: UIApplication) {
+    func applicationWillTerminate(_ application: UIApplication) {
     }
     
     // MARK: Shortcut items
     
-    func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         completionHandler(handleShortcut(shortcutItem))
     }
     
-    func handleShortcut(shortcutItem: UIApplicationShortcutItem) -> Bool {
+    func handleShortcut(_ shortcutItem: UIApplicationShortcutItem) -> Bool {
         switch shortcutItem.type {
         case ShortcutItem.MyApps:
             handleMyAppsShortcut()
@@ -70,9 +70,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return false
     }
     
-    func checkIfShortcutItemTriggeredApplicationStartWithLaunchOptions(launchOptions: NSDictionary) -> Bool {
+    func checkIfShortcutItemTriggeredApplicationStartWithLaunchOptions(_ launchOptions: NSDictionary) -> Bool {
         var performShortcutDelegate = true
-        if let shortcutItem = launchOptions.objectForKey(UIApplicationLaunchOptionsShortcutItemKey) as? UIApplicationShortcutItem {
+        if let shortcutItem = launchOptions.object(forKey: UIApplicationLaunchOptionsKey.shortcutItem) as? UIApplicationShortcutItem {
             self.shortcutItem = shortcutItem
             performShortcutDelegate = false
             switch shortcutItem.type {
@@ -92,19 +92,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func handleMyAppsShortcut() {
-        DefaultsManager.saveCategoryTypeToPresent(.MyApps)
+        DefaultsManager.saveCategoryTypeToPresent(.myApps)
     }
     
     func handleAboutMeShortcut() {
-        DefaultsManager.saveCategoryTypeToPresent(.AboutMe)
+        DefaultsManager.saveCategoryTypeToPresent(.aboutMe)
     }
     
     func handleInterestsShortcut() {
-        DefaultsManager.saveCategoryTypeToPresent(.Interests)
+        DefaultsManager.saveCategoryTypeToPresent(.interests)
     }
     
     func handleSkillsShortcut() {
-        DefaultsManager.saveCategoryTypeToPresent(.Skills)
+        DefaultsManager.saveCategoryTypeToPresent(.skills)
     }
 
 

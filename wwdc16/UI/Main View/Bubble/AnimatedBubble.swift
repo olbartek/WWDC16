@@ -9,25 +9,25 @@
 import UIKit
 
 enum AnimatedBubbleType : Int {
-    case Blue, Marine, Azure, SkyBlue, Pink
+    case blue, marine, azure, skyBlue, pink
 }
 
 class AnimatedBubble: UIView {
     
     // MARK: Properties
     
-    private struct BubbleModel {
+    fileprivate struct BubbleModel {
         static let MinRadius: CGFloat = 6.0
         static let MaxRadius: CGFloat = 15.0
         static let Scale: CGFloat = 1.3
         static let BorderWidth: CGFloat = 3.0
-        static let PopAnimationDuration: NSTimeInterval = 0.1
+        static let PopAnimationDuration: TimeInterval = 0.1
     }
 
-    private(set) var type           : AnimatedBubbleType
-    private(set) var animationPath  : UIBezierPath!
-    private var referenceView       : UIView?
-    private var initialRadius       : CGFloat
+    fileprivate(set) var type           : AnimatedBubbleType
+    fileprivate(set) var animationPath  : UIBezierPath!
+    fileprivate var referenceView       : UIView?
+    fileprivate var initialRadius       : CGFloat
     
     var duration                    : CFTimeInterval
     var startAngle                  : CGFloat
@@ -63,8 +63,8 @@ class AnimatedBubble: UIView {
     func startBubbleAnimation() {
         CATransaction.begin()
         CATransaction.setCompletionBlock {
-            UIView.transitionWithView(self, duration: BubbleModel.PopAnimationDuration, options: .TransitionCrossDissolve, animations: {
-                self.transform = CGAffineTransformMakeScale(BubbleModel.Scale, BubbleModel.Scale)
+            UIView.transition(with: self, duration: BubbleModel.PopAnimationDuration, options: .transitionCrossDissolve, animations: {
+                self.transform = CGAffineTransform(scaleX: BubbleModel.Scale, y: BubbleModel.Scale)
                 }, completion: { (finished) in
                     self.referenceView = nil
                     self.removeFromSuperview()
@@ -75,52 +75,52 @@ class AnimatedBubble: UIView {
         
         let pathAnimation = CAKeyframeAnimation(keyPath: "position")
         pathAnimation.duration = duration
-        pathAnimation.path  = animationPath.CGPath
+        pathAnimation.path  = animationPath.cgPath
         pathAnimation.fillMode = kCAFillModeBackwards
         pathAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
         
-        layer.addAnimation(pathAnimation, forKey: "movingAnimation")
+        layer.add(pathAnimation, forKey: "movingAnimation")
         CATransaction.commit()
     }
     
     // MARK: Appearance
     
-    private func setBorderColorAccordingToType() {
+    fileprivate func setBorderColorAccordingToType() {
         switch type {
-        case .Blue:
-            layer.borderColor = UIColor.themeBlueColor().CGColor
-        case .Marine:
-            layer.borderColor = UIColor.themeMarineColor().CGColor
-        case .Azure:
-            layer.borderColor = UIColor.themeAzureColor().CGColor
-        case .SkyBlue:
-            layer.borderColor = UIColor.themeSkyBlueColor().CGColor
-        case .Pink:
-            layer.borderColor = UIColor.themePinkColor().CGColor
+        case .blue:
+            layer.borderColor = UIColor.themeBlueColor().cgColor
+        case .marine:
+            layer.borderColor = UIColor.themeMarineColor().cgColor
+        case .azure:
+            layer.borderColor = UIColor.themeAzureColor().cgColor
+        case .skyBlue:
+            layer.borderColor = UIColor.themeSkyBlueColor().cgColor
+        case .pink:
+            layer.borderColor = UIColor.themePinkColor().cgColor
         }
     }
     
-    private func generatePathAccordingToTypeAndStartAngle() -> UIBezierPath {
+    fileprivate func generatePathAccordingToTypeAndStartAngle() -> UIBezierPath {
         let pathRadius: CGFloat
         switch type {
-        case .Blue:
+        case .blue:
             pathRadius = 106.0
-        case .Marine:
+        case .marine:
             pathRadius = 86.0
-        case .Azure:
+        case .azure:
             pathRadius = 64.0
-        case .SkyBlue:
+        case .skyBlue:
             pathRadius = 46.0
-        case .Pink:
+        case .pink:
             pathRadius = 24.0
         }
         let path = UIBezierPath()
         let center = CGPoint(x: referenceView!.bounds.size.width / 2, y: referenceView!.bounds.size.height / 2)
-        path.addArcWithCenter(center, radius: pathRadius, startAngle: startAngle, endAngle: 0.0, clockwise: true)
+        path.addArc(withCenter: center, radius: pathRadius, startAngle: startAngle, endAngle: 0.0, clockwise: true)
         return path
     }
     
-    private func signumXBasedOnPoint(p: CGPoint) -> CGFloat {
+    fileprivate func signumXBasedOnPoint(_ p: CGPoint) -> CGFloat {
         if p.y > 0 {
             return 1.0
         } else {
@@ -128,39 +128,39 @@ class AnimatedBubble: UIView {
         }
     }
     
-    private func generateBoundPoints() -> (startPoint: CGPoint, endPoint: CGPoint) {
+    fileprivate func generateBoundPoints() -> (startPoint: CGPoint, endPoint: CGPoint) {
         let pathRadius: CGFloat
         switch type {
-        case .Blue:
+        case .blue:
             pathRadius = 106.0
-        case .Marine:
+        case .marine:
             pathRadius = 86.0
-        case .Azure:
+        case .azure:
             pathRadius = 64.0
-        case .SkyBlue:
+        case .skyBlue:
             pathRadius = 46.0
-        case .Pink:
+        case .pink:
             pathRadius = 24.0
         }
-        let refViewCenter = CGPoint(x: CGRectGetMidX(referenceView!.bounds), y: CGRectGetMidY(referenceView!.bounds))
+        let refViewCenter = CGPoint(x: referenceView!.bounds.midX, y: referenceView!.bounds.midY)
         
-        var rotationTransform = CGAffineTransformMakeTranslation(refViewCenter.x, refViewCenter.y)
-        rotationTransform = CGAffineTransformRotate(rotationTransform, startAngle)
-        rotationTransform = CGAffineTransformTranslate(rotationTransform,-refViewCenter.x, -refViewCenter.y)
+        var rotationTransform = CGAffineTransform(translationX: refViewCenter.x, y: refViewCenter.y)
+        rotationTransform = rotationTransform.rotated(by: startAngle)
+        rotationTransform = rotationTransform.translatedBy(x: -refViewCenter.x, y: -refViewCenter.y)
 
         let startPoint  = CGPoint(x: refViewCenter.x + pathRadius, y: refViewCenter.y)
-        let transformedStartPoint = CGPointApplyAffineTransform(startPoint, rotationTransform)
+        let transformedStartPoint = startPoint.applying(rotationTransform)
         self.center     = transformedStartPoint
         
         let signX       = signumXBasedOnPoint(CGPoint(x: transformedStartPoint.x - refViewCenter.x, y: transformedStartPoint.y - refViewCenter.y))
         let eX          = transformedStartPoint.x + signX * CGFloat.random(50.0, 150.0)
         let perpFunc    = perpendicularLinearFuncCrossingPoint(transformedStartPoint, andPointOnPerpendicularLine: refViewCenter)
-        let eY          = perpFunc(x_in: eX)
+        let eY          = perpFunc(eX)
         let transformedEndPoint    = CGPoint(x: eX, y: eY)
         return (transformedStartPoint, transformedEndPoint)
     }
     
-    private func perpendicularLinearFuncCrossingPoint(crossingPoint: CGPoint, andPointOnPerpendicularLine pointOnPerpendicularLine: CGPoint) -> (x_in: CGFloat) -> CGFloat {
+    fileprivate func perpendicularLinearFuncCrossingPoint(_ crossingPoint: CGPoint, andPointOnPerpendicularLine pointOnPerpendicularLine: CGPoint) -> (_ x_in: CGFloat) -> CGFloat {
         let x = pointOnPerpendicularLine.x
         let y = pointOnPerpendicularLine.y
         let crossX = crossingPoint.x
@@ -176,15 +176,15 @@ class AnimatedBubble: UIView {
         return perpFunc
     }
     
-    private func generateBubbleBezierPath() -> UIBezierPath {
+    fileprivate func generateBubbleBezierPath() -> UIBezierPath {
         
         let bubblePath  = UIBezierPath()
         let t: CGFloat  = CGFloat.random(50.0, (endPathPoint.x - startPathPoint.x) )
         let cp1         = CGPoint(x: startPathPoint.x - t, y: (startPathPoint.y + endPathPoint.y) / 2)
         let cp2         = CGPoint(x: startPathPoint.x + t, y: cp1.y)
         
-        bubblePath.moveToPoint(startPathPoint)
-        bubblePath.addCurveToPoint(endPathPoint, controlPoint1: cp1, controlPoint2: cp2)
+        bubblePath.move(to: startPathPoint)
+        bubblePath.addCurve(to: endPathPoint, controlPoint1: cp1, controlPoint2: cp2)
 
         return bubblePath
     }

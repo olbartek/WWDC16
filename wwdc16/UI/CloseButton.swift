@@ -12,16 +12,16 @@ class CloseButton: UIButton {
     
     // MARK: Properties
     
-    private struct Constants {
+    fileprivate struct Constants {
         static let ButtonThickness: CGFloat = 6.0
-        static let ButtonFillColor: UIColor = .whiteColor()
+        static let ButtonFillColor: UIColor = .white
         static let ButtonRotationAnimationDuration: CFTimeInterval = 0.4
     }
     
     var topLeftBottomRightCrossPartLayer: CAShapeLayer?
     var bottomLeftTopRightCrossPartLayer: CAShapeLayer?
     
-    private var buttonFillColor: UIColor?
+    fileprivate var buttonFillColor: UIColor?
     
     // MARK: Initialization
     
@@ -35,10 +35,10 @@ class CloseButton: UIButton {
     
     // MARK: SetUp
     
-    func setFillColor(color: UIColor) {
+    func setFillColor(_ color: UIColor) {
         buttonFillColor = color
-        topLeftBottomRightCrossPartLayer?.fillColor = color.CGColor
-        bottomLeftTopRightCrossPartLayer?.fillColor = color.CGColor
+        topLeftBottomRightCrossPartLayer?.fillColor = color.cgColor
+        bottomLeftTopRightCrossPartLayer?.fillColor = color.cgColor
     }
     
     // MARK: Drawing
@@ -48,9 +48,9 @@ class CloseButton: UIButton {
         
         let topLeftBottomRightBezierPath = UIBezierPath.crossPartTopLeftToBottomRightWithinRect(bounds, thickness: Constants.ButtonThickness)
         let topLeftBottomRightCrossPartLayer = CAShapeLayer()
-        topLeftBottomRightCrossPartLayer.path = topLeftBottomRightBezierPath.CGPath
-        topLeftBottomRightCrossPartLayer.fillColor = fillColor.CGColor
-        let layerFrameTopLeftBottomRight = CGPathGetBoundingBox(topLeftBottomRightBezierPath.CGPath)
+        topLeftBottomRightCrossPartLayer.path = topLeftBottomRightBezierPath.cgPath
+        topLeftBottomRightCrossPartLayer.fillColor = fillColor.cgColor
+        let layerFrameTopLeftBottomRight = topLeftBottomRightBezierPath.cgPath.boundingBox
         topLeftBottomRightCrossPartLayer.bounds = layerFrameTopLeftBottomRight
         topLeftBottomRightCrossPartLayer.frame = layerFrameTopLeftBottomRight
         
@@ -59,9 +59,9 @@ class CloseButton: UIButton {
         
         let bottomLeftTopRightBezierPath = UIBezierPath.crossPartBottomLeftTopRightWithinRect(bounds, thickness: Constants.ButtonThickness)
         let bottomLeftTopRightCrossPartLayer = CAShapeLayer()
-        bottomLeftTopRightCrossPartLayer.path = bottomLeftTopRightBezierPath.CGPath
-        bottomLeftTopRightCrossPartLayer.fillColor = fillColor.CGColor
-        let layerFrameBottomLeftTopRight = CGPathGetBoundingBox(bottomLeftTopRightBezierPath.CGPath)
+        bottomLeftTopRightCrossPartLayer.path = bottomLeftTopRightBezierPath.cgPath
+        bottomLeftTopRightCrossPartLayer.fillColor = fillColor.cgColor
+        let layerFrameBottomLeftTopRight = bottomLeftTopRightBezierPath.cgPath.boundingBox
         bottomLeftTopRightCrossPartLayer.bounds = layerFrameBottomLeftTopRight
         bottomLeftTopRightCrossPartLayer.frame = layerFrameBottomLeftTopRight
         
@@ -72,7 +72,7 @@ class CloseButton: UIButton {
     // MARK: Animation
     
     func animateCross() {
-        guard let firstCrossPart = topLeftBottomRightCrossPartLayer, secondCrossPart = bottomLeftTopRightCrossPartLayer else { return }
+        guard let firstCrossPart = topLeftBottomRightCrossPartLayer, let secondCrossPart = bottomLeftTopRightCrossPartLayer else { return }
         
         firstCrossPart.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         let firstPartRotationAnimation = CABasicAnimation(keyPath: "transform.rotation")
@@ -88,14 +88,14 @@ class CloseButton: UIButton {
         secondPartRotationAnimation.duration    = Constants.ButtonRotationAnimationDuration
         secondPartRotationAnimation.autoreverses = true
         
-        firstCrossPart.addAnimation(firstPartRotationAnimation, forKey: "rotationAnimationFirst")
-        secondCrossPart.addAnimation(secondPartRotationAnimation, forKey: "rotationAnimationSecond")
+        firstCrossPart.add(firstPartRotationAnimation, forKey: "rotationAnimationFirst")
+        secondCrossPart.add(secondPartRotationAnimation, forKey: "rotationAnimationSecond")
     }
     
     // MARK: CleanUp
     
     func removeCrossLayer() {
-        guard let firstCrossPart = topLeftBottomRightCrossPartLayer, secondCrossPart = bottomLeftTopRightCrossPartLayer else { return }
+        guard let firstCrossPart = topLeftBottomRightCrossPartLayer, let secondCrossPart = bottomLeftTopRightCrossPartLayer else { return }
         firstCrossPart.removeFromSuperlayer()
         secondCrossPart.removeFromSuperlayer()
         self.topLeftBottomRightCrossPartLayer = nil

@@ -14,21 +14,21 @@ class AboutMeViewController: PresentedViewController {
     
     // MARK: Properties
     
-    private struct Constants {
+    fileprivate struct Constants {
         static let ProfileImageBorderWidth: CGFloat = 2.0
         static let ProfileImageCornerRadius: CGFloat = 125.0
-        static let ProfileImageBorderColor = UIColor.whiteColor()
+        static let ProfileImageBorderColor = UIColor.white
         static let MapViewBorderWidth: CGFloat = 2.0
-        static let MapViewBorderColor = UIColor.whiteColor()
+        static let MapViewBorderColor = UIColor.white
         static let ProfileImage = UIImage(named: "profile-image")!
         static let MarkerImage = UIImage(named: "map-marker")!
         static let AnnotationIdentifier = "MyLocationAnnotation"
         static let MyLocationLatitude: Double = 50.061389
         static let MyLocationLongitude: Double = 19.938333
-        static let DistanceViewAppearingAnimationDuration: NSTimeInterval = 0.5
+        static let DistanceViewAppearingAnimationDuration: TimeInterval = 0.5
         static let DistanceViewAppearingDamping: CGFloat = 0.6
         static let DistanceViewAppearingInitialVelocity: CGFloat = 0.5
-        static let DistanceViewAppearingDelay: NSTimeInterval = 0.0
+        static let DistanceViewAppearingDelay: TimeInterval = 0.0
     }
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -47,7 +47,7 @@ class AboutMeViewController: PresentedViewController {
     var tapGestureRecognizer: UITapGestureRecognizer?
     var currentKeyboardHeight: CGFloat = 0.0
     var speechSynthesizer = AVSpeechSynthesizer()
-    var viewHeight = UIScreen.mainScreen().bounds.size.height
+    var viewHeight = UIScreen.main.bounds.size.height
     
     // MARK: VC's Lifecycle
 
@@ -59,14 +59,14 @@ class AboutMeViewController: PresentedViewController {
         distanceViewWidthConstraint.constant = view.bounds.size.width
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         distanceViewPositionConstraint.constant = -view.bounds.size.width
         mapViewConfigured = false
         addNotificationObservers()
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         removeNotificationObservers()
     }
@@ -77,19 +77,19 @@ class AboutMeViewController: PresentedViewController {
         profileImageView.layer.cornerRadius = Constants.ProfileImageCornerRadius
         profileImageView.layer.masksToBounds = true
         profileImageView.layer.borderWidth = Constants.ProfileImageBorderWidth
-        profileImageView.layer.borderColor = Constants.ProfileImageBorderColor.CGColor
+        profileImageView.layer.borderColor = Constants.ProfileImageBorderColor.cgColor
         profileImageView.image = Constants.ProfileImage
     }
     
     func configureVisibleViewHeight() {
-        let visibleViewSize = UIScreen.mainScreen().bounds
+        let visibleViewSize = UIScreen.main.bounds
         visibleViewHeightConstraint.constant = visibleViewSize.height
     }
     
     func configureMapView() {
         for annotation in mapView.annotations { mapView.removeAnnotation(annotation) }
         mapView.layer.borderWidth = Constants.MapViewBorderWidth
-        mapView.layer.borderColor = Constants.MapViewBorderColor.CGColor
+        mapView.layer.borderColor = Constants.MapViewBorderColor.cgColor
         
         let myLocationCoordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(Constants.MyLocationLatitude), longitude: CLLocationDegrees(Constants.MyLocationLongitude))
         let myLocationAnnotation = MyLocationAnnotation(coordinate: myLocationCoordinate, title: "Cracow, Poland, Europe", subtitle: "")
@@ -99,12 +99,12 @@ class AboutMeViewController: PresentedViewController {
         mapView.setRegion(region, animated: true)
     }
     
-    func setDistanceLabelWithDistance(distance: Int) {
+    func setDistanceLabelWithDistance(_ distance: Int) {
         let distanceString = distanceStringAccordingToMetricUnitsFromDistance(distance)
         distanceLabel.text = distanceString.distance
         distanceUnitLabel.text = distanceString.distanceUnit
         distanceViewPositionConstraint.constant = 0.0
-        UIView.animateWithDuration(Constants.DistanceViewAppearingAnimationDuration, delay: Constants.DistanceViewAppearingDelay, usingSpringWithDamping: Constants.DistanceViewAppearingDamping, initialSpringVelocity: Constants.DistanceViewAppearingInitialVelocity, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
+        UIView.animate(withDuration: Constants.DistanceViewAppearingAnimationDuration, delay: Constants.DistanceViewAppearingDelay, usingSpringWithDamping: Constants.DistanceViewAppearingDamping, initialSpringVelocity: Constants.DistanceViewAppearingInitialVelocity, options: UIViewAnimationOptions(), animations: {
             self.view.layoutIfNeeded()
             }, completion: { (finished) in
                 let unitToSpeak = self.systemIsUsingMetricUnits() ? " kilometers" : " miles"
@@ -115,39 +115,39 @@ class AboutMeViewController: PresentedViewController {
     
     func animateInfoLabel() {
         infoLabelTrailingConstraint.constant = 8.0
-        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.5, options: .CurveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.5, options: UIViewAnimationOptions(), animations: {
             self.view.layoutIfNeeded()
             }, completion: nil)
     }
     
     // Speech synthesizer
-    func speakText(text: String) {
+    func speakText(_ text: String) {
         let speechUtterance = AVSpeechUtterance(string: text)
         speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        speechSynthesizer.speakUtterance(speechUtterance)
+        speechSynthesizer.speak(speechUtterance)
     }
     
     // MARK: Keyboard
     
     func addNotificationObservers() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     func removeNotificationObservers() {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
-    func keyboardWillShow(notification: NSNotification) {
+    func keyboardWillShow(_ notification: Notification) {
         var difference: CGFloat = 0
-        let frame = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        let frame = ((notification as NSNotification).userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         difference = currentKeyboardHeight - frame.size.height
         currentKeyboardHeight = frame.height
-        view.frame = CGRectOffset(self.view.frame, 0, difference)
+        view.frame = self.view.frame.offsetBy(dx: 0, dy: difference)
     }
     
-    func keyboardWillHide(notification: NSNotification) {
-        view.frame = CGRectOffset(self.view.frame, 0, currentKeyboardHeight);
+    func keyboardWillHide(_ notification: Notification) {
+        view.frame = self.view.frame.offsetBy(dx: 0, dy: currentKeyboardHeight);
         currentKeyboardHeight = 0
     }
     
@@ -165,7 +165,7 @@ class AboutMeViewController: PresentedViewController {
         }
     }
     
-    func didTapOnView(gesture: UITapGestureRecognizer) {
+    func didTapOnView(_ gesture: UITapGestureRecognizer) {
         view.endEditing(true)
     }
     
@@ -181,7 +181,7 @@ class AboutMeViewController: PresentedViewController {
     }
     
     @IBAction func didPressUpArrowButton() {
-        let offset = CGPointZero
+        let offset = CGPoint.zero
         scrollView.setContentOffset(offset, animated: true)
     }
     
@@ -189,7 +189,7 @@ class AboutMeViewController: PresentedViewController {
     
     func checkUserLocationAndCalculateDistance() {
         distanceViewPositionConstraint.constant = -view.bounds.size.width
-        guard let userLocationText = userLocationTextField.text where userLocationText.characters.count > 0 else {
+        guard let userLocationText = userLocationTextField.text , userLocationText.characters.count > 0 else {
             return
         }
         let geocoder = CLGeocoder()
@@ -206,13 +206,13 @@ class AboutMeViewController: PresentedViewController {
         })
     }
     
-    func calculateDistanceToLocation(userLocation: CLLocation) {
+    func calculateDistanceToLocation(_ userLocation: CLLocation) {
         let myLocation = CLLocation(latitude: CLLocationDegrees(Constants.MyLocationLatitude), longitude: CLLocationDegrees(Constants.MyLocationLongitude))
-        let distance = myLocation.distanceFromLocation(userLocation)
+        let distance = myLocation.distance(from: userLocation)
         setDistanceLabelWithDistance(Int(distance))
     }
     
-    func distanceStringAccordingToMetricUnitsFromDistance(fromDistance: Int) -> (distance: String, distanceUnit: String) {
+    func distanceStringAccordingToMetricUnitsFromDistance(_ fromDistance: Int) -> (distance: String, distanceUnit: String) {
         let dist: String
         let distUnit: String
         let kilometers = fromDistance / 1000
@@ -227,8 +227,8 @@ class AboutMeViewController: PresentedViewController {
         return (dist, distUnit)
     }
     
-    private func systemIsUsingMetricUnits() -> Bool {
-        let isMetric = NSLocale.currentLocale().objectForKey(NSLocaleUsesMetricSystem) as! NSNumber
+    fileprivate func systemIsUsingMetricUnits() -> Bool {
+        let isMetric = (Locale.current as NSLocale).object(forKey: NSLocale.Key.usesMetricSystem) as! NSNumber
         return isMetric.boolValue
     }
 
@@ -238,7 +238,7 @@ class AboutMeViewController: PresentedViewController {
 
 extension AboutMeViewController: MKMapViewDelegate {
     
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         if let myLocationAnnotation = annotation as? MyLocationAnnotation {
             let annotationView = MKAnnotationView(annotation: myLocationAnnotation, reuseIdentifier: Constants.AnnotationIdentifier)
@@ -253,18 +253,18 @@ extension AboutMeViewController: MKMapViewDelegate {
 
 extension AboutMeViewController: UIScrollViewDelegate {
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if !mapViewConfigured {
             configureMapView()
             mapViewConfigured = true
         }
     }
     
-    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         prepareViewsForDisplaying()
     }
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         prepareViewsForDisplaying()
     }
     
@@ -284,15 +284,15 @@ extension AboutMeViewController: UIScrollViewDelegate {
 
 extension AboutMeViewController: UITextFieldDelegate {
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         addTapGestureRecognizer()
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         removeTapGestureRecognizer()
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
         checkUserLocationAndCalculateDistance()
         return true

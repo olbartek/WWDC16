@@ -9,14 +9,14 @@
 import UIKit
 
 protocol MainViewControllerDelegate {
-    func presentedViewControllerWillDismissToCenterPoint(centerPoint: CGPoint, withSnapShot snapshot: UIView)
+    func presentedViewControllerWillDismissToCenterPoint(_ centerPoint: CGPoint, withSnapShot snapshot: UIView)
 }
 
 class MainViewController: UIViewController {
     
     // MARK: Properties
     
-    private struct Constants {
+    fileprivate struct Constants {
         static let BubbleAnimationViewSide: CGFloat = 300.0
     }
     
@@ -60,22 +60,22 @@ class MainViewController: UIViewController {
         configureTableView()
         showNameLabels(true, withAnimation: false)
         addGestureRecognizers()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(appBecomeActive(_:)), name: UIApplicationDidBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(appBecomeActive(_:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
     }
     
-    func appBecomeActive(notification: NSNotification) {
+    func appBecomeActive(_ notification: Notification) {
         handleViewControllerToPresent()
     }
     
     // MARK: Appearance
     
     func registerNibs() {
-        tableView.registerNib(UINib(nibName: CategoryTableViewCell.identifier(), bundle: nil), forCellReuseIdentifier: CategoryTableViewCell.identifier())
+        tableView.register(UINib(nibName: CategoryTableViewCell.identifier(), bundle: nil), forCellReuseIdentifier: CategoryTableViewCell.identifier())
     }
     
     func configureTableView() {
@@ -87,13 +87,13 @@ class MainViewController: UIViewController {
         if let categoryTypeToPresent = categoryTypeToPresent {
             let vc: UIViewController?
             switch categoryTypeToPresent {
-            case .MyApps:
+            case .myApps:
                 vc = VC.MyApps
-            case .AboutMe:
+            case .aboutMe:
                 vc = VC.AboutMe
-            case .Interests:
+            case .interests:
                 vc = VC.Interests
-            case .Skills:
+            case .skills:
                 vc = VC.Skills
             default:
                 vc = nil
@@ -101,7 +101,7 @@ class MainViewController: UIViewController {
             if let vcToPresent = vc as? PresentedViewController {
                 vcToPresent.delegate = self
                 vcToPresent.categoryCellCenter = view.center
-                presentViewController(vcToPresent, animated: false, completion: {
+                present(vcToPresent, animated: false, completion: {
                     DefaultsManager.saveCategoryTypeToPresent(nil)
                     self.categoryTypeToPresent = nil
                 })
@@ -127,14 +127,14 @@ class MainViewController: UIViewController {
         rightMarginView.addGestureRecognizer(hideCategoriesTapGestureRight!)
     }
     
-    func didRecognizedShowCategoriesTapGesture(gesture: UITapGestureRecognizer) {
+    func didRecognizedShowCategoriesTapGesture(_ gesture: UITapGestureRecognizer) {
         if areCategoriesHidden {
             removeShowCategoriesTapGesture()
             doAnimation()
         }
     }
     
-    func didRecognizedHideCategoriesTapGesture(gesture: UITapGestureRecognizer) {
+    func didRecognizedHideCategoriesTapGesture(_ gesture: UITapGestureRecognizer) {
         if !areCategoriesHidden {
             removeHideCategoriesTapGesture()
             undoAnimation()
@@ -162,35 +162,35 @@ class MainViewController: UIViewController {
     // MARK: Animations
     
     func doAnimation() {
-        view.userInteractionEnabled = false
+        view.isUserInteractionEnabled = false
         showNameLabels(false)
-        performSelector(#selector(animateBubbles), withObject: nil, afterDelay: Animation.ShowNameLabels.Duration)
-        performSelector(#selector(showCategories), withObject: nil, afterDelay: Animation.ShowNameLabels.Duration + 2 * Animation.Bubbles.RotateOneHalfDuration + Animation.Bubbles.DelayBetweenRotations)
+        perform(#selector(animateBubbles), with: nil, afterDelay: Animation.ShowNameLabels.Duration)
+        perform(#selector(showCategories), with: nil, afterDelay: Animation.ShowNameLabels.Duration + 2 * Animation.Bubbles.RotateOneHalfDuration + Animation.Bubbles.DelayBetweenRotations)
     }
     
     func undoAnimation() {
-        view.userInteractionEnabled = false
+        view.isUserInteractionEnabled = false
         tableViewHeightConstraint.constant = MainTableView.MinHeight
-        UIView.animateWithDuration(Animation.HideCategories.Duration, animations: {
+        UIView.animate(withDuration: Animation.HideCategories.Duration, animations: {
             self.view.layoutIfNeeded()
-        }) { [weak self] (finished) in
+        }, completion: { [weak self] (finished) in
             guard let weakSelf = self else { return }
-            weakSelf.view.userInteractionEnabled = true
+            weakSelf.view.isUserInteractionEnabled = true
             weakSelf.areCategoriesHidden = true
             weakSelf.showNameLabels(true)
             weakSelf.addShowCategoriesTapGesture()
-        }
+        }) 
     }
     
-    func showNameLabels(show: Bool, withAnimation isAnimation: Bool = true) {
+    func showNameLabels(_ show: Bool, withAnimation isAnimation: Bool = true) {
         let alphaToSet:CGFloat = show ? 1.0 : 0.0
         
         if isAnimation {
-            UIView.animateWithDuration(Animation.ShowNameLabels.Duration) {
+            UIView.animate(withDuration: Animation.ShowNameLabels.Duration, animations: {
                 self.nameLabel.alpha = alphaToSet
                 self.surnameLabel.alpha = alphaToSet
                 self.tapToBeginLabel.alpha = alphaToSet
-            }
+            }) 
         } else {
             nameLabel.alpha = alphaToSet
             surnameLabel.alpha = alphaToSet
@@ -199,43 +199,43 @@ class MainViewController: UIViewController {
     }
     
     func showCategories() {
-        topBar.hidden = false
-        bottomBar.hidden = false
+        topBar.isHidden = false
+        bottomBar.isHidden = false
         tableViewHeightConstraint.constant = MainTableView.MaxHeight
-        UIView.animateWithDuration(Animation.ShowCategories.Duration,
+        UIView.animate(withDuration: Animation.ShowCategories.Duration,
                                    delay: Animation.ShowCategories.Delay,
                                    usingSpringWithDamping: Animation.ShowCategories.Damping,
                                    initialSpringVelocity: Animation.ShowCategories.Velocity,
-                                   options: .CurveEaseInOut,
+                                   options: UIViewAnimationOptions(),
                                    animations: {
                                     self.view.layoutIfNeeded()
             },
                                    completion: { [weak self] (finished) in
                                     guard let weakSelf = self else { return }
-                                    weakSelf.view.userInteractionEnabled = true
+                                    weakSelf.view.isUserInteractionEnabled = true
                                     weakSelf.areCategoriesHidden = false
                                     weakSelf.addHideCategoriesTapGesture()
             })
     }
     
     func animateBubbles() {
-        let bubbleAnimationView = UIView(frame: CGRectZero)
+        let bubbleAnimationView = UIView(frame: CGRect.zero)
         bubbleAnimationView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(bubbleAnimationView)
-        view.bringSubviewToFront(bubbleAnimationView)
+        view.bringSubview(toFront: bubbleAnimationView)
         bubbleAnimationView
-            .constrain(.CenterY, .Equal, bubbleAnimationView.superview!, .CenterY)?
-            .constrain(.CenterX, .Equal, bubbleAnimationView.superview!, .CenterX)?
-            .constrain(.Width, .Equal, constant: Constants.BubbleAnimationViewSide)?
-            .constrain(.Height, .Equal, constant: Constants.BubbleAnimationViewSide)
+            .constrain(.centerY, .equal, bubbleAnimationView.superview!, .centerY)?
+            .constrain(.centerX, .equal, bubbleAnimationView.superview!, .centerX)?
+            .constrain(.width, .equal, constant: Constants.BubbleAnimationViewSide)?
+            .constrain(.height, .equal, constant: Constants.BubbleAnimationViewSide)
         self.bubbleAnimationView = bubbleAnimationView
         
         let bubblesAnimator = BubblesAnimator(referenceView: bubbleAnimationView)
         bubblesAnimator.delegate = self
         self.bubblesAnimator = bubblesAnimator
         
-        topBar.hidden = true
-        bottomBar.hidden = true
+        topBar.isHidden = true
+        bottomBar.isHidden = true
         
         bubblesAnimator.startAnimation()
     }
@@ -256,25 +256,25 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell        = tableView.dequeueReusableCellWithIdentifier(CategoryTableViewCell.identifier(), forIndexPath: indexPath) as! CategoryTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell        = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.identifier(), for: indexPath) as! CategoryTableViewCell
         cell.delegate   = self
-        let category    = categories[indexPath.row]
+        let category    = categories[(indexPath as NSIndexPath).row]
         cell.configureWithCategory(category)
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CategoryTableViewCell
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! CategoryTableViewCell
         cell.performAnimation()
     }
     
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CategoryModel.TVCHeight
     }
     
@@ -285,31 +285,31 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension MainViewController: CategoryTableViewCellDelegate {
     
-    func animationDidStopForCategoryCell(categoryCell: CategoryTableViewCell, withItsCenterInMainViewCoords center: CGPoint) {
+    func animationDidStopForCategoryCell(_ categoryCell: CategoryTableViewCell, withItsCenterInMainViewCoords center: CGPoint) {
         guard let categoryType = categoryCell.categoryType else { return }
         var vc: UIViewController?
-        dispatch_async(dispatch_get_main_queue()) { [weak self] in
+        DispatchQueue.main.async { [weak self] in
             guard let weakSelf = self else { return }
             switch categoryType {
-            case .AboutMe:
+            case .aboutMe:
                 vc = VC.AboutMe
-            case .MyApps:
+            case .myApps:
                 vc = VC.MyApps
-            case .Interests:
+            case .interests:
                 vc = VC.Interests
-            case .Skills:
+            case .skills:
                 vc = VC.Skills
-            case .ContactMe:
+            case .contactMe:
                 vc = VC.ContactMe
             }
             if let presentedVC = vc as? PresentedViewController {
                 presentedVC.delegate = self
                 presentedVC.categoryCellCenter = center
-                weakSelf.presentViewController(presentedVC, animated: false, completion: nil)
+                weakSelf.present(presentedVC, animated: false, completion: nil)
             }
         }
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.25 * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue()) {
+        let delayTime = DispatchTime.now() + Double(Int64(0.25 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: delayTime) {
             if let categoryCellResizableView = categoryCell.resizableView {
                 categoryCellResizableView.removeFromSuperview()
                 categoryCell.resizableView = nil
@@ -321,14 +321,14 @@ extension MainViewController: CategoryTableViewCellDelegate {
 // MARK: MainViewController delegate
 
 extension MainViewController: MainViewControllerDelegate {
-    func presentedViewControllerWillDismissToCenterPoint(centerPoint: CGPoint, withSnapShot snapshot: UIView) {
+    func presentedViewControllerWillDismissToCenterPoint(_ centerPoint: CGPoint, withSnapShot snapshot: UIView) {
         currentSnapshot = snapshot
-        UIView.animateWithDuration(0.3, animations: {
-            self.currentSnapshot!.frame = CGRect(origin: centerPoint, size: CGSizeZero)
-            }) { (finished) in
+        UIView.animate(withDuration: 0.3, animations: {
+            self.currentSnapshot!.frame = CGRect(origin: centerPoint, size: CGSize.zero)
+            }, completion: { (finished) in
                 self.currentSnapshot!.removeFromSuperview()
                 self.currentSnapshot = nil
-        }
+        }) 
     }
 }
 

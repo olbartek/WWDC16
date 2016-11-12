@@ -10,22 +10,22 @@ import UIKit
 import CoreFoundation
 
 public protocol BOTextAnimatorDelegate {
-    func textAnimator(textAnimator: BOTextAnimator, animationDidStart animation: CAAnimation)
-    func textAnimator(textAnimator: BOTextAnimator, animationDidStop animation: CAAnimation)
+    func textAnimator(_ textAnimator: BOTextAnimator, animationDidStart animation: CAAnimation)
+    func textAnimator(_ textAnimator: BOTextAnimator, animationDidStop animation: CAAnimation)
 }
 
-public class BOTextAnimator: NSObject {
+open class BOTextAnimator: NSObject, CAAnimationDelegate {
     
     // MARK: Properties
-    public var fontName         = "Avenir-Roman"
-    public var fontSize         : CGFloat = 50.0
-    public var textToAnimate    = "Hello Swift!"
-    public var textColor        = UIColor.whiteColor().CGColor
-    public var delegate         : BOTextAnimatorDelegate?
+    open var fontName         = "Avenir-Roman"
+    open var fontSize         : CGFloat = 50.0
+    open var textToAnimate    = "Hello Swift!"
+    open var textColor        = UIColor.white.cgColor
+    open var delegate         : BOTextAnimatorDelegate?
     
-    private var animationLayer  = CALayer()
-    private var pathLayer       : CAShapeLayer?
-    private var referenceView   : UIView
+    fileprivate var animationLayer  = CALayer()
+    fileprivate var pathLayer       : CAShapeLayer?
+    fileprivate var referenceView   : UIView
     
     // MARK: Initialization
     init(referenceView: UIView) {
@@ -39,7 +39,7 @@ public class BOTextAnimator: NSObject {
     }
     
     // MARK: Configuration
-    private func defaultConfiguration() {
+    fileprivate func defaultConfiguration() {
         animationLayer          = CALayer()
         animationLayer.frame    = referenceView.bounds
         referenceView.layer.addSublayer(animationLayer)
@@ -48,51 +48,51 @@ public class BOTextAnimator: NSObject {
 
     // MARK: Animations
     
-    private func clearLayer() {
+    fileprivate func clearLayer() {
         if let _ = pathLayer {
             pathLayer?.removeFromSuperlayer()
             pathLayer = nil
         }
     }
     
-    private func setupPathLayerWithText(text: String, fontName: String, fontSize: CGFloat) {
+    fileprivate func setupPathLayerWithText(_ text: String, fontName: String, fontSize: CGFloat) {
         clearLayer()
         
-        let letters     = CGPathCreateMutable()
-        let font        = CTFontCreateWithName(fontName, fontSize, nil)
+        let letters     = CGMutablePath()
+        let font        = CTFontCreateWithName(fontName as CFString?, fontSize, nil)
         let attrString  = NSAttributedString(string: text, attributes: [kCTFontAttributeName as String : font])
         let line        = CTLineCreateWithAttributedString(attrString)
         let runArray    = CTLineGetGlyphRuns(line)
         
         for runIndex in 0..<CFArrayGetCount(runArray) {
             
-            let run     : CTRunRef =  unsafeBitCast(CFArrayGetValueAtIndex(runArray, runIndex), CTRunRef.self)
-            let dictRef : CFDictionaryRef = unsafeBitCast(CTRunGetAttributes(run), CFDictionaryRef.self)
+            let run     : CTRun =  unsafeBitCast(CFArrayGetValueAtIndex(runArray, runIndex), to: CTRun.self)
+            let dictRef : CFDictionary = unsafeBitCast(CTRunGetAttributes(run), to: CFDictionary.self)
             let dict    : NSDictionary = dictRef as NSDictionary
             let runFont = dict[kCTFontAttributeName as String] as! CTFont
             
             for runGlyphIndex in 0..<CTRunGetGlyphCount(run) {
                 let thisGlyphRange  = CFRangeMake(runGlyphIndex, 1)
                 var glyph           = CGGlyph()
-                var position        = CGPointZero
+                var position        = CGPoint.zero
                 CTRunGetGlyphs(run, thisGlyphRange, &glyph)
                 CTRunGetPositions(run, thisGlyphRange, &position)
                 
-                let letter          = CTFontCreatePathForGlyph(runFont, glyph, nil)
-                var t               = CGAffineTransformMakeTranslation(position.x, position.y)
-                CGPathAddPath(letters, &t, letter)
+                guard let letter = CTFontCreatePathForGlyph(runFont, glyph, nil) else { return }
+                let t = CGAffineTransform(translationX: position.x, y: position.y)
+                letters.addPath(letter, transform: t)
             }
         }
         
         let path = UIBezierPath()
-        path.moveToPoint(CGPointZero)
-        path.appendPath(UIBezierPath(CGPath: letters))
+        path.move(to: CGPoint.zero)
+        path.append(UIBezierPath(cgPath: letters))
         
         let pathLayer               = CAShapeLayer()
         pathLayer.frame             = animationLayer.bounds;
-        pathLayer.bounds            = CGPathGetBoundingBox(path.CGPath)
-        pathLayer.geometryFlipped   = true
-        pathLayer.path              = path.CGPath
+        pathLayer.bounds            = path.cgPath.boundingBox
+        pathLayer.isGeometryFlipped   = true
+        pathLayer.path              = path.cgPath
         pathLayer.strokeColor       = textColor
         pathLayer.fillColor         = nil
         pathLayer.lineWidth         = 1.0
@@ -103,7 +103,7 @@ public class BOTextAnimator: NSObject {
         
     }
     
-    public func startAnimation() {
+    open func startAnimation() {
         let duration = 4.0
         pathLayer?.removeAllAnimations()
         setupPathLayerWithText(textToAnimate, fontName: fontName, fontSize: fontSize)
@@ -113,25 +113,26 @@ public class BOTextAnimator: NSObject {
         pathAnimation.fromValue = 0.0
         pathAnimation.toValue   = 1.0
         pathAnimation.delegate  = self
-        pathLayer?.addAnimation(pathAnimation, forKey: "strokeEnd")
+        pathLayer?.add(pathAnimation, forKey: "strokeEnd")
         
         let coloringDuration        = 2.0
         let colorAnimation          = CAKeyframeAnimation(keyPath: "fillColor")
         colorAnimation.duration     = duration + coloringDuration
-        colorAnimation.values       = [UIColor.clearColor().CGColor, UIColor.clearColor().CGColor, textColor]
-        colorAnimation.keyTimes     = [0, (duration/(duration + coloringDuration)), 1]
-        pathLayer?.addAnimation(colorAnimation, forKey: "fillColor")
+        colorAnimation.values       = [UIColor.clear.cgColor, UIColor.clear.cgColor, textColor]
+        let middleValue             = duration / (duration + coloringDuration)
+        colorAnimation.keyTimes     = [0, NSNumber(value: middleValue), 1]
+        pathLayer?.add(colorAnimation, forKey: "fillColor")
     }
     
-    public func stopAnimation() {
+    open func stopAnimation() {
         pathLayer?.removeAllAnimations()
     }
     
-    public func clearAnimationText() {
+    open func clearAnimationText() {
         clearLayer()
     }
     
-    public func prepareForAnimation() {
+    open func prepareForAnimation() {
         pathLayer?.removeAllAnimations()
         setupPathLayerWithText(textToAnimate, fontName: fontName, fontSize: fontSize)
         
@@ -140,25 +141,25 @@ public class BOTextAnimator: NSObject {
         pathAnimation.fromValue = 0.0
         pathAnimation.toValue   = 1.0
         pathAnimation.delegate  = self
-        pathLayer?.addAnimation(pathAnimation, forKey: "strokeEnd")
+        pathLayer?.add(pathAnimation, forKey: "strokeEnd")
         
         pathLayer?.speed        = 0
         
     }
     
-    public func updatePathStrokeWithValue(value: CGFloat) {
-        dispatch_async(dispatch_get_main_queue()) {
+    open func updatePathStrokeWithValue(_ value: CGFloat) {
+        DispatchQueue.main.async {
             self.pathLayer?.timeOffset = CFTimeInterval(value)
         }
         
     }
     
     // MARK: Animation delegate
-    public override func animationDidStart(anim: CAAnimation) {
+    open func animationDidStart(_ anim: CAAnimation) {
         self.delegate?.textAnimator(self, animationDidStart: anim)
     }
     
-    public override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+    open func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         self.delegate?.textAnimator(self, animationDidStop: anim)
     }
 

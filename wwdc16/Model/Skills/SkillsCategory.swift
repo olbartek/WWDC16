@@ -25,7 +25,7 @@ class SkillsCategory: NSObject {
         self.name = name
         self.imageName = imageName
         for skill in skills {
-            if let skillName = skill[skillNameKey] as? String, skillPercentage = skill[skillKnowledgePercentageKey] as? Int {
+            if let skillName = skill[skillNameKey] as? String, let skillPercentage = skill[skillKnowledgePercentageKey] as? Int {
                 let newSkill = Skill(name: skillName, knowledgePercentage: skillPercentage)
                 self.skills.append(newSkill)
             }

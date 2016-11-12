@@ -9,7 +9,7 @@
 import UIKit
 
 enum ContactImageType : Int {
-    case Facebook, Twitter, Linkedin
+    case facebook, twitter, linkedin
 }
 
 class ContactImage: UIImageView {
@@ -18,18 +18,18 @@ class ContactImage: UIImageView {
         didSet {
             guard let currentType = type else { return }
             switch currentType {
-            case .Facebook:
+            case .facebook:
                 image = UIImage(named:"fb-logo")
-            case .Twitter:
+            case .twitter:
                 image = UIImage(named:"twitter-logo")
-            case .Linkedin:
+            case .linkedin:
                 image = UIImage(named:"linkedin-logo")
             }
         }
     }
     var startAngle: CGFloat = 0.0
     
-    private struct Constants {
+    fileprivate struct Constants {
         static let ImageRadius: CGFloat = 25.0
     }
 

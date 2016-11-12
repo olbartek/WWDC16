@@ -71,7 +71,7 @@ struct CategoryModel {
 }
 
 struct SkillCategoryModel {
-    static let Categories: [[String: AnyObject]] = [
+    static let Categories: [[String: Any]] = [
         ["name" : "Programming",
         "imageName" : "skill-category-programming",
         "skills" : [

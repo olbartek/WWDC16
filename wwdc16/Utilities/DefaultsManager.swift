@@ -14,16 +14,16 @@ class DefaultsManager: NSObject {
     
     // MARK: Category to present
     
-    class func saveCategoryTypeToPresent(categoryType: CategoryType?) {
+    class func saveCategoryTypeToPresent(_ categoryType: CategoryType?) {
         if let categoryType = categoryType {
-            NSUserDefaults.standardUserDefaults().setInteger(categoryType.rawValue, forKey: categoryToPresentKey)
+            UserDefaults.standard.set(categoryType.rawValue, forKey: categoryToPresentKey)
         } else {
-            NSUserDefaults.standardUserDefaults().setInteger(-1, forKey: categoryToPresentKey)
+            UserDefaults.standard.set(-1, forKey: categoryToPresentKey)
         }
     }
     
     class func loadCategoryTypeToPresent() -> CategoryType? {
-        let categoryToPresentInt = NSUserDefaults.standardUserDefaults().integerForKey(categoryToPresentKey)
+        let categoryToPresentInt = UserDefaults.standard.integer(forKey: categoryToPresentKey)
         if categoryToPresentInt < 0 {
             return nil
         } else {

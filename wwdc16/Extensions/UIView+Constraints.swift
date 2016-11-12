@@ -13,7 +13,7 @@ extension UIView {
     /**
      :returns: true if v is in this view's super view chain
      */
-    public func isSuper(v : UIView) -> Bool
+    public func isSuper(_ v : UIView) -> Bool
     {
         var s: UIView? = self
         while (s != nil) {
@@ -23,7 +23,7 @@ extension UIView {
         return false
     }
     
-    public func constrain(attribute: NSLayoutAttribute, _ relation: NSLayoutRelation, _ otherView: UIView, _ otherAttribute: NSLayoutAttribute, constant: CGFloat = 0.0, multiplier : CGFloat = 1.0) -> UIView?
+    public func constrain(_ attribute: NSLayoutAttribute, _ relation: NSLayoutRelation, _ otherView: UIView, _ otherAttribute: NSLayoutAttribute, constant: CGFloat = 0.0, multiplier : CGFloat = 1.0) -> UIView?
     {
         let c = NSLayoutConstraint(item: self, attribute: attribute, relatedBy: relation, toItem: otherView, attribute: otherAttribute, multiplier: multiplier, constant: constant)
         
@@ -40,9 +40,9 @@ extension UIView {
         return nil
     }
     
-    public func constrain(attribute: NSLayoutAttribute, _ relation: NSLayoutRelation, constant: CGFloat, multiplier : CGFloat = 1.0) -> UIView?
+    public func constrain(_ attribute: NSLayoutAttribute, _ relation: NSLayoutRelation, constant: CGFloat, multiplier : CGFloat = 1.0) -> UIView?
     {
-        let c = NSLayoutConstraint(item: self, attribute: attribute, relatedBy: relation, toItem: nil, attribute: .NotAnAttribute, multiplier: multiplier, constant: constant)
+        let c = NSLayoutConstraint(item: self, attribute: attribute, relatedBy: relation, toItem: nil, attribute: .notAnAttribute, multiplier: multiplier, constant: constant)
         self.addConstraint(c)
         return self
     }

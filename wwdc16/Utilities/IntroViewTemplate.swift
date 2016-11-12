@@ -34,18 +34,18 @@ class IntroViewTemplate: UIView {
     // MARK: Animations
     
     func animateAppearance() {
-        UIView.animateWithDuration(1, animations: {
+        UIView.animate(withDuration: 1, animations: {
             self.bgView.alpha = 0.7
-        }) { (finished) in
+        }, completion: { (finished) in
             
-        }
+        }) 
     }
     
-    func didTapOnView(gesture: UITapGestureRecognizer) {
-        UIView.animateWithDuration(1, animations: {
+    func didTapOnView(_ gesture: UITapGestureRecognizer) {
+        UIView.animate(withDuration: 1, animations: {
             self.bgView.alpha = 0.0
-            }) { (finished) in
+            }, completion: { (finished) in
                 self.removeFromSuperview()
-        }
+        }) 
     }
 }

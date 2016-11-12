@@ -8,4 +8,4 @@ WWDC 2016 scholarship winning application written entirely in Swift.
 
 ## Presentation
 
-![alt tag](https://raw.githubusercontent.com/olbartek/WWDC16/master/wwdc16.gif)
+<img src="https://raw.githubusercontent.com/olbartek/WWDC16/master/wwdc16.gif" width="200">
